@@ -4,8 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { PointMaterial, Points, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 
-// FIX 1: Math.random() ko component se baahar nikaal diya
-// Taaki render function "Pure" rahe aur linting error na aaye.
+// Positions generation logic (Pure function)
 const generateSphericalPositions = (count: number) => {
   const p = new Float32Array(count * 3);
   for (let i = 0; i < count; i++) {
@@ -20,15 +19,15 @@ const generateSphericalPositions = (count: number) => {
   return p;
 };
 
-function ParticleOrb() {
+function ParticleOrb({ count }: { count: number }) {
   const pointsRef = useRef<THREE.Points>(null);
   const groupRef = useRef<THREE.Group>(null);
 
   const color1 = useMemo(() => new THREE.Color("#00aeef"), []);
   const color2 = useMemo(() => new THREE.Color("#2e3192"), []);
 
-  // Memoize positions using our external function
-  const positions = useMemo(() => generateSphericalPositions(4000), []);
+  // Use dynamic count for memoization
+  const positions = useMemo(() => generateSphericalPositions(count), [count]);
 
   useFrame((state) => {
     const { x, y } = state.mouse;
@@ -74,29 +73,34 @@ function ParticleOrb() {
 
 export default function HeroScene() {
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
+    const init = () => {
+      setMounted(true);
+      setIsMobile(window.innerWidth < 768);
+    };
+    init();
+
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Agar error "set-state-in-effect" phir bhi aaye, to niche wali line add karein:
-  // if (typeof window === "undefined" || !mounted) return null;
-
-  if (!mounted) {
-    return (
-      <div className="absolute inset-0 bg-black flex items-center justify-center">
-        {/* Placeholder to avoid layout shift */}
-      </div>
-    );
-  }
+  // Hydration safe check
+  if (!mounted) return <div className="absolute inset-0 bg-black" />;
 
   return (
     <div className="absolute inset-0 z-0 bg-black">
       <Canvas
-        gl={{ antialias: true, alpha: true }}
+        // FIX 2: Cap DPR to 1.5 on mobile to prevent GPU strain
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
+        gl={{
+          antialias: !isMobile, // Disable antialiasing on mobile for performance
+          powerPreference: "high-performance",
+        }}
         eventSource={
-          typeof window !== "undefined"
+          typeof document !== "undefined"
             ? (document.body as HTMLElement)
             : undefined
         }
@@ -104,7 +108,8 @@ export default function HeroScene() {
       >
         <PerspectiveCamera makeDefault position={[0, 0, 7]} fov={40} />
         <ambientLight intensity={1} />
-        <ParticleOrb />
+        {/* FIX 1: Dynamic particle count */}
+        <ParticleOrb count={isMobile ? 1200 : 4000} />
       </Canvas>
     </div>
   );

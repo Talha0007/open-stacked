@@ -3,10 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import ScrollHandler from "@/components/ScrollHandler";
 
-// 1. Font Optimization (Load only needed weights)
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,11 +15,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 2. SEO Metadata Optimization
 export const metadata: Metadata = {
   title: {
     default: "Open Stacked | Enterprise-Grade IT Solutions",
-    template: "%s | Open Stacked", // Baqi pages par title "Page Name | Open Stacked" show hoga
+    template: "%s | Open Stacked",
   },
   description:
     "Providing high-performance MERN stack development, cloud virtualization, and resilient digital infrastructure for modern businesses.",
@@ -41,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Open Stacked",
     images: [
       {
-        url: "/os-logo.png", // OG Image for social sharing
+        url: "/os-logo.png",
         width: 1200,
         height: 630,
       },
@@ -61,15 +58,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`cursor-none ${geistSans.variable} ${geistMono.variable}`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        {/* Canonical URL (Essential for SEO to avoid duplicate content) */}
         <link rel="canonical" href="https://openstacked.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* JSON-LD Structured Data (Head section is better for early bot detection) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -87,18 +80,22 @@ export default function RootLayout({
                 addressCountry: "PK",
               },
               sameAs: [
-                "https://github.com/your-username", // Change this
-                "https://linkedin.com/in/your-username", // Change this
+                "https://github.com/your-username",
+                "https://linkedin.com/in/your-username",
               ],
             }),
           }}
         />
       </head>
-      <body className="bg-black text-white cursor-none select-none antialiased">
+      {/* 1. 'md:cursor-none' ensures the default cursor is only hidden on desktop.
+          2. Removed 'select-none' globally so mobile users can interact naturally.
+          3. 'antialiased' helps with font rendering performance.
+      */}
+      <body className="bg-black text-white antialiased overflow-x-hidden">
         <ScrollHandler />
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         <Navbar />
-        <main>{children}</main> {/* Semantic <main> tag for SEO */}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

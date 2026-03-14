@@ -1,14 +1,8 @@
 @import "tailwindcss";
 
-
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-* {
-  cursor: none !important;
 }
 
 @theme inline {
@@ -35,13 +29,3 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer base {
-  html, body {
-    @apply cursor-none;
-  }
-  
-  /* Ensure interactive elements also don't show the default pointer */
-  a, button, .group {
-    @apply cursor-none;
-  }
-}
