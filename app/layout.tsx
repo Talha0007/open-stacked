@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   },
   description:
     "Providing high-performance MERN stack development, cloud virtualization, and resilient digital infrastructure for modern businesses.",
+  icons: {
+    icon: [{ url: "/ico.png" }],
+    shortcut: "/ico.png",
+    apple: "/ico.png",
+  },
   keywords: [
     "Full Stack Development",
     "MERN Stack",
@@ -87,13 +92,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      {/* 1. 'md:cursor-none' ensures the default cursor is only hidden on desktop.
-          2. Removed 'select-none' globally so mobile users can interact naturally.
-          3. 'antialiased' helps with font rendering performance.
-      */}
+
       <body className="bg-black text-white antialiased overflow-x-hidden">
         <ScrollHandler />
-        {/* <CustomCursor /> */}
         <Navbar />
         <main>{children}</main>
         <Footer />
