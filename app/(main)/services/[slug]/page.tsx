@@ -1,16 +1,16 @@
+// app/services/[slug]/page.tsx
 import { servicesData } from "@/data/services";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ChevronDown } from "lucide-react";
 
 interface Props {
-  params: Promise<{ slug: string }>; // Params ko Promise define karein
+  params: Promise<{ slug: string }>;
 }
 
-// SEO Metadata Fix
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params; // Yahan await karein
+  const resolvedParams = await params;
   const service = servicesData.find((s) => s.slug === resolvedParams.slug);
 
   if (!service) return { title: "Service Not Found" };
@@ -21,22 +21,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Page Component Fix
 export default async function ServiceDetailPage({ params }: Props) {
-  const resolvedParams = await params; // Yahan await karna laazmi hai
+  const resolvedParams = await params;
   const service = servicesData.find((s) => s.slug === resolvedParams.slug);
 
   if (!service) {
     notFound();
   }
 
+  // Generate SEO Schema for FAQs dynamically
+  const faqSchema =
+    service.faqs && service.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: service.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 overflow-hidden relative">
+      {/* Inject SEO Schema if FAQs exist */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
       {/* Background Orbs */}
       <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Navigation Back */}
         <Link
           href="/#services"
           className="inline-flex items-center gap-2 text-slate-500 hover:text-cyan-400 transition-colors mb-12 group"
@@ -53,6 +76,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* Left Side: Content */}
           <div className="lg:col-span-7">
+            {/* ... Aapka existing top content (Tags, Title, Desc, Features) ... */}
             <div className="flex items-center gap-3 mb-6">
               <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[9px] font-mono uppercase tracking-widest rounded-full">
                 {service.tag}
@@ -71,7 +95,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               {service.fullDesc}
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
               {service.features.map((feature, idx) => (
                 <div
                   key={idx}
@@ -87,6 +111,39 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </div>
               ))}
             </div>
+
+            {/* --- NEW FAQ ACCORDION SECTION --- */}
+            {service.faqs && service.faqs.length > 0 && (
+              <div className="mt-12 border-t border-white/10 pt-12">
+                <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                  <span className="text-cyan-500">/</span> Frequently Asked
+                  Questions
+                </h2>
+
+                <div className="space-y-4">
+                  {service.faqs.map((faq, index) => (
+                    <details
+                      key={index}
+                      className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden"
+                    >
+                      <summary className="flex cursor-pointer items-center justify-between p-5 text-slate-300 hover:text-cyan-400 font-medium list-none select-none transition-colors">
+                        {faq.question}
+                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 ml-4 group-open:bg-cyan-500/20 group-open:text-cyan-400 transition-colors">
+                          <ChevronDown
+                            size={16}
+                            className="transition-transform duration-300 group-open:-rotate-180"
+                          />
+                        </div>
+                      </summary>
+                      <div className="px-5 pb-5 pt-2 text-slate-400 text-sm font-light leading-relaxed border-t border-white/5">
+                        {faq.answer}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            )}
+            {/* ------------------------------- */}
           </div>
 
           {/* Right Side: Visual Card */}
