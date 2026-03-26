@@ -5,6 +5,25 @@ import Link from "next/link";
 import { Metadata } from "next";
 import CommentSection from "@/components/CommentSection";
 
+// 1. Explicit Interfaces for Type Safety
+interface BlogComment {
+  id: string;
+  commenterName: string;
+  text: string;
+  createdAt: string;
+}
+
+interface SidebarPost {
+  id: string;
+  title: string;
+  slug: string;
+  createdAt: string;
+  category?: {
+    slug: string;
+    name: string;
+  } | null;
+}
+
 type PageProps = {
   params: Promise<{
     categorySlug: string;
@@ -37,8 +56,8 @@ export async function generateMetadata({
 export default async function ArticlePage({ params }: PageProps) {
   const { categorySlug, postSlug } = await params;
 
-  // Fetching Post + Sidebar Data in parallel
-  const [post, recentPosts, trendingPosts] = await Promise.all([
+  // 2. Data Fetching
+  const [rawPost, rawRecent, rawTrending] = await Promise.all([
     prisma.post.findUnique({
       where: { slug: postSlug },
       include: {
@@ -61,7 +80,12 @@ export default async function ArticlePage({ params }: PageProps) {
     }),
   ]);
 
-  if (!post || post.category?.slug !== categorySlug) notFound();
+  if (!rawPost || rawPost.category?.slug !== categorySlug) notFound();
+
+  // 3. Serialization (Fixes the "Digest" Error)
+  const post = JSON.parse(JSON.stringify(rawPost));
+  const recentPosts: SidebarPost[] = JSON.parse(JSON.stringify(rawRecent));
+  const trendingPosts: SidebarPost[] = JSON.parse(JSON.stringify(rawTrending));
 
   return (
     <article className="min-h-screen bg-black text-neutral-300 py-32 px-6">
@@ -72,7 +96,7 @@ export default async function ArticlePage({ params }: PageProps) {
             <header className="mb-12">
               <div className="flex items-center gap-3 mb-6">
                 <span className="bg-sky-500/10 text-sky-500 text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-widest border border-sky-500/20">
-                  {post.category.name}
+                  {post.category?.name || "Uncategorized"}
                 </span>
                 <span className="text-neutral-600 font-mono text-xs">
                   {new Date(post.createdAt).toLocaleDateString("en-US", {
@@ -114,7 +138,7 @@ export default async function ArticlePage({ params }: PageProps) {
             <div className="mt-32 pt-10 border-t border-neutral-900">
               <CommentSection postId={post.id} />
               <div className="mt-16 space-y-8">
-                {post.comments?.map((comment) => (
+                {post.comments?.map((comment: BlogComment) => (
                   <div
                     key={comment.id}
                     className="border-l border-neutral-800 pl-6 py-2"
@@ -138,7 +162,6 @@ export default async function ArticlePage({ params }: PageProps) {
 
           {/* RIGHT CONTENT: Sidebar */}
           <aside className="lg:w-1/4 space-y-16">
-            {/* Recent Posts */}
             <section>
               <h3 className="text-sky-500 text-[10px] font-black uppercase tracking-[0.3em] mb-8 flex items-center gap-2">
                 <span className="w-8 h-[1px] bg-sky-500/30"></span>{" "}
@@ -162,7 +185,6 @@ export default async function ArticlePage({ params }: PageProps) {
               </div>
             </section>
 
-            {/* High Traffic Nodes */}
             <section className="bg-neutral-950/50 p-6 rounded-2xl border border-neutral-900">
               <h3 className="text-white text-[10px] font-black uppercase tracking-[0.3em] mb-8">
                 🔥 High_Traffic_Nodes
@@ -185,7 +207,6 @@ export default async function ArticlePage({ params }: PageProps) {
               </div>
             </section>
 
-            {/* Author Signature */}
             <div className="pt-10 border-t border-neutral-900">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-2">
                 Written By
