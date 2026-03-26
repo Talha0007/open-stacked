@@ -1,7 +1,6 @@
 // components/Footer.tsx
-import React from "react";
 import Image from "next/image";
-import { Mail, ArrowUpRight, Globe } from "lucide-react";
+import { Mail, ArrowUpRight, Globe, Newspaper } from "lucide-react"; // Added Newspaper icon
 import Link from "next/link";
 
 export default function Footer() {
@@ -66,6 +65,18 @@ export default function Footer() {
                   className="hover:text-cyan-400 transition-colors"
                 >
                   About Us
+                </Link>
+              </li>
+              {/* --- ADDED BLOG LINK HERE FOR SEO --- */}
+              <li>
+                <Link
+                  href="/blogs"
+                  className="hover:text-cyan-400 transition-colors flex items-center gap-2"
+                >
+                  Our Blogs{" "}
+                  <span className="text-[10px] bg-sky-500/10 text-sky-400 px-1.5 py-0.5 rounded border border-sky-500/20 font-mono italic">
+                    NEW
+                  </span>
                 </Link>
               </li>
               <li>

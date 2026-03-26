@@ -132,7 +132,7 @@ export default function Hero() {
               Global Infrastructure Nodes
             </div>
             <div className="text-4xl font-black mt-1">
-              24<span className="text-cyan-500">+</span>
+              113<span className="text-cyan-500">+</span>
             </div>
           </motion.div>
         </div>

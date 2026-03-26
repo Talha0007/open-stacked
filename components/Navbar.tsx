@@ -7,11 +7,13 @@ export default function Navbar() {
     { name: "Home", href: "/#home" },
     { name: "Services", href: "/#services" },
     { name: "Testimonials", href: "/#testimonials" },
+    { name: "Blogs", href: "/blogs" },
   ];
 
   const companyLinks = [
     { name: "About Us", href: "/about", icon: <User size={14} /> },
     { name: "Contact Us", href: "/contact", icon: <Mail size={14} /> },
+    { name: "Our Blogs", href: "/blogs", icon: <FileText size={14} /> },
     { name: "Request a Quote", href: "/quote", icon: <FileText size={14} /> },
   ];
 

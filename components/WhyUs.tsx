@@ -79,7 +79,7 @@ export default function WhyUs() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 pt-10 border-t border-white/10">
               <div className="flex flex-col">
                 <span className="text-4xl md:text-5xl font-black text-white italic">
-                  <Counter value={25} />+
+                  <Counter value={113} />+
                 </span>
                 <span className="text-[10px] text-slate-500 uppercase tracking-widest mt-3 font-mono">
                   Deliveries
