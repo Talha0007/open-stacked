@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://openstacked.com"),
   title: {
     default: "Open Stacked | Enterprise-Grade IT Solutions",
     template: "%s | Open Stacked",
@@ -55,6 +56,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
