@@ -7,7 +7,7 @@ import LoadMorePosts from "@/components/LoadMorePosts";
 // --- STEP 1: DEFINE THE TYPE ---
 type PostWithCategory = Prisma.PostGetPayload<{
   include: { category: true };
-  author: { select: { name: true } };
+  author?: { select: { name: true } };
 }>;
 
 type Props = {
