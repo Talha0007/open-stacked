@@ -1,10 +1,28 @@
 import { prisma } from "@/lib/prisma";
-import { Eye, Edit3 } from "lucide-react";
+import { Edit3 } from "lucide-react";
 import DeleteButton from "./DeleteButton";
-import Link from "next/link"; // Import Link
+import Link from "next/link";
+
+// 1. Define the Post interface to satisfy TypeScript
+interface Post {
+  id: string;
+  title: string;
+  createdAt: Date | string;
+}
 
 export default async function BlogList() {
-  const posts = await prisma.post.findMany({ orderBy: { createdAt: "desc" } });
+  // 2. Fetch posts (Prisma will return them, but we'll treat them as our interface)
+  const postsData = await prisma.post.findMany({
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      createdAt: true,
+    },
+  });
+
+  // 3. Serialize to avoid Date object issues during the build
+  const posts: Post[] = JSON.parse(JSON.stringify(postsData));
 
   return (
     <div className="mt-12 overflow-hidden rounded-2xl border border-neutral-900 bg-neutral-950/50 backdrop-blur-sm">
@@ -16,7 +34,8 @@ export default async function BlogList() {
           </tr>
         </thead>
         <tbody className="divide-y divide-neutral-900/50">
-          {posts.map((post) => (
+          {/* 4. Explicitly type the 'post' parameter here */}
+          {posts.map((post: Post) => (
             <tr
               key={post.id}
               className="group hover:bg-white/5 transition-colors"
@@ -28,7 +47,6 @@ export default async function BlogList() {
                 </div>
               </td>
               <td className="px-6 py-4 text-right flex justify-end gap-2">
-                {/* Updated: Link to trigger Edit Mode */}
                 <Link
                   href={`?edit=${post.id}`}
                   scroll={false}
