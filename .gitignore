@@ -10,6 +10,14 @@
 !.yarn/releases
 !.yarn/versions
 
+# Prisma
+# If you use the default output, it lives in node_modules (already ignored).
+# If you kept a custom output folder, ensure it is NOT ignored so Vercel can see it,
+# BUT we must ignore the local binary engines:
+*.query_engine-*.node
+*.query_engine-*.dll.node
+*.debian-openssl-*.node
+
 # testing
 /coverage
 
@@ -23,6 +31,8 @@
 # misc
 .DS_Store
 *.pem
+*.tmp
+*.tmp*
 
 # debug
 npm-debug.log*
@@ -30,8 +40,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files 
+# NEVER commit these for Open Stacked; set them in Vercel Dashboard instead.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
