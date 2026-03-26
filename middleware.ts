@@ -1,36 +1,30 @@
 import { NextResponse, type NextRequest } from "next/server";
+// Import your auth instance directly
+import { auth } from "@/lib/auth";
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Only protect /admin routes
   if (pathname.startsWith("/admin")) {
     try {
-      // Manually fetch the session from your Better-Auth endpoint
-      const response = await fetch(
-        `${request.nextUrl.origin}/api/auth/get-session`,
-        {
-          headers: {
-            // Critical: Pass the cookies from the browser to the auth check
-            cookie: request.headers.get("cookie") || "",
-          },
-        },
-      );
-
-      const session = await response.json();
+      // BETTER WAY: Use the auth headers directly without a fetch call
+      // Better-Auth provides a getSession function that works in Middleware/Proxy
+      const session = await auth.api.getSession({
+        headers: request.headers,
+      });
 
       // 1. If no session exists
       if (!session) {
         return NextResponse.redirect(new URL("/login", request.url));
       }
 
-      // 2. If session exists but user is not an admin
+      // 2. Role Check
       if (session.user.role !== "admin") {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
-        // Alternatively: return NextResponse.redirect(new URL("/", request.url));
+        // Redirect to home if they aren't an admin
+        return NextResponse.redirect(new URL("/", request.url));
       }
     } catch (error) {
-      console.error("Middleware Auth Error:", error);
+      console.error("Proxy Auth Error:", error);
       return NextResponse.redirect(new URL("/login", request.url));
     }
   }
@@ -38,7 +32,6 @@ export default async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Optimization: Middleware only runs for these paths
 export const config = {
   matcher: ["/admin/:path*"],
 };
