@@ -1,18 +1,26 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
-import { Prisma, Post, Category } from "@prisma/client";
 import LoadMorePosts from "@/components/LoadMorePosts";
 
-// --- STEP 1: DEFINE THE TYPE (Vercel-Safe Version) ---
-// We define the relations manually so the TypeScript compiler
-// doesn't have to look into the Prisma namespace during build.
-type PostWithCategory = Post & {
-  category: Category | null;
+// --- STEP 1: DEFINE THE TYPE ---
+interface PostWithCategory {
+  id: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  thumbnail: string | null;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  category: {
+    id: string;
+    name: string;
+    slug: string;
+  } | null;
   author?: {
     name: string | null;
   } | null;
-};
+}
 
 type Props = {
   searchParams: Promise<{ category?: string }>;
