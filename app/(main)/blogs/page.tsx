@@ -1,9 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import Image from "next/image";
 import LoadMorePosts from "@/components/LoadMorePosts";
 
-// --- STEP 1: DEFINE THE TYPE ---
+// --- STEP 1: DEFINE THE TYPES ---
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 interface PostWithCategory {
   id: string;
   title: string;
@@ -29,35 +34,42 @@ type Props = {
 export default async function BlogArchive({ searchParams }: Props) {
   const { category: activeCategory } = await searchParams;
 
-  // --- STEP 2: UPDATE QUERIES TO INCLUDE CATEGORY ---
-  const [posts, categories, recentPosts, trendingPosts] = await Promise.all([
-    // Main Feed
-    prisma.post.findMany({
-      where: {
-        published: true,
-        ...(activeCategory && { category: { slug: activeCategory } }),
-      },
-      include: { category: true, author: { select: { name: true } } },
-      orderBy: { createdAt: "desc" },
-      take: 6,
-    }),
-    // Category List
-    prisma.category.findMany({ orderBy: { name: "asc" } }),
-    // Sidebar: Recent (ADDED INCLUDE HERE)
-    prisma.post.findMany({
-      where: { published: true },
-      take: 3,
-      include: { category: true },
-      orderBy: { createdAt: "desc" },
-    }),
-    // Sidebar: Trending (ADDED INCLUDE HERE)
-    prisma.post.findMany({
-      where: { published: true },
-      take: 3,
-      include: { category: true },
-      orderBy: { updatedAt: "desc" },
-    }),
-  ]);
+  // --- STEP 2: FETCH DATA ---
+  const [postsData, categoriesData, recentData, trendingData] =
+    await Promise.all([
+      // Main Feed
+      prisma.post.findMany({
+        where: {
+          published: true,
+          ...(activeCategory && { category: { slug: activeCategory } }),
+        },
+        include: { category: true, author: { select: { name: true } } },
+        orderBy: { createdAt: "desc" },
+        take: 6,
+      }),
+      // Category List
+      prisma.category.findMany({ orderBy: { name: "asc" } }),
+      // Sidebar: Recent
+      prisma.post.findMany({
+        where: { published: true },
+        take: 3,
+        include: { category: true },
+        orderBy: { createdAt: "desc" },
+      }),
+      // Sidebar: Trending
+      prisma.post.findMany({
+        where: { published: true },
+        take: 3,
+        include: { category: true },
+        orderBy: { updatedAt: "desc" },
+      }),
+    ]);
+
+  // --- STEP 3: SERIALIZE (Fixes "Digest" errors and ensures clean types) ---
+  const posts = JSON.parse(JSON.stringify(postsData));
+  const categories: Category[] = JSON.parse(JSON.stringify(categoriesData));
+  const recentPosts = JSON.parse(JSON.stringify(recentData));
+  const trendingPosts = JSON.parse(JSON.stringify(trendingData));
 
   return (
     <div className="min-h-screen bg-black text-neutral-400 py-32 px-6">
@@ -84,7 +96,8 @@ export default async function BlogArchive({ searchParams }: Props) {
           >
             All_Logs
           </Link>
-          {categories.map((cat) => (
+          {/* FIXED: Added explicit type (cat: Category) to the map */}
+          {categories.map((cat: Category) => (
             <Link
               key={cat.id}
               href={`/blogs?category=${cat.slug}`}
@@ -102,32 +115,6 @@ export default async function BlogArchive({ searchParams }: Props) {
         <div className="flex flex-col lg:flex-row gap-16">
           {/* LEFT CONTENT */}
           <main className="lg:w-3/4">
-            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-              {posts.map((post: PostWithCategory) => (
-                <Link
-                  key={post.id}
-                  href={`/blogs/${post.category?.slug || "uncategorized"}/${post.slug}`}
-                  className="group block"
-                >
-                  <div className="aspect-video mb-6 overflow-hidden rounded-xl border border-neutral-900 bg-neutral-950 relative">
-                    {post.thumbnail && (
-                      <Image
-                        src={post.thumbnail}
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-all duration-500"
-                      />
-                    )}
-                  </div>
-                  <h2 className="text-xl font-bold text-white group-hover:text-sky-400 transition-colors mb-2 line-clamp-2">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm text-neutral-500 line-clamp-2">
-                    {post.description}
-                  </p>
-                </Link>
-              ))}
-            </div> */}
             <LoadMorePosts initialPosts={posts} categorySlug={activeCategory} />
           </main>
 
