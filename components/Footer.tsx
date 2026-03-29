@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative pt-20 pb-10 bg-transparent overflow-hidden border-t border-white/20">
+    <footer className="relative pt-20 pb-10 bg-black overflow-hidden border-t border-white/20">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Main CTA Card */}
         <div className="relative p-8 md:p-16 rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/5 backdrop-blur-3xl mb-24">
