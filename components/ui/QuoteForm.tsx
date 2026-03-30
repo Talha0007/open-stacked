@@ -8,14 +8,53 @@ import {
   Code,
   CheckCircle2,
   ArrowLeft,
+  Loader2,
 } from "lucide-react";
 
 export default function QuoteForm() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    service: "",
+    budget: "$1k - $5k",
+    timeline: "Standard (3 Months)",
+    name: "",
+    email: "",
+    requirements: "",
+  });
 
   const handleNext = () => setStep((prev) => prev + 1);
   const handleBack = () => setStep((prev) => prev - 1);
+
+  const handleServiceSelect = (serviceLabel: string) => {
+    setFormData({ ...formData, service: serviceLabel });
+    handleNext();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (err) {
+      alert("Error sending request. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (submitted) {
     return (
@@ -32,7 +71,7 @@ export default function QuoteForm() {
         </h1>
         <p className="text-slate-400 mt-4 max-w-sm mx-auto">
           Our engineering team will analyze your requirements and reach out
-          within 12 hours with a technical proposal.
+          within 12 hours.
         </p>
         <button
           onClick={() => (window.location.href = "/")}
@@ -50,7 +89,6 @@ export default function QuoteForm() {
       <div className="space-y-6 mb-12">
         <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
           <motion.div
-            initial={{ width: "33%" }}
             animate={{
               width: step === 1 ? "33%" : step === 2 ? "66%" : "100%",
             }}
@@ -64,13 +102,9 @@ export default function QuoteForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               onClick={handleBack}
-              className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 hover:text-cyan-400 transition-colors group"
+              className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 hover:text-cyan-400"
             >
-              <ArrowLeft
-                size={14}
-                className="group-hover:-translate-x-1 transition-transform"
-              />
-              Return to Step {step - 1}
+              <ArrowLeft size={14} /> Return to Step {step - 1}
             </motion.button>
           )}
         </AnimatePresence>
@@ -89,8 +123,7 @@ export default function QuoteForm() {
         </h1>
       </header>
 
-      {/* Form Content */}
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={step === 3 ? handleSubmit : (e) => e.preventDefault()}>
         {step === 1 && (
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -115,15 +148,15 @@ export default function QuoteForm() {
               },
               {
                 id: "custom",
-                label: "Custom Enterprise Solution",
+                label: "Custom Solution",
                 icon: <Code size={20} />,
               },
             ].map((item) => (
               <button
                 key={item.id}
                 type="button"
-                onClick={handleNext}
-                className="p-8 text-left rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-cyan-500/50 transition-all group"
+                onClick={() => handleServiceSelect(item.label)}
+                className="p-8 text-left rounded-2xl border border-white/5 bg-white/[0.02] hover:border-cyan-500/50 transition-all group"
               >
                 <div className="text-cyan-500 mb-4 group-hover:scale-110 transition-transform">
                   {item.icon}
@@ -144,31 +177,43 @@ export default function QuoteForm() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-3">
-                <label className="text-slate-500 text-[10px] font-mono uppercase tracking-widest pl-1">
-                  Estimated Budget
+                <label className="text-slate-500 text-[10px] uppercase tracking-widest pl-1">
+                  Budget
                 </label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:border-cyan-500/50 outline-none cursor-pointer">
+                <select
+                  value={formData.budget}
+                  onChange={(e) =>
+                    setFormData({ ...formData, budget: e.target.value })
+                  }
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white outline-none"
+                >
                   <option className="bg-black">$1k - $5k</option>
                   <option className="bg-black">$5k - $20k</option>
                   <option className="bg-black">$20k+</option>
                 </select>
               </div>
               <div className="space-y-3">
-                <label className="text-slate-500 text-[10px] font-mono uppercase tracking-widest pl-1">
+                <label className="text-slate-500 text-[10px] uppercase tracking-widest pl-1">
                   Timeline
                 </label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:border-cyan-500/50 outline-none cursor-pointer">
-                  <option className="bg-black">Urgent (1 Month)</option>
-                  <option className="bg-black">Standard (3 Months)</option>
-                  <option className="bg-black">Long-term Partnership</option>
+                <select
+                  value={formData.timeline}
+                  onChange={(e) =>
+                    setFormData({ ...formData, timeline: e.target.value })
+                  }
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white outline-none"
+                >
+                  <option className="bg-black">Urgent</option>
+                  <option className="bg-black">Standard</option>
                 </select>
               </div>
             </div>
             <button
+              type="button"
               onClick={handleNext}
-              className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-cyan-500 hover:text-white transition-all shadow-xl"
+              className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-cyan-500 hover:text-white transition-all"
             >
-              Continue to Final Step
+              Continue
             </button>
           </motion.div>
         )}
@@ -184,25 +229,44 @@ export default function QuoteForm() {
                 type="text"
                 placeholder="Full Name"
                 required
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:border-cyan-500/50 outline-none"
               />
               <input
                 type="email"
-                placeholder="Work Email Address"
+                placeholder="Work Email"
                 required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:border-cyan-500/50 outline-none"
               />
               <textarea
                 rows={4}
                 placeholder="Project requirements..."
+                value={formData.requirements}
+                onChange={(e) =>
+                  setFormData({ ...formData, requirements: e.target.value })
+                }
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:border-cyan-500/50 outline-none resize-none"
               />
             </div>
             <button
-              onClick={() => setSubmitted(true)}
-              className="w-full py-5 bg-cyan-500 text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(0,174,239,0.3)]"
+              disabled={loading}
+              type="submit"
+              className="w-full py-5 bg-cyan-500 text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all flex justify-center items-center gap-2 shadow-[0_0_30px_rgba(0,174,239,0.3)]"
             >
-              Request Technical Quote
+              {loading ? (
+                <>
+                  <Loader2 className="animate-spin" /> Analyzing...
+                </>
+              ) : (
+                "Request Technical Quote"
+              )}
             </button>
           </motion.div>
         )}
