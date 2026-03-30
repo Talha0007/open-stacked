@@ -59,7 +59,11 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error: unknown) {
-    console.error("SMTP Error:", error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    // Handle the "any" error properly by checking if it is an instance of Error
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+
+    console.error("SMTP Error:", errorMessage);
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
