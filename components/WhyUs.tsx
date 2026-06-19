@@ -30,8 +30,14 @@ const Counter = ({ value }: { value: number }) => {
   return <span ref={ref}>{displayValue}</span>;
 };
 
+interface Principle {
+  title: string;
+  desc: string;
+  icon: React.ReactElement;
+}
+
 // --- Interactive 3D Card ---
-const TiltCard = ({ item, index }: { item: any; index: number }) => {
+const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -80,7 +86,12 @@ const TiltCard = ({ item, index }: { item: any; index: number }) => {
         style={{ transform: "translateZ(50px)" }}
       >
         <div className="p-4 rounded-2xl bg-black border border-white/10 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
-          {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}
+          {React.cloneElement(
+            item.icon as React.ReactElement<{ size?: number }>,
+            {
+              size: 32,
+            },
+          )}
         </div>
         <div className="space-y-3">
           <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight">
