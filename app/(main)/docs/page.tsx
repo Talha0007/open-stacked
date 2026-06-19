@@ -6,6 +6,18 @@ export const metadata = {
   title: "Documentation | Open Stacked",
   description:
     "Technical specifications and execution framework for Open Stacked engineered solutions.",
+  keywords: [
+    "Documentation",
+    "Open Stacked",
+    "Open Stack",
+    "OpenStack",
+    "Openstacked",
+    "Open Stacked documentation",
+    "Open Stacked docs",
+    "Open Stacked technical specifications",
+    "Open Stacked execution framework",
+    "Open Stacked engineered solutions",
+  ],
 };
 
 export default function DocsPage() {

@@ -4,7 +4,6 @@ import Script from "next/script";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ScrollHandler from "@/components/ScrollHandler";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,19 +22,39 @@ export const metadata: Metadata = {
     template: "%s | Open Stacked",
   },
   description:
-    "Providing high-performance MERN stack development, cloud virtualization, and resilient digital infrastructure for modern businesses.",
+    "Open Stacked delivers enterprise-grade IT solutions — from high-performance web and mobile engineering to cloud infrastructure, DevOps, AI automation, and digital marketing. We build  flexible digital environment tailored to your business goals, ensuring 99.9% uptime, scalable architecture, and measurable results. Your trusted technical partner, from concept to production.",
   icons: {
     icon: [{ url: "/ico.png" }],
     shortcut: "/ico.png",
     apple: "/ico.png",
   },
   keywords: [
+    "Open Stacked",
+    "Open Stack",
+    "Openstacked",
+    "openstack",
+    "Open",
+    "Stacked",
+    "On Stack",
+    "AI Automation",
+    "Web Development",
+    "Website Development",
+    "App Development",
+    "Software Development",
     "Full Stack Development",
     "MERN Stack",
     "DevOps",
     "Cloud Virtualization",
     "Open Stacked",
     "Next.js Expert",
+    "Digital Marketing",
+    "SEO",
+    "Wordpress Development",
+    "Ecommerce Development",
+    "Shopify Development",
+    "SaaS Development",
+    "UI/UX Design",
+    "Technical Consultation",
   ],
   openGraph: {
     title: "Open Stacked",
@@ -112,7 +131,6 @@ export default function RootLayout({
       </head>
 
       <body className="bg-black text-white antialiased overflow-x-hidden">
-        <ScrollHandler />
         <Navbar />
         <main>{children}</main>
         <Footer />

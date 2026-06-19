@@ -10,6 +10,13 @@ export const metadata: Metadata = {
     "Software Engineering Philosophy",
     "MERN Stack Experts",
     "IT Infrastructure Strategy",
+    "About us",
+    "Open stacked",
+    "Open Stack",
+    "Openstack",
+    "Openstacked",
+    "Open stacked about us",
+    "Open stacked About us",
   ],
 };
 

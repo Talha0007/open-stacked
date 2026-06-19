@@ -1,26 +1,44 @@
+// components/ScrollHandler.tsx
 "use client";
 import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useScrollStore } from "@/store/useScrollStore";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ScrollHandler() {
+  const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
+  const setActiveSection = useScrollStore((state) => state.setActiveSection);
+
   useEffect(() => {
-    if (window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          const offset = 80; // Navbar height offset
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = element.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
+    // 1. Track global page scroll progress (0 to 1)
+    ScrollTrigger.create({
+      trigger: "#home",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+      onUpdate: (self) => {
+        setScrollProgress(self.progress);
+      },
+    });
 
-          window.scrollTo({
-            top: elementPosition - offset,
-            behavior: "smooth",
-          });
-        }, 300);
-      }
-    }
-  }, []);
+    // 2. Track individual sections to trigger specific 3D camera angles
+    const sections = ["#home", "#services", "#infra", "#testimonials"];
+    sections.forEach((id) => {
+      ScrollTrigger.create({
+        trigger: id,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setActiveSection(id.replace("#", "")),
+        onEnterBack: () => setActiveSection(id.replace("#", "")),
+      });
+    });
 
-  return null; // This component doesn't render anything
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, [setScrollProgress, setActiveSection]);
+
+  return null; // This component solely manages data background calculations
 }

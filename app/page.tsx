@@ -22,8 +22,6 @@ export default function Home() {
         <div className="relative z-10">
           <Hero />
 
-          <TechStack />
-
           <WhyUs />
 
           {/* 2. SEO Tip: Use <section> tags with IDs instead of <div> wrappers 
@@ -37,6 +35,7 @@ export default function Home() {
           </section>
 
           <Trust />
+          <TechStack />
 
           <section id="testimonials" aria-label="Customer Testimonials">
             <Portfolio />

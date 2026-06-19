@@ -7,6 +7,8 @@ import { servicesData } from "@/data/services";
 export default function Services({ id }: { id?: string }) {
   return (
     <section id={id} className="relative py-32 bg-transparent overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -31,7 +33,7 @@ export default function Services({ id }: { id?: string }) {
             >
               TECHNICAL <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
-                CAPABILITIES.
+                CAPABILITIES
               </span>
             </motion.h2>
           </div>
@@ -47,7 +49,7 @@ export default function Services({ id }: { id?: string }) {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-transparent border border-white/5">
           {servicesData.map((service, index) => (
             <Link
               key={service.slug}
@@ -59,7 +61,7 @@ export default function Services({ id }: { id?: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="relative p-10 bg-black/40 backdrop-blur-sm transition-all hover:bg-white/[0.02] overflow-hidden h-full"
+                className="relative p-10 bg-transparent border border-white/5 backdrop-blur-sm transition-all hover:bg-white/[0.02] overflow-hidden h-full"
               >
                 {/* Hover Line Effect */}
                 <div className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />

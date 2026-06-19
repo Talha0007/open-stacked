@@ -21,7 +21,7 @@ const sitemapData = {
     { name: "SEO Mastery", href: "/services/seo-mastery" },
     { name: "E-commerce Systems", href: "/services/e-commerce-systems" },
     { name: "Video Production", href: "/services/video-production" },
-    { name: "AI & Automation", href: "/services/ai-automation" },
+    { name: "AI Automation", href: "/services/ai-automation" },
     { name: "Cyber Security", href: "/services/cyber-security" },
     { name: "Enterprise Solutions", href: "/services/enterprise-solutions" },
   ],

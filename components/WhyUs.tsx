@@ -1,13 +1,20 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { Cpu, Rocket, BarChart } from "lucide-react";
 
+// --- Smooth Animated Counter ---
 const Counter = ({ value }: { value: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { stiffness: 100, damping: 30 });
+  const springValue = useSpring(motionValue, { stiffness: 60, damping: 20 });
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
@@ -21,6 +28,71 @@ const Counter = ({ value }: { value: number }) => {
   }, [springValue]);
 
   return <span ref={ref}>{displayValue}</span>;
+};
+
+// --- Interactive 3D Card ---
+const TiltCard = ({ item, index }: { item: any; index: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Rotate based on mouse position relative to card center
+  const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]), {
+    stiffness: 150,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(x, [-100, 100], [-10, 10]), {
+    stiffness: 150,
+    damping: 20,
+  });
+
+  function handleMouseMove(event: React.MouseEvent) {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set(event.clientX - centerX);
+    y.set(event.clientY - centerY);
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.15, duration: 0.8 }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="group relative p-8 rounded-[2rem] border border-white/5 bg-slate-900/40 backdrop-blur-sm hover:border-cyan-500/30 transition-colors duration-500"
+    >
+      {/* Floating Glow Effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+
+      <div
+        className="relative flex flex-col md:flex-row gap-6 items-start"
+        style={{ transform: "translateZ(50px)" }}
+      >
+        <div className="p-4 rounded-2xl bg-black border border-white/10 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
+          {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}
+        </div>
+        <div className="space-y-3">
+          <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight">
+            {item.title}
+          </h3>
+          <p className="text-slate-400 text-sm leading-relaxed font-light">
+            {item.desc}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default function WhyUs() {
@@ -43,83 +115,74 @@ export default function WhyUs() {
   ];
 
   return (
-    <section className="relative py-20 md:py-32 bg-transparent overflow-hidden border-t border-white/5">
+    <section
+      className="relative py-24 md:py-40 bg-transparent overflow-hidden"
+      style={{ perspective: "2000px" }}
+    >
+      {/* 3D Background Elements */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          {/* Open Stacked Identity */}
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Identity Side */}
+          <div className="space-y-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              className="space-y-6"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[1px] bg-cyan-500"></span>
-                <span className="text-cyan-400 text-[10px] font-mono uppercase tracking-[0.5em]">
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-12 bg-gradient-to-r from-cyan-500 to-transparent" />
+                <span className="text-cyan-400 text-[11px] font-black uppercase tracking-[0.6em]">
                   Company Vision
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.1] tracking-tight max-w-3xl">
                 DRIVEN BY{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                  PRECISION.
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192] drop-shadow-[0_0_30px_rgba(0,174,239,0.2)]">
+                  PRECISION
                 </span>{" "}
-                <br />
-                DEFINED BY <span className="text-white/40">RESULTS.</span>
+                <br className="hidden sm:inline" />
+                DEFINED BY{" "}
+                <span className="text-white/20 transition-colors hover:text-white/40">
+                  RESULTS
+                </span>
               </h2>
 
-              <p className="text-slate-400 text-lg md:text-xl font-light mt-8 leading-relaxed">
-                <strong className="text-white">Open Stacked</strong> is more
-                than an IT service provider—we are your technical partner.
+              <p className="text-slate-400 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
+                <strong className="text-white font-medium">Open Stacked</strong>{" "}
+                is not an agency. We are the{" "}
+                <span className="text-white">technical DNA</span> of your
+                success.
               </p>
             </motion.div>
 
             {/* Performance Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 pt-10 border-t border-white/10">
-              <div className="flex flex-col">
-                <span className="text-4xl md:text-5xl font-black text-white italic">
-                  <Counter value={113} />+
-                </span>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest mt-3 font-mono">
-                  Deliveries
-                </span>
-              </div>
-              {/* ... other stats ... */}
+            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-white/5">
+              {[
+                { label: "Deliveries", val: 113 },
+                { label: "Uptime", val: 99 },
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col gap-2">
+                  <span className="text-5xl md:text-6xl font-black text-white italic tracking-tighter">
+                    <Counter value={stat.val} />
+                    {stat.label === "Uptime" ? "%" : "+"}
+                  </span>
+                  <span className="text-[10px] text-cyan-500/60 uppercase tracking-[0.3em] font-bold">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Solution Cards */}
-          <div className="grid grid-cols-1 gap-6">
+          {/* Cards Side */}
+          <div className="flex flex-col gap-8">
             {principles.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.04] to-transparent hover:border-cyan-500/20 transition-all duration-500"
-              >
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="p-4 rounded-2xl bg-black border border-white/10 group-hover:border-cyan-500/40 transition-colors shadow-xl">
-                    {/* FIX: Cast the element to accept the size prop */}
-                    {React.cloneElement(
-                      item.icon as React.ReactElement<{ size: number }>,
-                      {
-                        size: 28,
-                      },
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+              <TiltCard key={idx} item={item} index={idx} />
             ))}
           </div>
         </div>

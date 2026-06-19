@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: "Privacy Policy | Open Stacked",
   description:
     "Read the Privacy Policy of Open Stacked. Learn how we collect, use, and safeguard your data, including enterprise-grade security protocols, GDPR compliance, and Google AdSense standards.",
+  keywords: [
+    "Privacy Policy",
+    "Open Stacked",
+    "Open Stack",
+    "OpenStack",
+    "Openstacked",
+    "Open Stacked privacy policy",
+    "Open Stacked privacy",
+  ],
   alternates: {
     canonical: "https://openstacked.com/privacy-policy",
   },

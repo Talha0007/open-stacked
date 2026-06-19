@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${service.title} | Open Stacked`,
     description: service.desc,
+    keywords: service.keywords,
   };
 }
 
@@ -91,6 +92,9 @@ export default async function ServiceDetailPage({ params }: Props) {
               </span>
             </h1>
 
+            <p className="text-xl text-slate-400 font-light leading-relaxed mb-10 max-w-2xl">
+              {service?.shortDesc}
+            </p>
             <p className="text-xl text-slate-400 font-light leading-relaxed mb-10 max-w-2xl">
               {service.fullDesc}
             </p>

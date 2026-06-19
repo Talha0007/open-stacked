@@ -11,6 +11,15 @@ export const metadata: Metadata = {
     "Technical Support",
     "Software Consultation Pakistan",
     "Hire MERN Developer",
+    "Contact us",
+    "Open stacked contact us",
+    "Open stacked contact",
+    "Open Stacked contact us",
+    "Open Stacked contact",
+    "Open Stack",
+    "OpenStack",
+    "Openstacked",
+    "Open Stacked",
   ],
 };
 

@@ -41,6 +41,7 @@ export default async function BlogArchive({ searchParams }: Props) {
       prisma.post.findMany({
         where: {
           published: true,
+          authorId: { isSet: true },
           ...(activeCategory && { category: { slug: activeCategory } }),
         },
         include: { category: true, author: { select: { name: true } } },

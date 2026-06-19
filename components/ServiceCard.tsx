@@ -5,7 +5,7 @@ export default function ServiceCard({ title, desc, icon }: any) {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="p-6 rounded-3xl bg-slate-900/50 border border-slate-700 backdrop-blur-md"
+      className="p-6 rounded-3xl bg-transparent border border-slate-700 backdrop-blur-md"
     >
       <div className="text-teal-400 mb-4">{icon}</div>
       <h3 className="text-xl font-bold text-white">{title}</h3>

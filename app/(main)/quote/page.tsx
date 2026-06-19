@@ -10,7 +10,16 @@ export const metadata: Metadata = {
     description:
       "Enterprise IT and Software Solutions. Let's build your next project.",
   },
-  keywords: ["Web Development", "Cloud Infrastructure", "DevOps automation"],
+  keywords: [
+    "Web Development",
+    "Cloud Infrastructure",
+    "DevOps automation",
+    "Open Stacked",
+    "Open Stack",
+    "OpenStack",
+    "Openstacked",
+    "Open Stacked Quote",
+  ],
 };
 
 export default function QuotePage() {

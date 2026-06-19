@@ -50,7 +50,7 @@ const steps = [
 
 export default function Roadmap() {
   return (
-    <section className="relative py-20 md:py-32 bg-transparent overflow-hidden border-t border-white/5">
+    <section className="relative py-16 md:py-22 bg-transparent overflow-hidden border-t border-white/5">
       {/* Background Decorative Element */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 
@@ -68,7 +68,7 @@ export default function Roadmap() {
             <h2 className="text-4xl md:text-6xl font-black text-white mt-6 tracking-tighter">
               FROM CONCEPT TO <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
-                PRODUCTION.
+                PRODUCTION
               </span>
             </h2>
             <p className="text-slate-500 mt-6 text-lg font-light leading-relaxed">
