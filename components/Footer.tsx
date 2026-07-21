@@ -1,6 +1,13 @@
 // components/Footer.tsx
 import Image from "next/image";
-import { Mail, ArrowUpRight, Globe, Newspaper } from "lucide-react"; // Added Newspaper icon
+import {
+  Mail,
+  ArrowUpRight,
+  Globe,
+  Newspaper,
+  Phone,
+  MessageSquare,
+} from "lucide-react"; // Added Phone and MessageSquare icons
 import Link from "next/link";
 
 export default function Footer() {
@@ -47,7 +54,7 @@ export default function Footer() {
                 priority
               />
             </div>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+            <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
               Providing enterprise-grade IT solutions and resilient digital
               infrastructure for modern businesses worldwide.
             </p>
@@ -58,7 +65,7 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-widest">
               Company
             </h4>
-            <ul className="space-y-3 text-slate-500 text-sm">
+            <ul className="space-y-3 text-slate-300 text-sm">
               <li>
                 <Link
                   href="/about"
@@ -111,7 +118,7 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-widest">
               Expertise
             </h4>
-            <ul className="space-y-3 text-slate-500 text-sm">
+            <ul className="space-y-3 text-slate-300 text-sm">
               <li>Infrastructure Strategy</li>
               <li>Full-Stack Development</li>
               <li>Cloud Virtualization</li>
@@ -124,12 +131,31 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-widest">
               Connect
             </h4>
-            <div className="space-y-3 text-slate-500 text-sm">
+            <div className="space-y-3 text-slate-300 text-sm">
               <p className="flex items-center gap-3">
                 <Mail size={16} className="text-cyan-500" />{" "}
                 info@openstacked.com
               </p>
-              <p className="flex items-center gap-3">
+
+              <a
+                href="tel:+12092131621"
+                className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+              >
+                <Phone size={16} className="text-cyan-500" /> +1 (209) 213-1621
+                Ext 800
+              </a>
+
+              <a
+                href="https://wa.me/+14244453357"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+              >
+                <MessageSquare size={16} className="text-cyan-500" /> +1 (424)
+                445-3357
+              </a>
+
+              <p className="flex items-center gap-3 pt-1">
                 <Globe size={16} className="text-cyan-500" /> Remote / Worldwide
               </p>
             </div>
@@ -137,7 +163,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-600 text-[10px] font-mono uppercase tracking-[0.2em]">
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-[10px] font-mono uppercase tracking-[0.2em]">
           <div>© {currentYear} Open Stacked. All rights reserved.</div>
           <div className="flex gap-6">
             <Link
