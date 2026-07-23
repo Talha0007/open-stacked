@@ -44,7 +44,7 @@ export default function DocsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#050505] text-slate-300 pt-32 pb-20">
+    <main className="min-h-screen bg-white text-slate-700 pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Sidebar - Desktop */}
         <aside className="hidden lg:block lg:col-span-3 h-fit sticky top-32">
@@ -57,7 +57,7 @@ export default function DocsPage() {
             <span className="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase">
               &#47;&#47; Technical Manual v1.0
             </span>
-            <h1 className="text-5xl font-black text-white mt-4 mb-8 tracking-tighter">
+            <h1 className="text-5xl font-black text-black mt-4 mb-8 tracking-tighter">
               SYSTEM <span className="text-cyan-500">DOCS</span>
             </h1>
 

@@ -60,8 +60,8 @@ export default function NavContent({
       <div
         className={`max-w-7xl mx-auto transition-all duration-500 ease-in-out px-6 md:px-8 flex justify-between items-center ${
           scrolled
-            ? "bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl py-4 md:py-5 shadow-2xl"
-            : "bg-transparent border-b border-white/5 py-6 md:py-10"
+            ? "bg-white/90 backdrop-blur-xl border border-slate-200 rounded-2xl py-4 md:py-5 shadow-lg"
+            : "border-b border-slate-200/50 py-6 md:py-10"
         }`}
       >
         {/* LOGO - Added z-index to stay above overlay */}
@@ -86,7 +86,7 @@ export default function NavContent({
               key={link.name}
               href={link.href}
               onClick={(e) => handleScrollTo(e, link.href)}
-              className="text-[11px] uppercase tracking-[0.25em] font-bold text-slate-400 hover:text-white transition-all group relative"
+              className="text-[11px] uppercase tracking-[0.25em] font-bold text-slate-600 hover:text-black transition-all group relative"
             >
               {link.name}
               <span
@@ -101,7 +101,7 @@ export default function NavContent({
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            <button className="flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 text-slate-400 hover:text-white transition-colors">
+            <button className="flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 text-slate-600 hover:text-black transition-colors">
               Company{" "}
               <ChevronDown
                 size={14}
@@ -116,14 +116,14 @@ export default function NavContent({
                   exit={{ opacity: 0, y: 10 }}
                   className="absolute top-full left-0 w-56 pt-4"
                 >
-                  <div className="bg-[#0a0a0a] border border-white/10 rounded-xl p-3 shadow-2xl">
+                  <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-2xl">
                     {companyLinks.map((sub) => (
                       <Link
                         key={sub.name}
                         href={sub.href}
-                        className="flex items-center gap-4 px-4 py-4 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all group/item"
+                        className="flex items-center gap-4 px-4 py-4 rounded-lg text-slate-600 hover:text-black hover:bg-slate-50 transition-all group/item"
                       >
-                        <span className="text-cyan-500/50 group-hover/item:text-cyan-400">
+                        <span className="text-cyan-500/70 group-hover/item:text-cyan-500">
                           {sub.icon}
                         </span>
                         <span className="text-[10px] font-bold uppercase tracking-widest">
@@ -139,7 +139,7 @@ export default function NavContent({
 
           <Link
             href="/quote"
-            className="px-6 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-cyan-500 hover:text-white transition-all"
+            className="px-6 py-2 bg-white text-black border border-slate-300 text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-cyan-500 hover:text-white hover:border-cyan-500 transition-all"
           >
             Request Quote
           </Link>
@@ -147,7 +147,7 @@ export default function NavContent({
 
         {/* MOBILE TOGGLE - Added z-index to be clickable over overlay */}
         <button
-          className="lg:hidden text-white p-2 z-[110] relative"
+          className="lg:hidden text-black p-2 z-[110] relative"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -161,7 +161,7 @@ export default function NavContent({
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="fixed inset-0 bg-black z-[100] flex flex-col justify-center p-8 md:p-16 lg:hidden"
+            className="fixed inset-0 bg-white z-[100] flex flex-col justify-center p-8 md:p-16 lg:hidden"
           >
             <div className="flex flex-col gap-6 md:gap-10">
               {navLinks.map((link) => (
@@ -172,7 +172,7 @@ export default function NavContent({
                     handleScrollTo(e, link.href);
                     setIsOpen(false);
                   }}
-                  className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter hover:text-cyan-500 transition-colors"
+                  className="text-4xl md:text-7xl font-black text-black italic uppercase tracking-tighter hover:text-cyan-500 transition-colors"
                 >
                   {link.name}
                 </Link>

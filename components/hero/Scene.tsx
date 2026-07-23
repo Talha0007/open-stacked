@@ -88,10 +88,10 @@ export default function HeroScene() {
   }, []);
 
   // Hydration safe check
-  if (!mounted) return <div className="absolute inset-0 bg-black" />;
+  if (!mounted) return <div className="absolute inset-0 bg-white" />;
 
   return (
-    <div className="absolute inset-0 z-0 bg-black">
+    <div className="absolute inset-0 z-0 bg-white">
       <Canvas
         // FIX 2: Cap DPR to 1.5 on mobile to prevent GPU strain
         dpr={isMobile ? [1, 1.5] : [1, 2]}

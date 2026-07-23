@@ -4,23 +4,22 @@ import {
   Mail,
   ArrowUpRight,
   Globe,
-  Newspaper,
   Phone,
   MessageSquare,
-} from "lucide-react"; // Added Phone and MessageSquare icons
+} from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative pt-20 pb-10 bg-transparent overflow-hidden border-t border-white/20">
+    <footer className="relative pt-20 pb-10 overflow-hidden border-t border-slate-200/50">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Main CTA Card */}
-        <div className="relative p-8 md:p-16 rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/5 backdrop-blur-3xl mb-24">
+        <div className="relative p-8 md:p-16 rounded-[2rem] border border-slate-200 bg-gradient-to-br from-cyan-500/5 via-white/80 to-blue-500/5 backdrop-blur-3xl mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-center lg:text-left">
-              <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tighter uppercase italic">
+              <h2 className="text-4xl md:text-6xl font-black text-black leading-tight tracking-tighter uppercase italic">
                 Ready to <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                   Scale Up?
@@ -30,7 +29,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
               <Link
                 href="/contact"
-                className="group flex items-center justify-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300"
+                className="group flex items-center justify-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300"
               >
                 START A PROJECT{" "}
                 <ArrowUpRight
@@ -54,7 +53,7 @@ export default function Footer() {
                 priority
               />
             </div>
-            <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
+            <p className="text-slate-600 text-sm leading-relaxed max-w-sm">
               Providing enterprise-grade IT solutions and resilient digital
               infrastructure for modern businesses worldwide.
             </p>
@@ -62,10 +61,10 @@ export default function Footer() {
 
           {/* Company Links */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-sm uppercase tracking-widest">
+            <h4 className="text-black font-bold text-sm uppercase tracking-widest">
               Company
             </h4>
-            <ul className="space-y-3 text-slate-300 text-sm">
+            <ul className="space-y-3 text-slate-600 text-sm">
               <li>
                 <Link
                   href="/about"
@@ -74,14 +73,13 @@ export default function Footer() {
                   About Us
                 </Link>
               </li>
-              {/* --- ADDED BLOG LINK HERE FOR SEO --- */}
               <li>
                 <Link
                   href="/blogs"
                   className="hover:text-cyan-400 transition-colors flex items-center gap-2"
                 >
                   Our Blogs{" "}
-                  <span className="text-[10px] bg-sky-500/10 text-sky-400 px-1.5 py-0.5 rounded border border-sky-500/20 font-mono italic">
+                  <span className="text-[10px] bg-sky-500/10 text-sky-600 px-1.5 py-0.5 rounded border border-sky-500/20 font-mono italic">
                     NEW
                   </span>
                 </Link>
@@ -115,10 +113,10 @@ export default function Footer() {
 
           {/* Expertise / Services */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-sm uppercase tracking-widest">
+            <h4 className="text-black font-bold text-sm uppercase tracking-widest">
               Expertise
             </h4>
-            <ul className="space-y-3 text-slate-300 text-sm">
+            <ul className="space-y-3 text-slate-600 text-sm">
               <li>Infrastructure Strategy</li>
               <li>Full-Stack Development</li>
               <li>Cloud Virtualization</li>
@@ -128,10 +126,10 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-sm uppercase tracking-widest">
+            <h4 className="text-black font-bold text-sm uppercase tracking-widest">
               Connect
             </h4>
-            <div className="space-y-3 text-slate-300 text-sm">
+            <div className="space-y-3 text-slate-600 text-sm">
               <p className="flex items-center gap-3">
                 <Mail size={16} className="text-cyan-500" />{" "}
                 info@openstacked.com
@@ -163,18 +161,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-[10px] font-mono uppercase tracking-[0.2em]">
+        <div className="pt-10 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-[10px] font-mono uppercase tracking-[0.2em]">
           <div>© {currentYear} Open Stacked. All rights reserved.</div>
           <div className="flex gap-6">
             <Link
               href="/privacy-policy"
-              className="hover:text-white transition-colors underline decoration-white/10 underline-offset-4"
+              className="hover:text-black transition-colors underline decoration-slate-300 underline-offset-4"
             >
               Privacy
             </Link>
             <Link
               href="/terms-conditions"
-              className="hover:text-white transition-colors underline decoration-white/10 underline-offset-4"
+              className="hover:text-black transition-colors underline decoration-slate-300 underline-offset-4"
             >
               Terms
             </Link>

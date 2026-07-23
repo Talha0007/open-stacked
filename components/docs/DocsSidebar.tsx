@@ -9,19 +9,19 @@ interface DocSection {
 
 export default function DocsSidebar({ sections }: { sections: DocSection[] }) {
   return (
-    <nav className="space-y-1 border-l border-white/5 pl-4">
-      <p className="text-white text-xs font-bold uppercase tracking-widest mb-6">
+    <nav className="space-y-1 border-l border-slate-200 pl-4">
+      <p className="text-black text-xs font-bold uppercase tracking-widest mb-6">
         Introduction
       </p>
       {sections.map((section) => (
         <a
           key={section.id}
           href={`#${section.id}`}
-          className="flex items-center gap-2 py-2 text-sm hover:text-cyan-400 transition-colors group"
+          className="flex items-center gap-2 py-2 text-sm text-slate-600 hover:text-cyan-400 transition-colors group"
         >
           <Hash
             size={14}
-            className="text-slate-600 group-hover:text-cyan-500"
+            className="text-slate-400 group-hover:text-cyan-500"
           />
           {section.title}
         </a>

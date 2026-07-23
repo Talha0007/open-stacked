@@ -33,13 +33,13 @@ export default function PrivacyPolicyPage() {
   const lastUpdated = "March 18, 2026";
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 overflow-hidden relative">
-      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <main className="min-h-screen bg-white text-black pt-32 pb-20 overflow-hidden relative">
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-slate-500 hover:text-cyan-400 transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-cyan-400 transition-colors mb-12 group"
         >
           <ArrowLeft
             size={16}
@@ -50,12 +50,12 @@ export default function PrivacyPolicyPage() {
           </span>
         </Link>
 
-        <header className="mb-16 border-b border-white/10 pb-12">
+        <header className="mb-16 border-b border-slate-200/50 pb-12">
           <div className="flex items-center gap-3 mb-6">
-            <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[9px] font-mono uppercase tracking-widest rounded-full">
+            <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 text-[9px] font-mono uppercase tracking-widest rounded-full">
               Legal
             </span>
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-slate-200" />
           </div>
           <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none mb-6">
             Privacy{" "}
@@ -63,19 +63,19 @@ export default function PrivacyPolicyPage() {
               Policy.
             </span>
           </h1>
-          <p className="text-slate-400 font-mono text-sm">
+          <p className="text-slate-500 font-mono text-sm">
             Last Updated: {lastUpdated}
           </p>
         </header>
 
-        <article className="prose prose-invert prose-cyan max-w-none text-slate-300 font-light leading-relaxed space-y-10">
+        <article className="prose prose-cyan max-w-none text-slate-700 font-light leading-relaxed space-y-10">
           <section>
             <p className="text-lg">
-              At <strong className="text-white">Open Stacked</strong>{" "}
+              At <strong className="text-black">Open Stacked</strong>{" "}
               (accessible from{" "}
               <a
                 href="https://openstacked.com"
-                className="text-cyan-400 hover:underline"
+                className="text-cyan-600 hover:underline"
               >
                 openstacked.com
               </a>
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 01.</span> Information
               Collection
             </h2>
@@ -101,11 +101,11 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 02.</span> Use of
               Information
             </h2>
-            <ul className="list-disc pl-6 space-y-2 text-slate-400 marker:text-cyan-500">
+            <ul className="list-disc pl-6 space-y-2 text-slate-600 marker:text-cyan-500">
               <li>
                 To provide, operate, and maintain our enterprise services.
               </li>
@@ -121,7 +121,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 03.</span> Log Files &
               Cookies
             </h2>
@@ -137,8 +137,8 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          <section className="p-6 bg-white/5 border border-cyan-500/20 rounded-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <section className="p-6 bg-slate-50/80 border border-cyan-500/20 rounded-2xl">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 04.</span> Advertising
               Partners & DART Cookie
             </h2>
@@ -150,12 +150,12 @@ export default function PrivacyPolicyPage() {
                 href="https://policies.google.com/technologies/ads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan-400 hover:underline"
+                className="text-cyan-600 hover:underline"
               >
                 https://policies.google.com/technologies/ads
               </a>
             </p>
-            <p className="text-sm italic">
+            <p className="text-sm italic text-slate-600">
               Note: Other third-party ad networks may also use cookies or web
               beacons. Open Stacked has no access to or control over cookies
               used by third-party advertisers.
@@ -163,7 +163,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 05.</span> Data Security
             </h2>
             <p>
@@ -175,28 +175,28 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 06.</span> User Rights
               (GDPR & CCPA)
             </h2>
-            <ul className="list-disc pl-6 space-y-2 text-slate-400 marker:text-cyan-500">
+            <ul className="list-disc pl-6 space-y-2 text-slate-600 marker:text-cyan-500">
               <li>
-                <strong className="text-white">Access:</strong> Request copies
+                <strong className="text-black">Access:</strong> Request copies
                 of your personal data.
               </li>
               <li>
-                <strong className="text-white">Rectification:</strong> Request
+                <strong className="text-black">Rectification:</strong> Request
                 correction of inaccurate information.
               </li>
               <li>
-                <strong className="text-white">Erasure:</strong> Request data
+                <strong className="text-black">Erasure:</strong> Request data
                 deletion under specific conditions.
               </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 07.</span>{" "}
               Children&apos;s Information
             </h2>
@@ -207,8 +207,8 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          <section className="bg-cyan-500/5 p-6 rounded-xl border border-white/5">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <section className="bg-cyan-500/5 p-6 rounded-xl border border-slate-200/50">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 08.</span> Consent
             </h2>
             <p>
@@ -217,8 +217,8 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          <section className="border-t border-white/10 pt-10 mt-10">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <section className="border-t border-slate-200/50 pt-10 mt-10">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-cyan-500 text-lg">/ 09.</span> Contact Us
             </h2>
             <p>
@@ -227,7 +227,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <a
               href="mailto:privacy@openstacked.com"
-              className="inline-block mt-4 px-6 py-3 bg-white text-black font-bold text-sm rounded-lg hover:bg-cyan-400 transition-colors"
+              className="inline-block mt-4 px-6 py-3 bg-black text-white font-bold text-sm rounded-lg hover:bg-cyan-500 transition-colors"
             >
               privacy@openstacked.com
             </a>

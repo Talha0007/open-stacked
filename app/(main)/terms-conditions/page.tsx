@@ -16,15 +16,15 @@ export default function TermsConditionsPage() {
   const lastUpdated = "March 18, 2026";
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 overflow-hidden relative">
+    <main className="min-h-screen bg-white text-black pt-32 pb-20 overflow-hidden relative">
       {/* Visual Identity Orbs */}
-      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         {/* Navigation */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-slate-500 hover:text-cyan-400 transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-cyan-400 transition-colors mb-12 group"
         >
           <ArrowLeft
             size={16}
@@ -36,12 +36,12 @@ export default function TermsConditionsPage() {
         </Link>
 
         {/* Header */}
-        <header className="mb-16 border-b border-white/10 pb-12">
+        <header className="mb-16 border-b border-slate-200/50 pb-12">
           <div className="flex items-center gap-3 mb-6">
-            <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[9px] font-mono uppercase tracking-widest rounded-full">
+            <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 text-[9px] font-mono uppercase tracking-widest rounded-full">
               Legal Framework
             </span>
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-slate-200" />
           </div>
           <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none mb-6">
             Terms &{" "}
@@ -49,16 +49,16 @@ export default function TermsConditionsPage() {
               Conditions.
             </span>
           </h1>
-          <p className="text-slate-400 font-mono text-sm">
+          <p className="text-slate-500 font-mono text-sm">
             Last Revision: {lastUpdated}
           </p>
         </header>
 
         {/* Content Section */}
-        <article className="prose prose-invert prose-blue max-w-none text-slate-300 font-light leading-relaxed space-y-10">
+        <article className="prose prose-cyan max-w-none text-slate-700 font-light leading-relaxed space-y-10">
           <section>
             <p className="text-lg">
-              Welcome to <strong className="text-white">Open Stacked</strong>.
+              Welcome to <strong className="text-black">Open Stacked</strong>.
               These Terms & Conditions outline the rules and regulations for the
               use of our software development services and website. By accessing
               this website or engaging in our services, we assume you accept
@@ -67,7 +67,7 @@ export default function TermsConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-blue-500 text-lg">/ 01.</span> Scope of
               Services
             </h2>
@@ -81,18 +81,18 @@ export default function TermsConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-blue-500 text-lg">/ 02.</span> Intellectual
               Property
             </h2>
             <p className="mb-4">
               Unless otherwise stated in a written agreement:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-slate-400 marker:text-blue-500">
+            <ul className="list-disc pl-6 space-y-2 text-slate-600 marker:text-blue-500">
               <li>
                 Ownership of the final source code and deliverables is
                 transferred to the client only upon{" "}
-                <strong className="text-white">Full and Final Payment</strong>.
+                <strong className="text-black">Full and Final Payment</strong>.
               </li>
               <li>
                 Open Stacked retains the right to use non-proprietary code
@@ -107,7 +107,7 @@ export default function TermsConditionsPage() {
           </section>
 
           <section className="p-6 bg-blue-500/5 border border-blue-500/20 rounded-2xl">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-blue-500 text-lg">/ 03.</span> Payment Terms
             </h2>
             <p>
@@ -119,7 +119,7 @@ export default function TermsConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-blue-500 text-lg">/ 04.</span>{" "}
               Confidentiality (NDA)
             </h2>
@@ -132,7 +132,7 @@ export default function TermsConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-blue-500 text-lg">/ 05.</span> Limitation of
               Liability
             </h2>
@@ -146,7 +146,7 @@ export default function TermsConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
               <span className="text-blue-500 text-lg">/ 06.</span> Termination
               of Service
             </h2>
@@ -158,19 +158,19 @@ export default function TermsConditionsPage() {
             </p>
           </section>
 
-          <section className="border-t border-white/10 pt-10 mt-10">
+          <section className="border-t border-slate-200/50 pt-10 mt-10">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
-                <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                <h2 className="text-2xl font-bold text-black mb-2 flex items-center gap-2">
                   <ShieldCheck className="text-blue-500" /> Legal Inquiries
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-slate-600">
                   For clarifications on these terms, reach out to:
                 </p>
               </div>
               <a
                 href="mailto:legal@openstacked.com"
-                className="inline-block px-8 py-4 bg-white text-black font-black uppercase text-xs tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300"
+                className="inline-block px-8 py-4 bg-black text-white font-black uppercase text-xs tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300"
               >
                 legal@openstacked.com
               </a>

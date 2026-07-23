@@ -135,10 +135,10 @@ export default function BackgroundScene() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (!mounted) return <div className="fixed inset-0 bg-black -z-10" />;
+  if (!mounted) return <div className="fixed inset-0 bg-white -z-10" />;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen -z-10 pointer-events-none bg-black">
+    <div className="fixed top-0 left-0 w-full h-screen -z-10 pointer-events-none bg-white">
       <Canvas
         dpr={isMobile ? [1, 1.5] : [1, 2]}
         gl={{ antialias: !isMobile, powerPreference: "high-performance" }}

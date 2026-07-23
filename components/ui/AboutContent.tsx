@@ -38,7 +38,7 @@ export default function AboutContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-8xl font-black text-white mt-8 tracking-tighter leading-none uppercase italic"
+          className="text-5xl md:text-8xl font-black text-black mt-8 tracking-tighter leading-none uppercase italic"
         >
           WE ENGINEER <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
@@ -49,7 +49,7 @@ export default function AboutContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-slate-400 text-lg md:text-xl mt-8 font-light leading-relaxed max-w-2xl italic"
+          className="text-slate-600 text-lg md:text-xl mt-8 font-light leading-relaxed max-w-2xl italic"
         >
           &quot;Open Stacked was founded on a simple principle: Quality
           infrastructure is the backbone of every successful business. We bridge
@@ -63,7 +63,7 @@ export default function AboutContent() {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative aspect-square rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden group"
+          className="relative aspect-square rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50/50 to-white/80 overflow-hidden group"
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-64 h-64 border border-cyan-500/20 rounded-full animate-pulse flex items-center justify-center">
@@ -72,8 +72,8 @@ export default function AboutContent() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-10 left-10 p-6 bg-black/60 backdrop-blur-md rounded-2xl border border-white/5">
-            <div className="text-white font-bold text-xl tracking-tight italic">
+          <div className="absolute bottom-10 left-10 p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200 shadow-lg">
+            <div className="text-black font-bold text-xl tracking-tight italic">
               Precision Over History.
             </div>
             <div className="text-slate-500 text-xs mt-1 uppercase tracking-widest font-mono">
@@ -84,20 +84,20 @@ export default function AboutContent() {
 
         <article className="space-y-12">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
-            <p className="text-slate-400 leading-relaxed font-light">
+            <h2 className="text-3xl font-bold text-black mb-6">Our Mission</h2>
+            <p className="text-slate-600 leading-relaxed font-light">
               As a specialized IT services provider, we help businesses navigate
               the complexities of the digital age. Whether it&apos;s building a{" "}
-              <strong>custom ERP</strong>, managing{" "}
-              <strong>private cloud clusters</strong>, or designing a brand
-              identity that speaks <strong>Technical Excellence</strong>, we are
+              <strong className="text-black">custom ERP</strong>, managing{" "}
+              <strong className="text-black">private cloud clusters</strong>, or designing a brand
+              identity that speaks <strong className="text-black">Technical Excellence</strong>, we are
               committed to delivering results.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8 pt-8">
             <div>
-              <div className="text-4xl font-black text-white italic">
+              <div className="text-4xl font-black text-black italic">
                 6+ Months
               </div>
               <div className="text-cyan-500 text-[10px] font-mono uppercase tracking-widest mt-2">
@@ -105,7 +105,7 @@ export default function AboutContent() {
               </div>
             </div>
             <div>
-              <div className="text-4xl font-black text-white italic">25+</div>
+              <div className="text-4xl font-black text-black italic">25+</div>
               <div className="text-cyan-500 text-[10px] font-mono uppercase tracking-widest mt-2">
                 Projects Delivered
               </div>
@@ -119,7 +119,7 @@ export default function AboutContent() {
         <div className="text-center mb-20">
           <h2
             id="values-heading"
-            className="text-4xl font-black text-white tracking-tight italic uppercase"
+            className="text-4xl font-black text-black tracking-tight italic uppercase"
           >
             Why Partner With Us?
           </h2>
@@ -130,13 +130,13 @@ export default function AboutContent() {
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
-              className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.02] backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500"
+              className="p-10 rounded-[2.5rem] border border-slate-200 bg-white/60 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500"
             >
               <div className="mb-6">{v.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4 tracking-tight">
+              <h3 className="text-xl font-bold text-black mb-4 tracking-tight">
                 {v.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
+              <p className="text-slate-600 text-sm leading-relaxed font-light">
                 {v.desc}
               </p>
             </motion.div>
@@ -148,10 +148,10 @@ export default function AboutContent() {
       <motion.aside
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="mt-40 p-12 rounded-3xl border border-dashed border-white/10 text-center relative overflow-hidden group"
+        className="mt-40 p-12 rounded-3xl border border-dashed border-slate-300 text-center relative overflow-hidden group"
       >
         <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <h2 className="text-2xl md:text-3xl font-bold text-white relative z-10 italic">
+        <h2 className="text-2xl md:text-3xl font-bold text-black relative z-10 italic">
           &quot;We don&apos;t follow the industry standards; we set them for our
           clients.&quot;
         </h2>

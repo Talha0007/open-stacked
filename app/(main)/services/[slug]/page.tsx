@@ -48,7 +48,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       : null;
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 overflow-hidden relative">
+    <main className="min-h-screen bg-white text-black pt-32 pb-20 overflow-hidden relative">
       {/* Inject SEO Schema if FAQs exist */}
       {faqSchema && (
         <script
@@ -58,12 +58,12 @@ export default async function ServiceDetailPage({ params }: Props) {
       )}
 
       {/* Background Orbs */}
-      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <Link
           href="/#services"
-          className="inline-flex items-center gap-2 text-slate-500 hover:text-cyan-400 transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-cyan-400 transition-colors mb-12 group"
         >
           <ArrowLeft
             size={16}
@@ -77,12 +77,11 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* Left Side: Content */}
           <div className="lg:col-span-7">
-            {/* ... Aapka existing top content (Tags, Title, Desc, Features) ... */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[9px] font-mono uppercase tracking-widest rounded-full">
+              <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 text-[9px] font-mono uppercase tracking-widest rounded-full">
                 {service.tag}
               </span>
-              <div className="h-px w-12 bg-white/10" />
+              <div className="h-px w-12 bg-slate-200" />
             </div>
 
             <h1 className="text-6xl md:text-8xl font-black italic uppercase tracking-tighter leading-none mb-8">
@@ -92,10 +91,10 @@ export default async function ServiceDetailPage({ params }: Props) {
               </span>
             </h1>
 
-            <p className="text-xl text-slate-400 font-light leading-relaxed mb-10 max-w-2xl">
+            <p className="text-xl text-slate-600 font-light leading-relaxed mb-10 max-w-2xl">
               {service?.shortDesc}
             </p>
-            <p className="text-xl text-slate-400 font-light leading-relaxed mb-10 max-w-2xl">
+            <p className="text-xl text-slate-600 font-light leading-relaxed mb-10 max-w-2xl">
               {service.fullDesc}
             </p>
 
@@ -103,22 +102,22 @@ export default async function ServiceDetailPage({ params }: Props) {
               {service.features.map((feature, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-3 p-4 bg-white/5 border border-white/10 rounded-xl hover:border-cyan-500/30 transition-colors group"
+                  className="flex items-start gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl hover:border-cyan-500/30 transition-colors group"
                 >
                   <CheckCircle2
                     size={20}
                     className="text-cyan-500 mt-0.5 shrink-0"
                   />
-                  <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                  <span className="text-sm font-medium text-slate-700 group-hover:text-black transition-colors">
                     {feature}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* --- NEW FAQ ACCORDION SECTION --- */}
+            {/* --- FAQ ACCORDION SECTION --- */}
             {service.faqs && service.faqs.length > 0 && (
-              <div className="mt-12 border-t border-white/10 pt-12">
+              <div className="mt-12 border-t border-slate-200 pt-12">
                 <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
                   <span className="text-cyan-500">/</span> Frequently Asked
                   Questions
@@ -128,18 +127,18 @@ export default async function ServiceDetailPage({ params }: Props) {
                   {service.faqs.map((faq, index) => (
                     <details
                       key={index}
-                      className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden"
+                      className="group bg-white border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm"
                     >
-                      <summary className="flex cursor-pointer items-center justify-between p-5 text-slate-300 hover:text-cyan-400 font-medium list-none select-none transition-colors">
+                      <summary className="flex cursor-pointer items-center justify-between p-5 text-slate-700 hover:text-cyan-500 font-medium list-none select-none transition-colors">
                         {faq.question}
-                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 ml-4 group-open:bg-cyan-500/20 group-open:text-cyan-400 transition-colors">
+                        <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 ml-4 group-open:bg-cyan-500/20 group-open:text-cyan-500 transition-colors">
                           <ChevronDown
                             size={16}
                             className="transition-transform duration-300 group-open:-rotate-180"
                           />
                         </div>
                       </summary>
-                      <div className="px-5 pb-5 pt-2 text-slate-400 text-sm font-light leading-relaxed border-t border-white/5">
+                      <div className="px-5 pb-5 pt-2 text-slate-600 text-sm font-light leading-relaxed border-t border-slate-200">
                         {faq.answer}
                       </div>
                     </details>
@@ -147,17 +146,16 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </div>
               </div>
             )}
-            {/* ------------------------------- */}
           </div>
 
           {/* Right Side: Visual Card */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
-            <div className="relative p-1 bg-gradient-to-br from-white/10 to-transparent rounded-[2rem]">
-              <div className="bg-[#0a0a0a] rounded-[1.9rem] p-10 border border-white/5 relative overflow-hidden">
+            <div className="relative p-1 bg-gradient-to-br from-slate-200/50 to-transparent rounded-[2rem]">
+              <div className="bg-white rounded-[1.9rem] p-10 border border-slate-200 relative overflow-hidden shadow-lg">
                 {/* Background Glow */}
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/10 blur-[80px] pointer-events-none" />
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/5 blur-[80px] pointer-events-none" />
 
-                <h3 className="text-2xl font-bold mb-2 italic tracking-tight">
+                <h3 className="text-2xl font-bold mb-2 italic tracking-tight text-black">
                   {service.ctaData?.heading || "Ready to start?"}
                 </h3>
 
@@ -166,25 +164,25 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </p>
 
                 <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                     <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">
                       Main Output
                     </span>
-                    <span className="text-white text-[11px] font-medium">
+                    <span className="text-black text-[11px] font-medium">
                       {service.ctaData?.deliverable}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                     <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">
                       Est. Delivery
                     </span>
-                    <span className="text-white text-[11px] font-medium">
+                    <span className="text-black text-[11px] font-medium">
                       {service.ctaData?.timeline}
                     </span>
                   </div>
                 </div>
 
-                <p className="text-slate-400 text-xs mb-8 leading-relaxed italic">
+                <p className="text-slate-600 text-xs mb-8 leading-relaxed italic">
                   &quot;Accelerate your roadmap with our specialized{" "}
                   {service.title} framework, engineered for{" "}
                   {service.tag?.toLowerCase()} results.&quot;
@@ -192,7 +190,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
                 <Link
                   href="/quote"
-                  className="block w-full py-4 bg-white text-black text-center font-black uppercase tracking-widest text-[10px] rounded-xl hover:bg-cyan-500 hover:text-white transition-all shadow-xl hover:shadow-cyan-500/20 active:scale-95"
+                  className="block w-full py-4 bg-black text-white text-center font-black uppercase tracking-widest text-[10px] rounded-xl hover:bg-cyan-500 hover:text-white transition-all shadow-xl hover:shadow-cyan-500/20 active:scale-95"
                 >
                   {service.ctaData?.buttonText || "Get Started"}
                 </Link>

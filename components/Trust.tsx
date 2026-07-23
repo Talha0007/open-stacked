@@ -27,7 +27,7 @@ const testimonials = [
 
 export default function Trust() {
   return (
-    <section className="relative py-20 md:py-32 bg-transparent overflow-hidden">
+    <section className="relative py-20 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           {/* Left Column: Performance Metrics */}
@@ -40,7 +40,7 @@ export default function Trust() {
               <span className="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase border-l-2 border-cyan-500 pl-4">
                 Internal Metrics
               </span>
-              <h2 className="text-4xl font-black text-white mt-4 tracking-tighter">
+              <h2 className="text-4xl font-black text-black mt-4 tracking-tighter">
                 MEASURED <br /> EXCELLENCE.
               </h2>
             </motion.div>
@@ -49,15 +49,15 @@ export default function Trust() {
               {metrics.map((m, i) => (
                 <div
                   key={i}
-                  className="p-6 rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-md"
+                  className="p-6 rounded-2xl border border-slate-200 bg-white/60 backdrop-blur-md"
                 >
-                  <div className="flex items-center gap-3 text-cyan-400 mb-2">
+                  <div className="flex items-center gap-3 text-cyan-500 mb-2">
                     {m.icon}
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
                       {m.label}
                     </span>
                   </div>
-                  <div className="text-3xl font-black text-white italic">
+                  <div className="text-3xl font-black text-black italic">
                     {m.value}
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export default function Trust() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2 }}
-                className="relative p-10 rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-transparent backdrop-blur-xl group hover:border-cyan-500/30 transition-all duration-500"
+                className="relative p-10 rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50/70 to-white/50 backdrop-blur-xl group hover:border-cyan-500/30 transition-all duration-500"
               >
                 <Quote
                   className="text-cyan-500/20 absolute top-8 right-8 group-hover:text-cyan-500/40 transition-colors"
@@ -92,15 +92,15 @@ export default function Trust() {
                     ))}
                   </div>
 
-                  <p className="text-slate-300 text-lg font-light leading-relaxed italic">
+                  <p className="text-slate-700 text-lg font-light leading-relaxed italic">
                     &quot;{t.text}&quot;
                   </p>
 
-                  <div className="pt-6 border-t border-white/5">
-                    <div className="text-white font-bold tracking-tight">
+                  <div className="pt-6 border-t border-slate-200/50">
+                    <div className="text-black font-bold tracking-tight">
                       {t.author}
                     </div>
-                    <div className="text-cyan-500 text-[10px] font-mono mt-1 uppercase tracking-widest">
+                    <div className="text-cyan-600 text-[10px] font-mono mt-1 uppercase tracking-widest">
                       Result: {t.stat}
                     </div>
                   </div>
@@ -112,17 +112,17 @@ export default function Trust() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="md:col-span-2 p-8 rounded-2xl border border-dashed border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 hover:bg-white/[0.02] transition-colors"
+              className="md:col-span-2 p-8 rounded-2xl border border-dashed border-slate-300 flex flex-col md:flex-row items-center justify-between gap-6 hover:bg-slate-50/50 transition-colors"
             >
               <div className="text-center md:text-left">
-                <div className="text-white font-bold">
+                <div className="text-black font-bold">
                   Ready to be our next success story?
                 </div>
                 <p className="text-slate-500 text-sm">
                   Experience the Open Stacked performance firsthand.
                 </p>
               </div>
-              <button className="px-8 py-3 bg-white text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-cyan-500 hover:text-white transition-all">
+              <button className="px-8 py-3 bg-black text-white font-bold text-xs uppercase tracking-widest rounded-full hover:bg-cyan-500 hover:text-white transition-all">
                 Get a Quote
               </button>
             </motion.div>
