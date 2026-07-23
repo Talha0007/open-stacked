@@ -5,17 +5,17 @@ import { ShieldCheck, Cpu, Code2, Layers } from "lucide-react";
 
 const values = [
   {
-    icon: <Cpu className="text-cyan-600" />,
+    icon: <Cpu />,
     title: "Infrastructure First",
     desc: "We believe a great application is only as good as the servers it runs on. Our focus on resilient hosting ensures zero downtime.",
   },
   {
-    icon: <Code2 className="text-blue-600" />,
+    icon: <Code2 />,
     title: "Clean Architecture",
     desc: "We don't just write code; we engineer scalable systems using MERN and Next.js that are easy to maintain and evolve.",
   },
   {
-    icon: <Layers className="text-purple-600" />,
+    icon: <Layers />,
     title: "Full-Stack Mastery",
     desc: "From designing the perfect UI/UX to configuring private VPS clusters, we handle the entire digital lifecycle.",
   },
@@ -130,11 +130,12 @@ export default function AboutContent() {
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
-              className="p-10 rounded-[2.5rem] border border-slate-200 bg-white/60 backdrop-blur-md hover:border-[#2e3192]/30 transition-all duration-500"
+              className="p-10 rounded-[2.5rem] border border-slate-200 bg-white/60 backdrop-blur-md hover:border-[#2e3192]/30 transition-all duration-500 group"
             >
-              <div className="mb-6 group-hover:text-[#2e3192] transition-colors">
-                {React.cloneElement(v.icon as React.ReactElement, {
-                  className: "text-cyan-600 group-hover:text-[#2e3192] transition-colors"
+              <div className="mb-6 text-cyan-600 group-hover:text-[#2e3192] transition-colors">
+                {React.cloneElement(v.icon, {
+                  size: 32,
+                  className: "text-cyan-600 group-hover:text-[#2e3192] transition-colors",
                 })}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-[#2e3192] transition-colors">
