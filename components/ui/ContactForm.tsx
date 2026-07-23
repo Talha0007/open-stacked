@@ -22,49 +22,49 @@ export default function ContactForm() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label className="text-slate-500 text-[10px] font-mono uppercase tracking-widest pl-2">
+          <label className="text-black text-[10px] font-mono uppercase tracking-widest pl-2">
             Full Name
           </label>
           <input
             type="text"
             required
-            className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500/50 transition-colors"
+            className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-4 text-black placeholder:text-slate-400 focus:outline-none focus:border-cyan-500/50 transition-colors"
             placeholder="John Doe"
           />
         </div>
         <div className="space-y-2">
-          <label className="text-slate-500 text-[10px] font-mono uppercase tracking-widest pl-2">
+          <label className="text-black text-[10px] font-mono uppercase tracking-widest pl-2">
             Email Address
           </label>
           <input
             type="email"
             required
-            className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500/50 transition-colors"
+            className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-4 text-black placeholder:text-slate-400 focus:outline-none focus:border-cyan-500/50 transition-colors"
             placeholder="john@company.com"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label className="text-slate-500 text-[10px] font-mono uppercase tracking-widest pl-2">
+        <label className="text-black text-[10px] font-mono uppercase tracking-widest pl-2">
           Subject
         </label>
-        <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500/50 transition-colors appearance-none">
-          <option className="bg-black">Full-Stack Development</option>
-          <option className="bg-black">Cloud Infrastructure</option>
-          <option className="bg-black">UI/UX Strategy</option>
-          <option className="bg-black">Other Inquiries</option>
+        <select className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-4 text-black focus:outline-none focus:border-cyan-500/50 transition-colors appearance-none">
+          <option className="bg-white text-black">Full-Stack Development</option>
+          <option className="bg-white text-black">Cloud Infrastructure</option>
+          <option className="bg-white text-black">UI/UX Strategy</option>
+          <option className="bg-white text-black">Other Inquiries</option>
         </select>
       </div>
 
       <div className="space-y-2">
-        <label className="text-slate-500 text-[10px] font-mono uppercase tracking-widest pl-2">
+        <label className="text-black text-[10px] font-mono uppercase tracking-widest pl-2">
           Message Details
         </label>
         <textarea
           rows={5}
           required
-          className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500/50 transition-colors resize-none"
+          className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-4 text-black placeholder:text-slate-400 focus:outline-none focus:border-cyan-500/50 transition-colors resize-none"
           placeholder="Describe your project requirements..."
         />
       </div>
@@ -75,7 +75,7 @@ export default function ContactForm() {
         className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs transition-all flex items-center justify-center gap-4 ${
           status === "success"
             ? "bg-green-500 text-white"
-            : "bg-white text-black hover:bg-cyan-500 hover:text-white"
+            : "bg-black text-white hover:bg-cyan-500 hover:text-white"
         }`}
       >
         {status === "idle" && (

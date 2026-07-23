@@ -76,7 +76,7 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.8 }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group relative p-8 rounded-[2rem] border border-white/5 bg-slate-900/40 backdrop-blur-sm hover:border-cyan-500/30 transition-colors duration-500"
+      className="group relative p-8 rounded-[2rem] border border-slate-200 bg-white/80 backdrop-blur-sm hover:border-cyan-500/30 transition-colors duration-500"
     >
       {/* Floating Glow Effect */}
       <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -85,7 +85,7 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
         className="relative flex flex-col md:flex-row gap-6 items-start"
         style={{ transform: "translateZ(50px)" }}
       >
-        <div className="p-4 rounded-2xl bg-black border border-white/10 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
+        <div className="p-4 rounded-2xl bg-slate-100 border border-slate-300 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
           {React.cloneElement(
             item.icon as React.ReactElement<{ size?: number }>,
             {
@@ -94,10 +94,10 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
           )}
         </div>
         <div className="space-y-3">
-          <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors tracking-tight">
+          <h3 className="text-2xl font-bold text-slate-800 group-hover:text-cyan-400 transition-colors tracking-tight">
             {item.title}
           </h3>
-          <p className="text-slate-400 text-sm leading-relaxed font-light">
+          <p className="text-slate-600 text-sm leading-relaxed font-light">
             {item.desc}
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function WhyUs() {
 
   return (
     <section
-      className="relative py-24 md:py-40 bg-transparent overflow-hidden"
+      className="relative py-24 md:py-40 overflow-hidden"
       style={{ perspective: "2000px" }}
     >
       {/* 3D Background Elements */}
@@ -151,34 +151,34 @@ export default function WhyUs() {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.1] tracking-tight max-w-3xl">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-black leading-[1.1] tracking-tight max-w-3xl">
                 DRIVEN BY{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192] drop-shadow-[0_0_30px_rgba(0,174,239,0.2)]">
                   PRECISION
                 </span>{" "}
                 <br className="hidden sm:inline" />
                 DEFINED BY{" "}
-                <span className="text-white/20 transition-colors hover:text-white/40">
+                <span className="text-black/20 transition-colors hover:text-black/40">
                   RESULTS
                 </span>
               </h2>
 
-              <p className="text-slate-400 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
-                <strong className="text-white font-medium">Open Stacked</strong>{" "}
+              <p className="text-slate-600 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
+                <strong className="text-black font-medium">Open Stacked</strong>{" "}
                 is not an agency. We are the{" "}
-                <span className="text-white">technical DNA</span> of your
+                <span className="text-black">technical DNA</span> of your
                 success.
               </p>
             </motion.div>
 
             {/* Performance Stats */}
-            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-white/5">
+            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-slate-200/50">
               {[
                 { label: "Deliveries", val: 113 },
                 { label: "Uptime", val: 99 },
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col gap-2">
-                  <span className="text-5xl md:text-6xl font-black text-white italic tracking-tighter">
+                  <span className="text-5xl md:text-6xl font-black text-black italic tracking-tighter">
                     <Counter value={stat.val} />
                     {stat.label === "Uptime" ? "%" : "+"}
                   </span>

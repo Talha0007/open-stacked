@@ -31,9 +31,9 @@ const AwsIcon = () => (
   </svg>
 );
 
-// Added hex colors for a modern, pure 3D brand environment
+// Updated for white theme – Next.js icon is now black (#000000) for visibility
 const techLogos = [
-  { name: "Next.js", icon: <SiNextdotjs color="#FFFFFF" /> },
+  { name: "Next.js", icon: <SiNextdotjs color="#000000" /> },
   { name: "MongoDB", icon: <SiMongodb color="#47A248" /> },
   { name: "Docker", icon: <SiDocker color="#2496ED" /> },
   { name: "Kubernetes", icon: <SiKubernetes color="#326CE5" /> },
@@ -65,7 +65,6 @@ export default function TechStack() {
     restDelta: 0.001,
   });
 
-  // Removed scale transformation logic here to maintain standard uniform sizing
   const rotateX = useTransform(smoothProgress, [0, 1], [15, -15]);
 
   useAnimationFrame((t, delta) => {
@@ -84,13 +83,13 @@ export default function TechStack() {
   return (
     <section
       ref={containerRef}
-      className="relative pt-12 md:pt-22 bg-transparent overflow-hidden select-none min-h-[200px]"
+      className="relative pt-12 md:pt-22 overflow-hidden select-none min-h-[200px]"
       style={{ perspective: "1500px" }}
     >
       {mounted && (
         <motion.div
           style={{
-            rotateX, // Keeps the awesome 3D perspective rotation tilt
+            rotateX,
             x,
           }}
           className="flex whitespace-nowrap gap-12 md:gap-24 items-center will-change-transform w-max"
@@ -100,11 +99,18 @@ export default function TechStack() {
               key={index}
               className="flex items-center gap-4 md:gap-8 opacity-85 hover:opacity-100 transition-opacity duration-300 group cursor-default"
             >
-              {/* Removed structural pops, scale transitions, and grey filters */}
-              <div className="text-5xl md:text-7xl flex items-center justify-center">
+              {/* Icon container with sharpness optimizations */}
+              <div
+                className="text-5xl md:text-7xl flex items-center justify-center will-change-transform"
+                style={{
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                  WebkitFontSmoothing: 'antialiased',
+                }}
+              >
                 {tech.icon}
               </div>
-              <span className="text-[10px] md:text-[14px] font-bold uppercase tracking-[0.5em] text-slate-300">
+              <span className="text-[10px] md:text-[14px] font-bold uppercase tracking-[0.5em] text-slate-600">
                 {tech.name}
               </span>
             </div>
@@ -112,9 +118,9 @@ export default function TechStack() {
         </motion.div>
       )}
 
-      {/* Depth Masking */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black via-black/50 to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black via-black/50 to-transparent z-10" />
+      {/* Depth Masking - updated for white theme */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
     </section>
   );
 }

@@ -6,10 +6,10 @@ import { Terminal, AlertTriangle, Home, RefreshCcw } from "lucide-react";
 
 export default function NotFoundClient() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 overflow-hidden relative">
+    <div className="min-h-screen flex items-center justify-center px-6 overflow-hidden relative bg-white">
       {/* Background Decorative Element */}
       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-10 pointer-events-none">
-        <h1 className="text-[25vw] font-black text-white select-none leading-none">
+        <h1 className="text-[25vw] font-black text-slate-200 select-none leading-none">
           404
         </h1>
       </div>
@@ -30,7 +30,7 @@ export default function NotFoundClient() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase"
+            className="text-4xl md:text-6xl font-black text-black tracking-tighter italic uppercase"
           >
             Terminal <span className="text-red-500">Error.</span>
           </motion.h2>
@@ -38,7 +38,7 @@ export default function NotFoundClient() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-md mx-auto"
+            className="text-slate-600 font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-md mx-auto"
           >
             The requested protocol does not exist in the Open Stacked
             infrastructure. The link may have been moved or decommissioned.
@@ -54,14 +54,14 @@ export default function NotFoundClient() {
         >
           <Link
             href="/"
-            className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black rounded-full text-xs tracking-[0.2em] uppercase hover:bg-cyan-500 hover:text-white transition-all w-full sm:w-auto text-center justify-center"
+            className="flex items-center gap-3 px-8 py-4 bg-black text-white font-black rounded-full text-xs tracking-[0.2em] uppercase hover:bg-cyan-500 hover:text-white transition-all w-full sm:w-auto text-center justify-center"
           >
             <Home size={16} /> Return to Core
           </Link>
 
           <button
             onClick={() => window.location.reload()}
-            className="flex items-center gap-3 px-8 py-4 border border-white/10 text-slate-400 font-black rounded-full text-xs tracking-[0.2em] uppercase hover:bg-white/5 hover:text-white transition-all w-full sm:w-auto text-center justify-center"
+            className="flex items-center gap-3 px-8 py-4 border border-slate-300 text-slate-600 font-black rounded-full text-xs tracking-[0.2em] uppercase hover:bg-slate-100 hover:text-black transition-all w-full sm:w-auto text-center justify-center"
           >
             <RefreshCcw size={16} /> Retry Connection
           </button>
@@ -72,7 +72,7 @@ export default function NotFoundClient() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="pt-12 flex items-center justify-center gap-4 text-slate-700 font-mono text-[10px] uppercase tracking-[0.3em]"
+          className="pt-12 flex items-center justify-center gap-4 text-slate-400 font-mono text-[10px] uppercase tracking-[0.3em]"
         >
           <Terminal size={12} />
           <span>Status: 404_PAGE_NOT_FOUND</span>

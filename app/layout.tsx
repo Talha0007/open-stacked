@@ -130,7 +130,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="bg-black text-white antialiased overflow-x-hidden">
+      <body className="bg-white text-black antialiased overflow-x-hidden">
         <Navbar />
         <main>{children}</main>
         <Footer />
