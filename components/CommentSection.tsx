@@ -1,11 +1,9 @@
 "use client";
-import { useState } from "react"; // Remove useEffect
+import { useState } from "react";
 import { postComment } from "@/app/actions/comment";
 
 export default function CommentSection({ postId }: { postId: string }) {
-  // 1. Initialize state lazily from cookies
   const [formData, setFormData] = useState(() => {
-    // Check if we are in the browser to avoid SSR errors
     if (typeof document !== "undefined") {
       const saved = document.cookie
         .split("; ")
@@ -33,8 +31,6 @@ export default function CommentSection({ postId }: { postId: string }) {
 
   const [status, setStatus] = useState("");
 
-  // DELETE the old useEffect block entirely
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("Transmitting...");
@@ -55,8 +51,6 @@ export default function CommentSection({ postId }: { postId: string }) {
       }
       setFormData((prev) => ({ ...prev, message: "" }));
       setStatus("Sent Successfully.");
-
-      // Optional: Clear status after 3 seconds
       setTimeout(() => setStatus(""), 3000);
     } else {
       setStatus("Error.");
@@ -64,8 +58,8 @@ export default function CommentSection({ postId }: { postId: string }) {
   };
 
   return (
-    <section className="mt-20 border-t border-neutral-900 pt-16">
-      <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-8 italic">
+    <section className="mt-20 border-t border-slate-200 pt-16">
+      <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter mb-8 italic">
         Post_Comment
       </h3>
 
@@ -78,7 +72,7 @@ export default function CommentSection({ postId }: { postId: string }) {
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-sm focus:border-sky-500 outline-none transition-all"
+            className="bg-white border border-slate-200 rounded-xl p-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-600 outline-none transition-all"
           />
           <input
             type="email"
@@ -89,7 +83,7 @@ export default function CommentSection({ postId }: { postId: string }) {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-            className="bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-sm focus:border-sky-500 outline-none transition-all"
+            className="bg-white border border-slate-200 rounded-xl p-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-600 outline-none transition-all"
           />
         </div>
 
@@ -102,7 +96,7 @@ export default function CommentSection({ postId }: { postId: string }) {
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           }
-          className="w-full bg-neutral-950 border border-neutral-800 rounded-2xl p-4 text-sm focus:border-sky-500 outline-none transition-all"
+          className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-600 outline-none transition-all"
         />
 
         <div className="flex items-center gap-3">
@@ -111,11 +105,11 @@ export default function CommentSection({ postId }: { postId: string }) {
             id="save"
             checked={saveDetails}
             onChange={(e) => setSaveDetails(e.target.checked)}
-            className="accent-sky-500 w-4 h-4"
+            className="accent-cyan-600 w-4 h-4"
           />
           <label
             htmlFor="save"
-            className="text-xs text-neutral-500 font-mono uppercase tracking-widest"
+            className="text-xs text-slate-500 font-mono uppercase tracking-widest"
           >
             Remember my credentials for next time
           </label>
@@ -123,7 +117,7 @@ export default function CommentSection({ postId }: { postId: string }) {
 
         <button
           type="submit"
-          className="bg-sky-600 hover:bg-sky-500 text-white font-black uppercase text-xs tracking-[0.3em] px-8 py-4 rounded-full transition-all"
+          className="bg-cyan-600 hover:bg-[#2e3192] text-white font-black uppercase text-xs tracking-[0.3em] px-8 py-4 rounded-full transition-all"
         >
           {status || "Execute_Post"}
         </button>

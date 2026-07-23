@@ -63,7 +63,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <Link
           href="/#services"
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-cyan-400 transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-slate-700 hover:text-cyan-600 transition-colors mb-12 group"
         >
           <ArrowLeft
             size={16}
@@ -78,7 +78,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Left Side: Content */}
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3 mb-6">
-              <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 text-[9px] font-mono uppercase tracking-widest rounded-full">
+              <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-700 text-[9px] font-mono uppercase tracking-widest rounded-full">
                 {service.tag}
               </span>
               <div className="h-px w-12 bg-slate-200" />
@@ -86,15 +86,15 @@ export default async function ServiceDetailPage({ params }: Props) {
 
             <h1 className="text-6xl md:text-8xl font-black italic uppercase tracking-tighter leading-none mb-8">
               {service.title.split(" ")[0]} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192]">
                 {service.title.split(" ").slice(1).join(" ")}.
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 font-light leading-relaxed mb-10 max-w-2xl">
+            <p className="text-xl text-slate-800 font-light leading-relaxed mb-10 max-w-2xl">
               {service?.shortDesc}
             </p>
-            <p className="text-xl text-slate-600 font-light leading-relaxed mb-10 max-w-2xl">
+            <p className="text-xl text-slate-800 font-light leading-relaxed mb-10 max-w-2xl">
               {service.fullDesc}
             </p>
 
@@ -106,9 +106,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                 >
                   <CheckCircle2
                     size={20}
-                    className="text-cyan-500 mt-0.5 shrink-0"
+                    className="text-cyan-600 mt-0.5 shrink-0"
                   />
-                  <span className="text-sm font-medium text-slate-700 group-hover:text-black transition-colors">
+                  <span className="text-sm font-medium text-slate-800 group-hover:text-black transition-colors">
                     {feature}
                   </span>
                 </div>
@@ -119,7 +119,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             {service.faqs && service.faqs.length > 0 && (
               <div className="mt-12 border-t border-slate-200 pt-12">
                 <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                  <span className="text-cyan-500">/</span> Frequently Asked
+                  <span className="text-cyan-600">/</span> Frequently Asked
                   Questions
                 </h2>
 
@@ -129,7 +129,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                       key={index}
                       className="group bg-white border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm"
                     >
-                      <summary className="flex cursor-pointer items-center justify-between p-5 text-slate-700 hover:text-cyan-500 font-medium list-none select-none transition-colors">
+                      <summary className="flex cursor-pointer items-center justify-between p-5 text-slate-800 hover:text-cyan-500 font-medium list-none select-none transition-colors">
                         {faq.question}
                         <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 ml-4 group-open:bg-cyan-500/20 group-open:text-cyan-500 transition-colors">
                           <ChevronDown
@@ -138,7 +138,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                           />
                         </div>
                       </summary>
-                      <div className="px-5 pb-5 pt-2 text-slate-600 text-sm font-light leading-relaxed border-t border-slate-200">
+                      <div className="px-5 pb-5 pt-2 text-slate-700 text-sm font-light leading-relaxed border-t border-slate-200">
                         {faq.answer}
                       </div>
                     </details>
@@ -165,7 +165,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
                 <div className="space-y-4 mb-8">
                   <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                    <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">
+                    <span className="text-slate-700 text-[10px] uppercase tracking-widest font-bold">
                       Main Output
                     </span>
                     <span className="text-black text-[11px] font-medium">
@@ -173,7 +173,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     </span>
                   </div>
                   <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                    <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">
+                    <span className="text-slate-700 text-[10px] uppercase tracking-widest font-bold">
                       Est. Delivery
                     </span>
                     <span className="text-black text-[11px] font-medium">
@@ -182,7 +182,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </div>
                 </div>
 
-                <p className="text-slate-600 text-xs mb-8 leading-relaxed italic">
+                <p className="text-slate-700 text-xs mb-8 leading-relaxed italic">
                   &quot;Accelerate your roadmap with our specialized{" "}
                   {service.title} framework, engineered for{" "}
                   {service.tag?.toLowerCase()} results.&quot;
@@ -197,7 +197,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
                 <div className="mt-6 flex items-center justify-center gap-2">
                   <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                  <span className="text-[9px] uppercase font-bold tracking-tighter text-slate-500">
+                  <span className="text-[9px] uppercase font-bold tracking-tighter text-slate-700">
                     {service.ctaData?.availabilityText ||
                       "Open Stacked Team Available"}
                   </span>

@@ -61,13 +61,17 @@ export default function NavContent({
         className={`max-w-7xl mx-auto transition-all duration-500 ease-in-out px-6 md:px-8 flex justify-between items-center ${
           scrolled
             ? "bg-white/90 backdrop-blur-xl border border-slate-200 rounded-2xl py-4 md:py-5 shadow-lg"
-            : "border-b border-slate-200/50 py-6 md:py-10"
+            : "border-slate-200/50 py-6 md:py-10"
         }`}
       >
-        {/* LOGO - Added z-index to stay above overlay */}
+        {/* LOGO - Increased size for all devices */}
         <Link href="/" className="z-[110]">
           <div
-            className={`relative transition-all duration-500 ${scrolled ? "w-8 h-8 md:w-10 md:h-10" : "w-10 h-10 md:w-14 md:h-14"}`}
+            className={`relative transition-all duration-500 ${
+              scrolled
+                ? "w-12 h-12 md:w-14 md:h-14"
+                : "w-16 h-16 md:w-20 md:h-20"
+            }`}
           >
             <Image
               src="/os-logo.png"
@@ -145,7 +149,7 @@ export default function NavContent({
           </Link>
         </div>
 
-        {/* MOBILE TOGGLE - Added z-index to be clickable over overlay */}
+        {/* MOBILE TOGGLE */}
         <button
           className="lg:hidden text-black p-2 z-[110] relative"
           onClick={() => setIsOpen(!isOpen)}
@@ -154,7 +158,7 @@ export default function NavContent({
         </button>
       </div>
 
-      {/* MOBILE OVERLAY - Improved spacing and typography scaling */}
+      {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -178,7 +182,6 @@ export default function NavContent({
                 </Link>
               ))}
 
-              {/* Added Quote button in mobile for usability */}
               <Link
                 href="/quote"
                 onClick={() => setIsOpen(false)}
