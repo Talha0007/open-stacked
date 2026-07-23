@@ -76,25 +76,26 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.8 }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group relative p-8 rounded-[2rem] border border-slate-200 bg-white/80 backdrop-blur-sm hover:border-cyan-500/30 transition-colors duration-500"
+      className="group relative p-8 rounded-[2rem] border border-slate-200 bg-white/80 backdrop-blur-sm hover:border-cyan-600/30 transition-colors duration-500"
     >
       {/* Floating Glow Effect */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
 
       <div
         className="relative flex flex-col md:flex-row gap-6 items-start"
         style={{ transform: "translateZ(50px)" }}
       >
-        <div className="p-4 rounded-2xl bg-slate-100 border border-slate-300 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
+        <div className="p-4 rounded-2xl bg-slate-100 border border-slate-300 group-hover:border-cyan-600/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
           {React.cloneElement(
-            item.icon as React.ReactElement<{ size?: number }>,
+            item.icon as React.ReactElement<{ size?: number; className?: string }>,
             {
               size: 32,
-            },
+              className: "text-cyan-600 group-hover:text-cyan-600 transition-colors",
+            }
           )}
         </div>
         <div className="space-y-3">
-          <h3 className="text-2xl font-bold text-slate-800 group-hover:text-cyan-400 transition-colors tracking-tight">
+          <h3 className="text-2xl font-bold text-slate-800 group-hover:text-cyan-600 transition-colors tracking-tight">
             {item.title}
           </h3>
           <p className="text-slate-600 text-sm leading-relaxed font-light">
@@ -111,17 +112,17 @@ export default function WhyUs() {
     {
       title: "Business-Centric Architecture",
       desc: "Open Stacked engineers systems that solve real-world bottlenecks, ensuring your business operations run without friction.",
-      icon: <BarChart className="text-cyan-400" />,
+      icon: <BarChart />,
     },
     {
       title: "Performance Engineering",
       desc: "We don't just build; we optimize. Every solution is stress-tested to handle high-level enterprise demands.",
-      icon: <Cpu className="text-blue-500" />,
+      icon: <Cpu />,
     },
     {
       title: "Scalable DNA",
       desc: "Our vision is to build projects that grow with you. From your first 100 users to your first million, we stay stable.",
-      icon: <Rocket className="text-indigo-400" />,
+      icon: <Rocket />,
     },
   ];
 
@@ -131,7 +132,7 @@ export default function WhyUs() {
       style={{ perspective: "2000px" }}
     >
       {/* 3D Background Elements */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -145,8 +146,8 @@ export default function WhyUs() {
               className="space-y-6"
             >
               <div className="flex items-center gap-4">
-                <div className="h-[1px] w-12 bg-gradient-to-r from-cyan-500 to-transparent" />
-                <span className="text-cyan-400 text-[11px] font-black uppercase tracking-[0.6em]">
+                <div className="h-[1px] w-12 bg-gradient-to-r from-cyan-600 to-transparent" />
+                <span className="text-cyan-600 text-[11px] font-black uppercase tracking-[0.6em]">
                   Company Vision
                 </span>
               </div>
@@ -158,12 +159,12 @@ export default function WhyUs() {
                 </span>{" "}
                 <br className="hidden sm:inline" />
                 DEFINED BY{" "}
-                <span className="text-black/20 transition-colors hover:text-black/40">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#808485] to-[#424247] hover:bg-gradient-to-r hover:from-[#00aeef] hover:via-[#3b82f6] hover:to-[#2e3192] transition-all">
                   RESULTS
                 </span>
               </h2>
 
-              <p className="text-slate-600 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
+              <p className="text-slate-700 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
                 <strong className="text-black font-medium">Open Stacked</strong>{" "}
                 is not an agency. We are the{" "}
                 <span className="text-black">technical DNA</span> of your
@@ -182,7 +183,7 @@ export default function WhyUs() {
                     <Counter value={stat.val} />
                     {stat.label === "Uptime" ? "%" : "+"}
                   </span>
-                  <span className="text-[10px] text-cyan-500/60 uppercase tracking-[0.3em] font-bold">
+                  <span className="text-[10px] text-cyan-600 uppercase tracking-[0.3em] font-bold">
                     {stat.label}
                   </span>
                 </div>

@@ -37,7 +37,8 @@ export default function Trust() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase border-l-2 border-cyan-500 pl-4">
+              {/* 👇 Label updated to text-cyan-600 for sharpness */}
+              <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase border-l-2 border-cyan-500 pl-4">
                 Internal Metrics
               </span>
               <h2 className="text-4xl font-black text-black mt-4 tracking-tighter">
@@ -51,12 +52,13 @@ export default function Trust() {
                   key={i}
                   className="p-6 rounded-2xl border border-slate-200 bg-white/60 backdrop-blur-md"
                 >
-                  <div className="flex items-center gap-3 text-cyan-500 mb-2">
+                  <div className="flex items-center gap-3 text-cyan-600 mb-2">
                     {m.icon}
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
                       {m.label}
                     </span>
                   </div>
+                  {/* 👇 Numeric value in bold black for sharp readability */}
                   <div className="text-3xl font-black text-black italic">
                     {m.value}
                   </div>
@@ -77,7 +79,7 @@ export default function Trust() {
                 className="relative p-10 rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50/70 to-white/50 backdrop-blur-xl group hover:border-cyan-500/30 transition-all duration-500"
               >
                 <Quote
-                  className="text-cyan-500/20 absolute top-8 right-8 group-hover:text-cyan-500/40 transition-colors"
+                  className="text-cyan-600 absolute top-8 right-8 transition-colors"
                   size={40}
                 />
 
@@ -87,7 +89,7 @@ export default function Trust() {
                       <Star
                         key={i}
                         size={12}
-                        className="fill-cyan-500 text-cyan-500"
+                        className="fill-cyan-600 text-cyan-600"
                       />
                     ))}
                   </div>
@@ -108,7 +110,7 @@ export default function Trust() {
               </motion.div>
             ))}
 
-            {/* Empty Trust Card for Visual Balance or CTA */}
+            {/* CTA Card */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

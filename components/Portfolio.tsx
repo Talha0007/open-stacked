@@ -39,7 +39,7 @@ const projects = [
   },
 ];
 
-// Reusable Row Component to handle isolation of scroll metrics per line
+// Reusable Row Component
 function ProjectRow({
   leftProject,
   rightProject,
@@ -49,15 +49,11 @@ function ProjectRow({
 }) {
   const rowRef = useRef<HTMLDivElement>(null);
 
-  // Track scroll parameters specifically for this single row element
   const { scrollYProgress } = useScroll({
     target: rowRef,
-    // "start 85%" fires the animation sooner as you scroll down
-    // "end 15%" ensures it reverses smoothly before leaving the top of the viewport
     offset: ["start 85%", "end 15%"],
   });
 
-  // Calculate dynamic transformations tied to this row's active viewport state
   const leftX = useTransform(scrollYProgress, [0, 0.35], [-120, 0]);
   const rightX = useTransform(scrollYProgress, [0, 0.35], [120, 0]);
   const rowOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
@@ -67,7 +63,6 @@ function ProjectRow({
       ref={rowRef}
       className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full will-change-transform"
     >
-      {/* Left Column Card */}
       {leftProject && (
         <ProjectCard
           project={leftProject}
@@ -75,8 +70,6 @@ function ProjectRow({
           opacityTransform={rowOpacity}
         />
       )}
-
-      {/* Right Column Card */}
       {rightProject && (
         <ProjectCard
           project={rightProject}
@@ -88,7 +81,6 @@ function ProjectRow({
   );
 }
 
-// Clean Sub-component extraction for individual Project rendering markup
 function ProjectCard({
   project,
   xTransform,
@@ -104,24 +96,29 @@ function ProjectCard({
         x: xTransform,
         opacity: opacityTransform,
       }}
-      className="group relative rounded-[2.5rem] border border-slate-200 bg-gradient-to-b from-slate-50/80 to-white/50 p-1 overflow-hidden"
+      className="group relative rounded-[2.5rem] border border-slate-200 bg-gradient-to-b from-slate-50/80 to-white/50 p-1 overflow-hidden hover:border-[#2e3192]/30 transition-all duration-500"
     >
       <div className="relative z-10 p-8 md:p-10 rounded-[2.4rem] bg-white/90 backdrop-blur-xl h-full flex flex-col justify-between">
         <div className="space-y-6">
           <div className="flex justify-between items-start">
-            <div className="p-3 rounded-2xl bg-slate-100 text-cyan-500 border border-slate-300 group-hover:border-cyan-500/50 transition-colors">
-              <Code2 size={24} />
+            {/* Icon Container */}
+            <div className="p-3 rounded-2xl bg-slate-100 text-cyan-600 border border-slate-300 group-hover:border-[#2e3192]/50 group-hover:bg-[#2e3192]/5 transition-all duration-300">
+              <Code2
+                size={24}
+                className="group-hover:text-[#2e3192] transition-colors"
+              />
             </div>
-            <span className="px-3 py-1 rounded-full border border-slate-300 text-[9px] font-mono text-slate-500 uppercase tracking-widest group-hover:text-cyan-400 transition-colors">
+            <span className="px-3 py-1 rounded-full border border-slate-300 text-[9px] font-mono text-slate-600 uppercase tracking-widest group-hover:text-cyan-600 group-hover:border-cyan-600/30 transition-colors">
               {project.status}
             </span>
           </div>
 
           <div>
-            <span className="text-cyan-500/60 text-[10px] font-mono uppercase tracking-[0.2em]">
+            {/* Category – now prominent on hover */}
+            <span className="text-cyan-600/70 text-[10px] font-mono uppercase tracking-[0.2em] group-hover:text-cyan-600 transition-colors">
               {project.category}
             </span>
-            <h3 className="text-2xl md:text-3xl font-bold text-black mt-2 group-hover:text-cyan-400 transition-colors">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mt-2 group-hover:text-[#2e3192] transition-colors">
               {project.title}
             </h3>
             <p className="text-slate-600 text-sm md:text-base mt-4 font-light leading-relaxed line-clamp-3">
@@ -144,21 +141,20 @@ function ProjectCard({
         <div className="absolute bottom-10 right-10 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
           <a
             href={project.link}
-            className="flex items-center gap-2 text-black font-bold text-xs uppercase tracking-widest"
+            className="flex items-center gap-2 text-slate-900 font-bold text-xs uppercase tracking-widest hover:text-[#2e3192] transition-colors"
           >
             Case Study <ExternalLink size={14} />
           </a>
         </div>
       </div>
 
-      {/* Decorative Corner Glow */}
-      <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-cyan-500/10 blur-[50px] group-hover:bg-cyan-500/20 transition-all duration-500" />
+      {/* Decorative Corner Glow – cyan to dark purple on hover */}
+      <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-cyan-600/10 blur-[50px] group-hover:bg-[#2e3192]/30 transition-all duration-500" />
     </motion.div>
   );
 }
 
 export default function Portfolio() {
-  // Group the flat projects array into distinct double-column rows chunk sets
   const rows = [];
   for (let i = 0; i < projects.length; i += 2) {
     rows.push({
@@ -178,12 +174,12 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <span className="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase border-l-2 border-cyan-500 pl-4">
+            <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase border-l-2 border-cyan-600 pl-4">
               Our Deployments
             </span>
-            <h2 className="text-5xl md:text-7xl font-black text-black mt-6 tracking-tighter">
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mt-6 tracking-tighter">
               PROVEN <br />{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192] drop-shadow-[0_0_30px_rgba(0,174,239,0.25)]">
                 SOLUTIONS
               </span>
             </h2>
@@ -195,7 +191,6 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {/* Dynamic Chronological Row Grid Assembly */}
         <div className="flex flex-col gap-8 w-full">
           {rows.map((row, rowIdx) => (
             <ProjectRow
@@ -206,7 +201,6 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* Confidential Outro Footer Callout */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

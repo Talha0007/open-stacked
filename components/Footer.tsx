@@ -16,7 +16,7 @@ export default function Footer() {
     <footer className="relative pt-20 pb-10 overflow-hidden border-t border-slate-200/50">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Main CTA Card */}
-        <div className="relative p-8 md:p-16 rounded-[2rem] border border-slate-200 bg-gradient-to-br from-cyan-500/5 via-white/80 to-blue-500/5 backdrop-blur-3xl mb-24">
+        <div className="relative p-8 md:p-16 rounded-[2rem] border border-slate-200 bg-gradient-to-br from-cyan-600/5 via-white/80 to-blue-500/5 backdrop-blur-3xl mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-center lg:text-left">
               <h2 className="text-4xl md:text-6xl font-black text-black leading-tight tracking-tighter uppercase italic">
@@ -29,7 +29,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
               <Link
                 href="/contact"
-                className="group flex items-center justify-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300"
+                className="group flex items-center justify-center gap-3 px-8 py-4 bg-black text-white font-bold rounded-full hover:bg-cyan-600 hover:text-white transition-all duration-300"
               >
                 START A PROJECT{" "}
                 <ArrowUpRight
@@ -68,7 +68,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-cyan-400 transition-colors"
+                  className="hover:text-cyan-600 transition-colors"
                 >
                   About Us
                 </Link>
@@ -76,7 +76,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/blogs"
-                  className="hover:text-cyan-400 transition-colors flex items-center gap-2"
+                  className="hover:text-cyan-600 transition-colors flex items-center gap-2"
                 >
                   Our Blogs{" "}
                   <span className="text-[10px] bg-sky-500/10 text-sky-600 px-1.5 py-0.5 rounded border border-sky-500/20 font-mono italic">
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-cyan-400 transition-colors"
+                  className="hover:text-cyan-600 transition-colors"
                 >
                   Contact
                 </Link>
@@ -95,7 +95,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="hover:text-cyan-400 transition-colors"
+                  className="hover:text-cyan-600 transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -103,7 +103,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms-conditions"
-                  className="hover:text-cyan-400 transition-colors"
+                  className="hover:text-cyan-600 transition-colors"
                 >
                   Terms & Conditions
                 </Link>
@@ -131,15 +131,15 @@ export default function Footer() {
             </h4>
             <div className="space-y-3 text-slate-600 text-sm">
               <p className="flex items-center gap-3">
-                <Mail size={16} className="text-cyan-500" />{" "}
+                <Mail size={16} className="text-cyan-600" />{" "}
                 info@openstacked.com
               </p>
 
               <a
                 href="tel:+12092131621"
-                className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+                className="flex items-center gap-3 hover:text-cyan-600 transition-colors"
               >
-                <Phone size={16} className="text-cyan-500" /> +1 (209) 213-1621
+                <Phone size={16} className="text-cyan-600" /> +1 (209) 213-1621
                 Ext 800
               </a>
 
@@ -147,14 +147,14 @@ export default function Footer() {
                 href="https://wa.me/+14244453357"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-cyan-400 transition-colors"
+                className="flex items-center gap-3 hover:text-cyan-600 transition-colors"
               >
-                <MessageSquare size={16} className="text-cyan-500" /> +1 (424)
+                <MessageSquare size={16} className="text-cyan-600" /> +1 (424)
                 445-3357
               </a>
 
               <p className="flex items-center gap-3 pt-1">
-                <Globe size={16} className="text-cyan-500" /> Remote / Worldwide
+                <Globe size={16} className="text-cyan-600" /> Remote / Worldwide
               </p>
             </div>
           </div>
@@ -179,6 +179,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
   );
 }

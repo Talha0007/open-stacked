@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import ContactForm from "@/components/ui/ContactForm";
-import { Mail, Globe, Terminal } from "lucide-react";
+import { Mail, Globe, } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us | Open Stacked Technical Support",
@@ -44,10 +44,6 @@ export default function ContactPage() {
           {/* --- Left Column: Static Info (SEO Friendly) --- */}
           <section className="lg:col-span-5 space-y-8">
             <div className="p-10 rounded-[2.5rem] border border-slate-200 bg-white/80 backdrop-blur-xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-30 transition-opacity">
-                <Terminal size={120} aria-hidden="true" />
-              </div>
-
               <h2 className="text-2xl font-bold text-black mb-8 tracking-tight">
                 Technical Support & Inquiries
               </h2>
@@ -63,10 +59,10 @@ export default function ContactPage() {
                         Email
                       </div>
                       <a
-                        href="mailto:hello@openstacked.com"
+                        href="mailto:info@openstacked.com"
                         className="text-black font-bold text-lg hover:text-cyan-400"
                       >
-                        hello@openstacked.com
+                        info@openstacked.com
                       </a>
                     </address>
                   </div>
