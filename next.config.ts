@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         // Optional: you can limit it to your specific Cloudinary cloud name
         // pathname: '/your-cloud-name/**',
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      }
     ],
   },
 };
