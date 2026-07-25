@@ -68,7 +68,7 @@ export default function TechStack() {
   const rotateX = useTransform(smoothProgress, [0, 1], [15, -15]);
 
   useAnimationFrame((t, delta) => {
-    let moveBy = -0.05 * (delta / 16);
+    let moveBy = -0.05 * (delta / 40);
     baseX.set(baseX.get() + moveBy);
   });
 
