@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import {
   MessageSquare,
   PenTool,
@@ -10,13 +11,23 @@ import {
   Activity,
 } from "lucide-react";
 
-const steps = [
+interface StepItem {
+  stage: string;
+  title: string;
+  desc: string;
+  icon: React.ReactElement;
+  color: string;
+  glowColor: string;
+}
+
+const steps: StepItem[] = [
   {
     stage: "01",
     title: "Discovery & Strategy",
     desc: "We start by understanding your business vision. Our architects analyze the requirements to define the most efficient tech stack for your specific needs.",
     icon: <MessageSquare className="text-cyan-600" />,
     color: "from-cyan-500/10",
+    glowColor: "rgba(6, 182, 212, 0.2)",
   },
   {
     stage: "02",
@@ -24,6 +35,7 @@ const steps = [
     desc: "Before a single line of code is written, we map out the system architecture and UI/UX flows, ensuring the project is built on a scalable foundation.",
     icon: <PenTool className="text-blue-600" />,
     color: "from-blue-500/10",
+    glowColor: "rgba(59, 130, 246, 0.2)",
   },
   {
     stage: "03",
@@ -31,6 +43,7 @@ const steps = [
     desc: "Our engineers build the core functionality in a modular fashion using the MERN/Next.js stack, focusing on speed, security, and clean code.",
     icon: <Code2 className="text-indigo-600" />,
     color: "from-indigo-500/10",
+    glowColor: "rgba(99, 102, 241, 0.2)",
   },
   {
     stage: "04",
@@ -38,6 +51,7 @@ const steps = [
     desc: "The project enters our staging environment for rigorous testing. We harden the security and optimize the performance for production loads.",
     icon: <ShieldCheck className="text-purple-600" />,
     color: "from-purple-500/10",
+    glowColor: "rgba(168, 85, 247, 0.2)",
   },
   {
     stage: "05",
@@ -45,104 +59,178 @@ const steps = [
     desc: "Final deployment to the live environment. We ensure a seamless transition with zero downtime and real-time monitoring of all systems.",
     icon: <Rocket className="text-emerald-600" />,
     color: "from-emerald-500/10",
+    glowColor: "rgba(16, 185, 129, 0.2)",
   },
 ];
 
-export default function Roadmap() {
+interface CardProps {
+  step: StepItem;
+  index: number;
+  totalSteps: number;
+  progress: MotionValue<number>;
+}
+
+function StackedVanishingCard({
+  step,
+  index,
+  totalSteps,
+  progress,
+}: CardProps) {
+  // Normalize scroll segment for each card index
+  const stepSegment = 1 / totalSteps;
+  const start = index * stepSegment;
+  const peak = start + stepSegment * 0.4; // Point when fully visible
+  const exit = (index + 1) * stepSegment; // Point when completely faded/receded
+
+  // 1. Entry: Slide up from bottom (y)
+  const y = useTransform(
+    progress,
+    [Math.max(0, start - stepSegment * 0.5), start, peak, exit],
+    [180, 0, 0, -50],
+  );
+
+  // 2. Scale: Enters at size, then shrinks into background as next card comes
+  const scale = useTransform(progress, [start, peak, exit], [1, 1, 0.82]);
+
+  // 3. Opacity: Fades in from bottom, then fades out as it moves into the background
+  const opacity = useTransform(
+    progress,
+    [Math.max(0, start - stepSegment * 0.3), start, peak, exit],
+    [0, 1, 1, index === totalSteps - 1 ? 1 : 0], // Keep last card visible
+  );
+
+  // 4. 3D Rotation along X-axis to simulate vanishing depth away from screen
+  const rotateX = useTransform(progress, [start, peak, exit], [10, 0, -20]);
+
+  // 5. Z-axis depth displacement
+  const z = useTransform(progress, [start, peak, exit], [0, 0, -250]);
+
   return (
-    <section className="relative py-16 md:py-22 overflow-hidden border-t border-slate-200/50">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase">
-              &#47;&#47; Execution Framework
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black text-black mt-6 tracking-tighter">
-              FROM CONCEPT TO <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
-                PRODUCTION
-              </span>
-            </h2>
-            <p className="text-slate-700 mt-6 text-lg font-light leading-relaxed">
-              We follow a high-level operational roadmap to ensure your project
-              transition is smooth, reliable, and engineered for maximum
-              business impact.
-            </p>
-          </motion.div>
+    <motion.div
+      style={{
+        y,
+        scale,
+        opacity,
+        rotateX,
+        z,
+        transformStyle: "preserve-3d",
+      }}
+      className="absolute top-0 left-0 w-full flex flex-col md:flex-row gap-6 md:gap-12 items-center justify-center perspective-[1000px]"
+    >
+      {/* Step Indicator Badge */}
+      <div className="relative z-10 shrink-0">
+        <div className="w-12 h-12 rounded-full bg-white border border-cyan-500/40 flex items-center justify-center text-cyan-600 font-mono text-base font-bold shadow-lg shadow-cyan-500/10">
+          {step.stage}
         </div>
-
-        <div className="relative">
-          <div className="absolute left-[21px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-cyan-500/50 via-blue-500/20 to-transparent hidden md:block" />
-
-          <div className="space-y-12 md:space-y-20">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={step.stage}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="relative flex flex-col md:flex-row gap-8 md:gap-16 group"
-              >
-                <div className="relative z-10 flex-shrink-0">
-                  <div className="w-11 h-11 rounded-full bg-white border border-slate-300 flex items-center justify-center text-cyan-600 font-mono text-sm group-hover:border-cyan-600 transition-colors shadow-md">
-                    {step.stage}
-                  </div>
-                </div>
-
-                <div
-                  className={`flex-1 p-8 rounded-3xl border border-slate-200 bg-gradient-to-br ${step.color} to-transparent backdrop-blur-sm group-hover:border-cyan-600 transition-all duration-500`}
-                >
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                    <div className="p-4 rounded-2xl bg-slate-100 border border-slate-300 inline-flex self-start">
-                      {React.cloneElement(
-                        step.icon as React.ReactElement<{ size: number }>,
-                        {
-                          size: 32,
-                        },
-                      )}
-                    </div>
-                    <div className="space-y-3">
-                      <h3 className="text-2xl font-bold text-black tracking-tight group-hover:text-cyan-600 transition-colors">
-                        {step.title}
-                      </h3>
-                      <p className="text-slate-700 leading-relaxed font-light max-w-2xl">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-20 p-8 rounded-2xl bg-slate-50/80 border border-slate-200 text-center"
-        >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <div className="flex items-center gap-3">
-              <Activity className="text-cyan-600 animate-pulse" size={20} />
-              <span className="text-black font-mono text-xs uppercase tracking-widest">
-                Live Monitoring Active
-              </span>
-            </div>
-            <div className="h-px w-12 bg-slate-200 hidden md:block" />
-            <p className="text-slate-700 text-sm italic">
-              &quot;Our roadmap is designed to keep you informed at every
-              milestone of the development mode.&quot;
-            </p>
-          </div>
-        </motion.div>
       </div>
-    </section>
+
+      {/* Main Glassmorphic Card (Full Width matching section container) */}
+      <div
+        className={`w-full p-8 md:p-10 rounded-3xl border border-slate-200/90 bg-linear-to-br ${step.color} to-white/95 backdrop-blur-xl shadow-2xl transition-colors duration-500 relative overflow-hidden`}
+      >
+        {/* Ambient Glow */}
+        <div
+          className="absolute -top-24 -right-24 w-60 h-60 rounded-full blur-3xl pointer-events-none"
+          style={{ background: step.glowColor }}
+        />
+
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 relative z-10">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-md inline-flex shrink-0">
+            {React.cloneElement(
+              step.icon as React.ReactElement<{ size: number }>,
+              { size: 36 },
+            )}
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-2xl md:text-3xl font-bold text-black tracking-tight">
+              {step.title}
+            </h3>
+            <p className="text-slate-700 text-base leading-relaxed font-light">
+              {step.desc}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Roadmap() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Track scroll progress across the taller container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Dynamic progress line transform
+  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <div
+      ref={containerRef}
+      /* Height controls scroll distance per card: 5 steps * 100vh = 500vh */
+      className="relative h-[300vh] bg-slate-50/40 border-t border-slate-200/50"
+    >
+      {/* Sticky Viewport Layer */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-10 md:py-16">
+        {/* Top Gradient Accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent" />
+
+        {/* Section Header */}
+        <div className="max-w-7xl mt-20 mx-auto px-6 text-center relative z-20">
+          <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase">
+            &#47;&#47; Execution Framework
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tighter">
+            FROM CONCEPT TO{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-600">
+              PRODUCTION
+            </span>
+          </h2>
+        </div>
+
+        {/* Dynamic Card Stacking Area (Expanded to max-w-7xl) */}
+        <div className="max-w-7xl mx-auto px-6 w-full relative h-80 md:h-60 flex items-center justify-center">
+          {/* Vertical Timeline Progress Bar */}
+          <div className="absolute left-6 md:left-12 top-0 bottom-0 w-0.5 bg-slate-200 hidden sm:block">
+            <motion.div
+              style={{ scaleY: lineScaleY }}
+              className="w-full h-full bg-linear-to-b from-cyan-500 via-blue-500 to-emerald-500 origin-top"
+            />
+          </div>
+
+          {steps.map((step, idx) => (
+            <StackedVanishingCard
+              key={step.stage}
+              step={step}
+              index={idx}
+              totalSteps={steps.length}
+              progress={scrollYProgress}
+            />
+          ))}
+        </div>
+
+        {/* Footer Status Bar */}
+        <div className="max-w-7xl mx-auto px-6 relative z-20">
+          <div className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 backdrop-blur-md text-center shadow-md max-w-xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex items-center gap-2">
+                <Activity className="text-cyan-600 animate-pulse" size={18} />
+                <span className="text-black font-mono text-[11px] uppercase tracking-widest">
+                  Live Monitoring Active
+                </span>
+              </div>
+              <div className="h-px w-8 bg-slate-200 hidden sm:block" />
+              <p className="text-slate-600 text-xs italic">
+                Scroll to navigate milestones
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

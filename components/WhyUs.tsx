@@ -87,11 +87,15 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
       >
         <div className="p-4 rounded-2xl bg-slate-100 border border-slate-300 group-hover:border-cyan-600/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-500">
           {React.cloneElement(
-            item.icon as React.ReactElement<{ size?: number; className?: string }>,
+            item.icon as React.ReactElement<{
+              size?: number;
+              className?: string;
+            }>,
             {
               size: 32,
-              className: "text-cyan-600 group-hover:text-cyan-600 transition-colors",
-            }
+              className:
+                "text-cyan-600 group-hover:text-cyan-600 transition-colors",
+            },
           )}
         </div>
         <div className="space-y-3">
@@ -128,7 +132,7 @@ export default function WhyUs() {
 
   return (
     <section
-      className="relative py-24 md:py-40 overflow-hidden"
+      className="relative bg-white py-10 md:py-20 overflow-hidden"
       style={{ perspective: "2000px" }}
     >
       {/* 3D Background Elements */}
