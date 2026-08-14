@@ -19,7 +19,6 @@ export default function Footer() {
   return (
     <footer className="relative pt-20 pb-10 overflow-hidden border-t border-slate-800/60 bg-[#031f33] text-white">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
         {/* Main CTA Card */}
         <div className="relative p-8 md:p-16 rounded-[2rem] border border-slate-700/60 bg-gradient-to-br from-cyan-900/20 via-slate-900/60 to-blue-900/20 backdrop-blur-3xl mb-24 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -49,7 +48,6 @@ export default function Footer() {
 
         {/* 4 Columns Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-6">
             <div className="relative w-48 h-12">
@@ -119,7 +117,7 @@ export default function Footer() {
                   href="/about"
                   className="hover:text-cyan-400 transition-colors"
                 >
-      1   2       Abinline-block
+                  About Us
                 </Link>
               </li>
               <li className="border-b border-slate-100/20 pb-2.5 inline-block">
@@ -234,6 +232,29 @@ export default function Footer() {
                     </a>
                     <a
                       href="tel:+14244453357"
+                      title="Call US Office"
+                      aria-label="Call US Office"
+                      className="p-1.5 rounded hover:bg-slate-800 text-cyan-400 hover:text-white transition-colors"
+                    >
+                      <FaPhone size={12} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between text-xs pt-1">
+                  <span className="text-slate-300">+1 (404) 395-0480</span>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://wa.me/14043950480"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="WhatsApp US Office"
+                      aria-label="WhatsApp US Office"
+                      className="p-1.5 rounded hover:bg-slate-800 text-emerald-400 hover:text-white transition-colors"
+                    >
+                      <FaWhatsapp size={14} />
+                    </a>
+                    <a
+                      href="tel:+14043950480"
                       title="Call US Office"
                       aria-label="Call US Office"
                       className="p-1.5 rounded hover:bg-slate-800 text-cyan-400 hover:text-white transition-colors"
