@@ -8,6 +8,8 @@ import TechStack from "@/components/TechStack";
 import Trust from "@/components/Trust";
 import WhyUs from "@/components/WhyUs";
 import ScrollHandler from "@/components/ScrollHandler"; // New Client Component
+import RingGalleryGSAP from "@/components/RingGallery";
+import RecentClients from "@/components/RecentClients";
 
 export default function Home() {
   return (
@@ -21,7 +23,7 @@ export default function Home() {
 
         <div className="relative z-10">
           <Hero />
-
+          <RecentClients />
           <WhyUs />
 
           {/* 2. SEO Tip: Use <section> tags with IDs instead of <div> wrappers 
@@ -39,6 +41,9 @@ export default function Home() {
 
           <section id="testimonials" aria-label="Customer Testimonials">
             <Portfolio />
+          </section>
+          <section id="gallery" aria-label="Gallery">
+            <RingGalleryGSAP />
           </section>
         </div>
       </main>
