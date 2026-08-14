@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { servicesData } from "@/data/services";
+import Image from "next/image";
 
 export default function Services({ id }: { id?: string }) {
   return (
@@ -63,16 +64,31 @@ export default function Services({ id }: { id?: string }) {
                 {/* Bottom line – changes to dark gradient color on hover */}
                 <div className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-600 scale-x-0 group-hover:scale-x-100 group-hover:bg-[#2e3192] transition-all duration-500 origin-left" />
 
-                <div className="absolute -inset-px bg-gradient-to-br from-cyan-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
+                <div className="absolute -inset-px bg-gradient-to-br from-cyan-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10">
-                  <div className="mb-8 p-3 w-fit rounded-lg bg-slate-100 border border-slate-300 group-hover:border-[#2e3192]/30 transition-all duration-500">
-                    {React.cloneElement(
-                      service.icon as React.ReactElement<{ size: number; className?: string }>,
-                      {
-                        size: 28,
-                        className: "text-slate-900 group-hover:text-[#2e3192] transition-colors",
-                      }
+                  <div className="mb-8 p-1 w-12 h-12 rounded-lg bg-slate-100 border border-slate-300 group-hover:border-[#2e3192]/30 transition-all duration-500 overflow-hidden flex items-center justify-center">
+                    {service.image ? (
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        width={48}
+                        height={48}
+                        className="w-full h-full object-cover rounded-md group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      service.icon &&
+                      React.cloneElement(
+                        service.icon as React.ReactElement<{
+                          size: number;
+                          className?: string;
+                        }>,
+                        {
+                          size: 28,
+                          className:
+                            "text-slate-900 group-hover:text-[#2e3192] transition-colors",
+                        },
+                      )
                     )}
                   </div>
 

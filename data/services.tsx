@@ -190,7 +190,8 @@ export const servicesData = [
       "web development jobs in pakistan",
       "advantages of web development",
     ],
-    icon: <Globe />,
+    // icon: <Globe />,
+    image: "/services/web-development.png",
     tag: "Next-Gen",
     ctaData: {
       heading: "Ready to deploy?",
