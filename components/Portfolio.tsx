@@ -45,7 +45,7 @@ export default function Portfolio() {
             className="text-cyan-400 group-hover:translate-x-1.5 transition-transform duration-300"
           />
         </Link>
-      </div>z
+      </div>
     </section>
   );
 }

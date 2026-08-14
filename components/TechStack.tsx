@@ -31,7 +31,6 @@ const AwsIcon = () => (
   </svg>
 );
 
-// Updated for white theme – Next.js icon is now black (#000000) for visibility
 const techLogos = [
   { name: "Next.js", icon: <SiNextdotjs color="#000000" /> },
   { name: "MongoDB", icon: <SiMongodb color="#47A248" /> },
@@ -68,7 +67,7 @@ export default function TechStack() {
   const rotateX = useTransform(smoothProgress, [0, 1], [15, -15]);
 
   useAnimationFrame((t, delta) => {
-    let moveBy = -0.05 * (delta / 40);
+    let moveBy = -0.05 * (delta / 45);
     baseX.set(baseX.get() + moveBy);
   });
 
@@ -119,8 +118,8 @@ export default function TechStack() {
       )}
 
       {/* Depth Masking - updated for white theme */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/8 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/8 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
     </section>
   );
 }

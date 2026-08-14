@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect, useCallback, ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -30,49 +30,78 @@ export default function NavContent({
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleScrollTo = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    if (href.startsWith("/#") && pathname === "/") {
-      e.preventDefault();
-      const id = href.replace("/#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        const offset = 80;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
-        setIsOpen(false);
-      }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-  };
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const handleScrollTo = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (href.startsWith("/#") && pathname === "/") {
+        e.preventDefault();
+        const id = href.replace("/#", "");
+        const element = document.getElementById(id);
+
+        if (element) {
+          const offset = 80;
+          const elementPosition =
+            element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: "smooth",
+          });
+        }
+      }
+      setIsOpen(false);
+    },
+    [pathname]
+  );
+
+  const isCompact = scrolled && !isOpen;
+
+  const containerClasses = isOpen
+    ? "mt-0 px-0"
+    : `transition-all duration-500 ease-in-out ${
+        isCompact ? "mt-4 px-4 md:px-10" : "mt-0 px-0"
+      }`;
+
+  const innerCardClasses = isOpen
+    ? "py-6 md:py-10 bg-transparent border-transparent"
+    : `transition-all duration-500 ease-in-out ${
+        isCompact
+          ? "bg-white/90 backdrop-blur-xl border border-slate-200 rounded-2xl py-4 md:py-5 shadow-lg"
+          : "border-slate-200/50 py-6 md:py-10"
+      }`;
+
+  const logoSizeClasses = isOpen
+    ? "w-16 h-16 md:w-20 md:h-20"
+    : `transition-all duration-500 ${
+        isCompact ? "w-12 h-12 md:w-14 md:h-14" : "w-16 h-16 md:w-20 md:h-20"
+      }`;
 
   return (
-    <div
-      className={`transition-all duration-500 ease-in-out w-full ${scrolled ? "mt-4 px-4 md:px-10" : "mt-0 px-0"}`}
-    >
+    <div className={`w-full ${containerClasses}`}>
       <div
-        className={`max-w-7xl mx-auto transition-all duration-500 ease-in-out px-6 md:px-8 flex justify-between items-center ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-xl border border-slate-200 rounded-2xl py-4 md:py-5 shadow-lg"
-            : "border-slate-200/50 py-6 md:py-10"
-        }`}
+        className={`max-w-[1600px] mx-auto px-6 md:px-8 flex justify-between items-center ${innerCardClasses}`}
       >
-        {/* LOGO - Increased size for all devices */}
-        <Link href="/" className="z-[110]">
-          <div
-            className={`relative transition-all duration-500 ${
-              scrolled
-                ? "w-12 h-12 md:w-14 md:h-14"
-                : "w-16 h-16 md:w-20 md:h-20"
-            }`}
-          >
+        {/* LOGO */}
+        <Link href="/" className="z-[110]" onClick={() => setIsOpen(false)}>
+          <div className={`relative ${logoSizeClasses}`}>
             <Image
               src="/os-logo.png"
               alt="Open Stacked Logo"
@@ -83,21 +112,27 @@ export default function NavContent({
           </div>
         </Link>
 
-        {/* DESKTOP NAV */}
+        {/* DESKTOP LINKS */}
         <div className="hidden lg:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className="text-[11px] uppercase tracking-[0.25em] font-bold text-slate-600 hover:text-black transition-all group relative"
-            >
-              {link.name}
-              <span
-                className={`absolute -bottom-2 left-0 h-[1.5px] bg-cyan-400 transition-all duration-300 ${pathname === "/" && link.href.includes(pathname) ? "w-full" : "w-0 group-hover:w-full"}`}
-              />
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              pathname === "/" && link.href.includes(pathname);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className="text-[11px] uppercase tracking-[0.25em] font-bold text-slate-600 hover:text-black transition-all group relative"
+              >
+                {link.name}
+                <span
+                  className={`absolute -bottom-2 left-0 h-[1.5px] bg-cyan-400 transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </Link>
+            );
+          })}
 
           {/* DROPDOWN */}
           <div
@@ -105,11 +140,17 @@ export default function NavContent({
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            <button className="flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 text-slate-600 hover:text-black transition-colors">
+            <button
+              type="button"
+              className="flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 text-slate-600 hover:text-black transition-colors"
+              aria-expanded={showDropdown}
+            >
               Company{" "}
               <ChevronDown
                 size={14}
-                className={`transition-transform duration-300 ${showDropdown ? "rotate-180" : ""}`}
+                className={`transition-transform duration-300 ${
+                  showDropdown ? "rotate-180" : ""
+                }`}
               />
             </button>
             <AnimatePresence>
@@ -149,10 +190,13 @@ export default function NavContent({
           </Link>
         </div>
 
-        {/* MOBILE TOGGLE */}
+        {/* MOBILE TOGGLE BUTTON */}
         <button
-          className="lg:hidden text-black p-2 z-[110] relative"
-          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className="lg:hidden text-black p-2 z-[110] relative focus:outline-none"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -165,6 +209,7 @@ export default function NavContent({
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-white z-[100] flex flex-col justify-center p-8 md:p-16 lg:hidden"
           >
             <div className="flex flex-col gap-6 md:gap-10">
@@ -172,10 +217,7 @@ export default function NavContent({
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => {
-                    handleScrollTo(e, link.href);
-                    setIsOpen(false);
-                  }}
+                  onClick={(e) => handleScrollTo(e, link.href)}
                   className="text-4xl md:text-7xl font-black text-black italic uppercase tracking-tighter hover:text-cyan-500 transition-colors"
                 >
                   {link.name}
