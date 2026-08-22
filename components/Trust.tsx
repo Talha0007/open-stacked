@@ -28,7 +28,7 @@ const testimonials = [
 export default function Trust() {
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-375 mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           {/* Left Column: Performance Metrics */}
           <div className="lg:col-span-1 space-y-8">

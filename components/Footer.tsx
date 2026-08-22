@@ -18,7 +18,7 @@ export default function Footer() {
 
   return (
     <footer className="relative pt-20 pb-10 overflow-hidden border-t border-slate-800/60 bg-[#031f33] text-white">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-375 mx-auto px-6 relative z-10">
         {/* Main CTA Card */}
         <div className="relative p-8 md:p-16 rounded-[2rem] border border-slate-700/60 bg-gradient-to-br from-cyan-900/20 via-slate-900/60 to-blue-900/20 backdrop-blur-3xl mb-24 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -55,6 +55,7 @@ export default function Footer() {
                 src="/os-logo.png"
                 alt="Open Stacked Logo"
                 fill
+                sizes="192px"
                 className="object-contain object-left"
                 priority
               />

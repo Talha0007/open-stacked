@@ -9,7 +9,7 @@ export default function Portfolio() {
   const featuredProjects = projects.slice(0, 6);
 
   return (
-    <section className="relative z-20 py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative z-20 py-16 sm:py-24 max-w-375 mx-auto px-4 sm:px-6 lg:px-8">
       {/* SECTION HEADER */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>

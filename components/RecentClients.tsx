@@ -32,12 +32,12 @@ export default function RecentClients() {
         {/* Section Heading */}
         <div className="text-center mb-6 sm:mb-8">
           <h2 className="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-[#8fa0b5] uppercase">
-            OUR RECENT CLIENTS &amp; TECH PARTNERS
+            COMPANIES WE'VE WORKED WITH
           </h2>
         </div>
 
         {/* Marquee Outer Container */}
-        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-2">
+        <div className="relative overflow-hidden w-full max-w-375 mx-auto py-2">
           
           {/* Infinite Marquee Track */}
           <div className="animate-marquee flex items-center gap-12 sm:gap-16 md:gap-20 cursor-pointer">

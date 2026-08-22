@@ -17,7 +17,7 @@ export const servicesData = [
   {
     slug: "website-development",
     title: "Website Development",
-    desc: "Web development is about making websites and web apps that we use on the internet. Web development is very important today because every business, school and service needs a website...",
+    desc: "We build fast, secure websites and web apps tailored to your business — from custom landing pages to full-scale platforms ready to handle real traffic.",
     shortDesc:
       "Web development is about making websites and web apps that we use on the internet. This is the work of creating and designing a website so people can use it easily. Web development is very important today because every business, school and service needs a website to be online.",
     fullDesc:
@@ -191,7 +191,7 @@ export const servicesData = [
       "advantages of web development",
     ],
     // icon: <Globe />,
-    image: "/services/web-development.png",
+    image: "/services/web.jpeg",
     tag: "Next-Gen",
     ctaData: {
       heading: "Ready to deploy?",
@@ -223,7 +223,7 @@ export const servicesData = [
   {
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    desc: "Mobile app development is the process of creating software applications that run on smartphones and tablets. From initial UI/UX design to final deployment on the App Store and Google Play, ",
+    desc: "We design and develop native and cross-platform mobile apps for iOS and Android, taking your product from first sketch to App Store launch.",
     shortDesc:
       "Mobile app development is the process of creating software applications that run on smartphones and tablets. From initial UI/UX design to final deployment on the App Store and Google Play, app development helps businesses connect with customers on the go through high-performance, user-friendly mobile solutions.",
     fullDesc:
@@ -321,8 +321,9 @@ export const servicesData = [
       "API-First Mobile Design",
       "DevOps for Mobile Apps",
     ],
-    icon: <Smartphone />,
-    tag: "Seamless",
+    // icon: <Smartphone />,
+    image: "/services/app.jpeg",
+    tag: "Cross-Platform",
     ctaData: {
       heading: "Build your app?",
       highlight: "Native Experience",
@@ -352,7 +353,7 @@ export const servicesData = [
   {
     slug: "devops-cloud",
     title: "DevOps & Cloud",
-    desc: "DevOps and Cloud services focus on bridging the gap between software development and IT operations. By using automation, cloud-native tools, and continuous integration.",
+    desc: "We automate your deployment pipeline and manage cloud infrastructure on AWS, Azure, or GCP — helping you ship faster with fewer manual bottlenecks.",
     shortDesc:
       "DevOps and Cloud services focus on bridging the gap between software development and IT operations. By using automation, cloud-native tools, and continuous integration, we help businesses deploy software faster, reduce infrastructure costs, and ensure 99.9% uptime for their digital products.",
     fullDesc:
@@ -461,7 +462,8 @@ export const servicesData = [
       "DevOps Training Pakistan",
     ],
     icon: <Layers />,
-    tag: "Scalable",
+    image: "/services/devops.jpeg",
+    tag: "Automated",
     ctaData: {
       heading: "Scale your infra?",
       highlight: "Zero-Downtime Architecture",
@@ -493,7 +495,7 @@ export const servicesData = [
   {
     slug: "digital-marketing",
     title: "Digital Marketing",
-    desc: "Digital marketing is the practice of promoting brands, products, and services through online channels to reach a specific target audience. By leveraging SEO, social media, and paid advertising,",
+    desc: "We run SEO, paid ads, and social media campaigns built around real data — turning online visibility into measurable leads and revenue.",
     shortDesc:
       "Digital marketing is the practice of promoting brands, products, and services through online channels to reach a specific target audience. By leveraging SEO, social media, and paid advertising, businesses can increase their visibility, drive high-quality traffic, and convert online visitors into loyal customers in an increasingly competitive digital landscape.",
     fullDesc:
@@ -556,6 +558,7 @@ export const servicesData = [
       "Programmatic Advertising",
     ],
     icon: <TrendingUp />,
+    image: "/services/marketing.jpeg",
     tag: "Growth",
     ctaData: {
       heading: "Ready to grow?",
@@ -586,7 +589,7 @@ export const servicesData = [
   {
     slug: "seo",
     title: "SEO Mastery",
-    desc: "SEO services help your business rank higher on search engines like Google and Bing to attract more organic traffic. By combining technical audits, high-quality content, and strategic",
+    desc: "We combine technical audits, content strategy, and authority-building to help your site rank higher and attract consistent organic traffic.",
     shortDesc:
       "SEO services help your business rank higher on search engines like Google and Bing to attract more organic traffic. By combining technical audits, high-quality content, and strategic backlink building, SEO ensures your website is visible to the right audience, increasing your leads and online revenue without paying for ads.",
     fullDesc:
@@ -646,6 +649,7 @@ export const servicesData = [
       "what does seo means",
     ],
     icon: <Search />,
+    image: "/services/seo.jpeg",
     tag: "Visible",
     ctaData: {
       heading: "Dominate search?",
@@ -676,7 +680,7 @@ export const servicesData = [
   {
     slug: "ai-automation",
     title: "AI Automation",
-    desc: "AI automation services empower businesses to scale by replacing repetitive tasks with intelligent, autonomous workflows. From custom AI agents and chatbots to predictive data analysis",
+    desc: "We build custom AI agents and automation workflows that handle repetitive tasks — from customer support to data analysis — so your team can focus elsewhere.",
     shortDesc:
       "AI automation services empower businesses to scale by replacing repetitive tasks with intelligent, autonomous workflows. From custom AI agents and chatbots to predictive data analysis and Generative Engine Optimization (GEO), we help you integrate cutting-edge artificial intelligence to boost efficiency, reduce costs, and stay ahead in a digital-first economy.",
     fullDesc:
@@ -730,6 +734,7 @@ export const servicesData = [
       "Affordable AI Automation",
     ],
     icon: <Cpu />,
+    image: "/services/ai.jpeg",
     tag: "Intelligent",
     ctaData: {
       heading: "Future-proof now?",
@@ -761,7 +766,7 @@ export const servicesData = [
   {
     slug: "database-design",
     title: "DB & System Design",
-    desc: "Complex database orchestration and API logic for high-traffic data.",
+    desc: "We design database schemas and system architecture built for speed and reliability, so your application holds up under real-world data loads.",
     fullDesc:
       "Data is the heart of every application. We design robust schemas for MongoDB and PostgreSQL that are optimized for speed and ACID compliance. Our system design includes load balancing and caching strategies (Redis).",
     features: [
@@ -771,6 +776,7 @@ export const servicesData = [
       "API Gateway Management",
     ],
     icon: <Database />,
+    image: "/services/db.jpeg",
     tag: "Robust",
     ctaData: {
       heading: "Secure your data?",
@@ -801,7 +807,7 @@ export const servicesData = [
   {
     slug: "ui-ux-designing",
     title: "UI/UX Designing",
-    desc: "Merging technical aesthetics with user-centric design.",
+    desc: "We research how your users think, then design interfaces that are intuitive, accessible, and true to your brand — from wireframe to final prototype.",
     fullDesc:
       "We believe that technical power should be accessible. Our UI/UX process starts with deep research into user behavior, followed by high-fidelity wireframing and prototyping using modern tools like Figma.",
     features: [
@@ -811,6 +817,7 @@ export const servicesData = [
       "User Journey Mapping",
     ],
     icon: <Palette />,
+    image: "/services/ui-ux.jpeg",
     tag: "Creative",
     ctaData: {
       heading: "Start designing?",
@@ -842,7 +849,7 @@ export const servicesData = [
   {
     slug: "e-commerce-systems",
     title: "E-Commerce Systems",
-    desc: "End-to-end online retail solutions and secure gateways.",
+    desc: "We build online stores with secure payment gateways and clean checkout flows, tailored to your inventory and your customers' buying habits.",
     fullDesc:
       "Building modern storefronts requires speed and security. We create custom e-commerce engines that integrate seamlessly with Stripe, PayPal, and local gateways in Pakistan.",
     features: [
@@ -852,6 +859,7 @@ export const servicesData = [
       "Inventory & Order Management",
     ],
     icon: <ShoppingCart />,
+    image:"/services/e-commerce.jpeg",
     tag: "Commerce",
     ctaData: {
       heading: "Start selling?",
@@ -882,7 +890,7 @@ export const servicesData = [
   {
     slug: "video-production",
     title: "Video Production",
-    desc: "High-end motion graphics and technical storytelling.",
+    desc: "We produce motion graphics and explainer videos that turn technical products into stories people actually want to watch.",
     fullDesc:
       "We bring your software to life through high-fidelity video. Whether it's a 3D product explainer or a cinematic brand story, our production team uses motion graphics to simplify complex concepts.",
     features: [
@@ -892,6 +900,7 @@ export const servicesData = [
       "Ad Content for Tech Products",
     ],
     icon: <Video />,
+    image: "/services/video.jpeg",
     tag: "Visuals",
     ctaData: {
       heading: "Tell your story?",
@@ -923,7 +932,7 @@ export const servicesData = [
   {
     slug: "cyber-security",
     title: "Cyber Security",
-    desc: "Hardening system integrity with advanced protocols.",
+    desc: "We run penetration testing and implement zero-trust security architecture to close vulnerabilities before they become real breaches.",
     fullDesc:
       "Security is not an afterthought in our development cycle. We perform deep penetration testing and implement zero-trust architectures to protect your data integrity.",
     features: [
@@ -933,6 +942,7 @@ export const servicesData = [
       "Automated Security Audits",
     ],
     icon: <ShieldCheck />,
+    image: "/services/cyber-security.jpeg",
     tag: "Protected",
     ctaData: {
       heading: "Hardening required?",
@@ -964,7 +974,7 @@ export const servicesData = [
   {
     slug: "enterprise-solutions",
     title: "Enterprise Solutions",
-    desc: "Custom software built for large-scale challenges.",
+    desc: "We build custom ERPs, CRMs, and internal dashboards designed to work with your existing legacy systems — no rip-and-replace required.",
     fullDesc:
       "Large organizations require tailored software that integrates with existing legacy systems. We build enterprise-grade ERPs, CRMs, and custom management dashboards.",
     features: [
@@ -974,6 +984,7 @@ export const servicesData = [
       "SLA-Driven Maintenance",
     ],
     icon: <Code2 />,
+    image: "/services/enterprise-solution.jpeg",
     tag: "Enterprise",
     ctaData: {
       heading: "Solving at scale?",

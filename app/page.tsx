@@ -10,6 +10,8 @@ import WhyUs from "@/components/WhyUs";
 import ScrollHandler from "@/components/ScrollHandler"; // New Client Component
 import RingGalleryGSAP from "@/components/RingGallery";
 import RecentClients from "@/components/RecentClients";
+import Reviews from "@/components/Reviews";
+import ServiceRoadmap from "@/components/ServiceRoadmap";
 
 export default function Home() {
   return (
@@ -30,6 +32,8 @@ export default function Home() {
               for better semantic structure. */}
           <section id="services" aria-label="Our Services">
             <Services />
+
+            <ServiceRoadmap />
           </section>
 
           <section id="infra" aria-label="Infrastructure Solutions">
@@ -37,6 +41,7 @@ export default function Home() {
           </section>
 
           <Trust />
+          <Reviews />
           <TechStack />
 
           <section id="testimonials" aria-label="Customer Testimonials">
