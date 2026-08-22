@@ -25,22 +25,21 @@ export default function ProjectCard({
       initial={fadeInVariants ? "hidden" : undefined}
       whileInView={fadeInVariants ? "visible" : undefined}
       viewport={{ once: true }}
-      className="group relative rounded-[2rem] border border-slate-200/90 bg-gradient-to-b from-slate-50/80 to-white/50 p-1 overflow-hidden hover:border-[#2e3192]/40 transition-all duration-500 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-cyan-500/10 h-full"
+      className="group relative rounded-4xl border border-slate-200/90 bg-linear-to-b from-slate-50/80 to-white/50 p-1 overflow-hidden hover:border-[#2e3192]/40 transition-all duration-500 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-cyan-500/10 h-full"
     >
-      <div className="relative z-10 p-6 sm:p-7 rounded-[1.85rem] bg-white/95 backdrop-blur-xl h-full flex flex-col justify-between">
-        <div>
-          {/* Top Landscape Image Frame */}
-          <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6 border border-slate-200 bg-slate-100">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              priority={idx < 3}
-              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-
+      <div className="relative z-10 rounded-[1.85rem] bg-white/95 backdrop-blur-xl h-full flex flex-col justify-between">
+        {/* Top Landscape Image Frame */}
+        <div className="relative w-full aspect-video rounded-t-2xl overflow-hidden border border-slate-200 bg-slate-100">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            priority={idx < 3}
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+        <div className="p-6 sm:p-7">
           {/* Clean Meta Row: Category & Client Tag */}
           <div className="flex items-center justify-between mb-3">
             <span className="text-cyan-600 text-[10px] font-mono uppercase tracking-[0.2em]">
@@ -62,9 +61,7 @@ export default function ProjectCard({
           <p className="text-slate-600 text-xs sm:text-sm mt-3 font-light leading-relaxed line-clamp-2">
             {project.description}
           </p>
-        </div>
 
-        <div>
           {/* Tech Stack Badges (Capped at 4 for ultra-clean UI) */}
           <div className="mt-6 pt-5 border-t border-slate-200/60 flex flex-wrap gap-1.5">
             {project.techStack.slice(0, 4).map((tech) => (

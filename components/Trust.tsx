@@ -1,13 +1,19 @@
 "use client";
+
 import { motion } from "framer-motion";
+
 import { Quote, Star, CheckCircle2, Zap } from "lucide-react";
 
 const metrics = [
   { label: "Server Response Time", value: "< 200ms", icon: <Zap size={16} /> },
+
   { label: "Client Satisfaction", value: "100%", icon: <Star size={16} /> },
+
   {
     label: "Uptime Guaranteed",
+
     value: "99.9%",
+
     icon: <CheckCircle2 size={16} />,
   },
 ];
@@ -15,22 +21,28 @@ const metrics = [
 const testimonials = [
   {
     text: "Open Stacked transformed our legacy system into a high-speed Next.js powerhouse. Their understanding of infrastructure is unmatched.",
+
     author: "Founder, Fintech Startup",
+
     stat: "40% Speed Increase",
   },
+
   {
     text: "The deployment roadmap was crystal clear. We went from a local concept to a global production-ready app in record time.",
+
     author: "CTO, E-commerce Brand",
+
     stat: "Zero Downtime",
   },
 ];
 
 export default function Trust() {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
-      <div className="max-w-375 mx-auto px-6 relative z-10">
+    <section className="relative bg-white py-20 md:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           {/* Left Column: Performance Metrics */}
+
           <div className="lg:col-span-1 space-y-8">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -38,9 +50,11 @@ export default function Trust() {
               viewport={{ once: true }}
             >
               {/* 👇 Label updated to text-cyan-600 for sharpness */}
+
               <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase border-l-2 border-cyan-500 pl-4">
                 Internal Metrics
               </span>
+
               <h2 className="text-4xl font-black text-black mt-4 tracking-tighter">
                 MEASURED <br /> EXCELLENCE.
               </h2>
@@ -54,11 +68,14 @@ export default function Trust() {
                 >
                   <div className="flex items-center gap-3 text-cyan-600 mb-2">
                     {m.icon}
+
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
                       {m.label}
                     </span>
                   </div>
+
                   {/* 👇 Numeric value in bold black for sharp readability */}
+
                   <div className="text-3xl font-black text-black italic">
                     {m.value}
                   </div>
@@ -68,6 +85,7 @@ export default function Trust() {
           </div>
 
           {/* Right Column: Client Feedback */}
+
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((t, idx) => (
               <motion.div
@@ -102,6 +120,7 @@ export default function Trust() {
                     <div className="text-black font-bold tracking-tight">
                       {t.author}
                     </div>
+
                     <div className="text-cyan-600 text-[10px] font-mono mt-1 uppercase tracking-widest">
                       Result: {t.stat}
                     </div>
@@ -111,6 +130,7 @@ export default function Trust() {
             ))}
 
             {/* CTA Card */}
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -120,10 +140,12 @@ export default function Trust() {
                 <div className="text-black font-bold">
                   Ready to be our next success story?
                 </div>
+
                 <p className="text-slate-500 text-sm">
                   Experience the Open Stacked performance firsthand.
                 </p>
               </div>
+
               <button className="px-8 py-3 bg-black text-white font-bold text-xs uppercase tracking-widest rounded-full hover:bg-cyan-500 hover:text-white transition-all">
                 Get a Quote
               </button>
