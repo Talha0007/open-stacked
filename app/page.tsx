@@ -5,7 +5,7 @@ import Infrastructure from "@/components/Infrastructure";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
 import TechStack from "@/components/TechStack";
-import Trust from "@/components/Trust";
+// import Trust from "@/components/Trust";
 import WhyUs from "@/components/WhyUs";
 import ScrollHandler from "@/components/ScrollHandler"; // New Client Component
 import RingGalleryGSAP from "@/components/RingGallery";
@@ -40,7 +40,7 @@ export default function Home() {
             <Infrastructure />
           </section>
 
-          <Trust />
+          {/* <Trust /> */}
           <Reviews />
           <TechStack />
 

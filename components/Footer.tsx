@@ -62,8 +62,7 @@ export default function Footer() {
             </div>
 
             <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
-              Providing enterprise-grade IT solutions and resilient digital
-              infrastructure for modern businesses worldwide.
+              We design and build websites, apps, and cloud systems for businesses in Pakistan and the US — engineered to grow with you.
             </p>
 
             {/* Social Media Icons */}

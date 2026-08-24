@@ -205,8 +205,7 @@ export default function RingGallery() {
         } else {
           targetRotationY -= deltaX * 0.03;
           const centerY = window.innerHeight / 2;
-          const normalized =
-            (e.clientY - centerY) / (window.innerHeight / 2);
+          const normalized = (e.clientY - centerY) / (window.innerHeight / 2);
           const baseTilt = width < 640 ? -20 : -12;
           targetRotationX = baseTilt - normalized * 2.5;
         }
@@ -319,17 +318,7 @@ export default function RingGallery() {
 
   /* ─── Render ─── */
   return (
-    <section className="relative w-full overflow-hidden py-8 md:py-12 select-none">
-      {/* Header */}
-      <div className="text-center mb-4 md:mb-6 px-4">
-        <span className="text-[10px] md:text-xs font-mono tracking-widest text-sky-600 uppercase">
-          {"// INTERACTIVE SHOWCASE"}
-        </span>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 mt-1">
-          FEATURED ARCHITECTURES
-        </h2>
-      </div>
-
+    <section className="relative w-full overflow-hidden pb-16 md:pb-40 select-none">
       {/* Stage */}
       <div
         ref={stageRef}
