@@ -38,11 +38,16 @@ export default function Hero() {
           muted
           playsInline
           preload="metadata"
-          poster="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto,f_auto,w_1920/v1786721947/158756-817470865_m5qqfn.jpg"
+          poster="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto:low,f_auto,w_960/v1786721947/158756-817470865_m5qqfn.jpg"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none scale-105"
         >
           <source
-            src="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto,f_auto,w_1920,c_limit/v1786721947/158756-817470865_m5qqfn.mp4"
+            media="(max-width: 768px)"
+            src="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto:low,f_auto,w_640,c_limit/v1786721947/158756-817470865_m5qqfn.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto:low,f_auto,w_1280,c_limit/v1786721947/158756-817470865_m5qqfn.mp4"
             type="video/mp4"
           />
           Your browser does not support the video tag.
