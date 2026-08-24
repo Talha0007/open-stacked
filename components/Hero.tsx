@@ -38,10 +38,11 @@ export default function Hero() {
           muted
           playsInline
           preload="metadata"
+          poster="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto,f_auto,w_1920/v1786721947/158756-817470865_m5qqfn.jpg"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none scale-105"
         >
           <source
-            src="https://res.cloudinary.com/dbj0rhqyr/video/upload/v1786721947/158756-817470865_m5qqfn.mp4"
+            src="https://res.cloudinary.com/dbj0rhqyr/video/upload/q_auto,f_auto,w_1920,c_limit/v1786721947/158756-817470865_m5qqfn.mp4"
             type="video/mp4"
           />
           Your browser does not support the video tag.
@@ -77,9 +78,9 @@ export default function Hero() {
             animate="visible"
             className="text-xs sm:text-base md:text-xl text-slate-300 max-w-xl font-light leading-relaxed border-t lg:border-t-0 lg:border-l-2 border-cyan-400/40 pt-3 lg:pt-0 lg:pl-6"
           >
-            We don&apos;t just build software; we engineer resilient digital
-            ecosystems. High-performance cloud solutions for the next era of
-            enterprise technology.
+            We design and build websites, applications, and cloud systems for
+            businesses that need software they can depend on — engineered to
+            handle real growth, real traffic, and real users from day one.
           </motion.p>
 
           <motion.div
@@ -92,7 +93,7 @@ export default function Hero() {
             <Link href="/quote" className="w-full sm:w-auto">
               <button className="group relative w-full sm:w-auto overflow-hidden bg-cyan-500 text-slate-950 hover:bg-cyan-400 px-5 sm:px-8 py-3 sm:py-4 rounded-md font-bold text-xs sm:text-base transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-cyan-500/25">
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  Launch System{" "}
+                  Start a Project{" "}
                   <ArrowRight
                     size={16}
                     className="group-hover:translate-x-1.5 transition-transform"
@@ -164,7 +165,7 @@ export default function Hero() {
                 </div>
               </div>
               <div className="text-right font-mono text-[8px] sm:text-[11px] text-slate-400 space-y-0.5">
-                <div>LON_UK // LHR_PK</div>
+                <div>LHR_PK // ATL_US</div>
                 <div>GLOBAL NODE MESH</div>
               </div>
             </div>

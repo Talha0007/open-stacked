@@ -123,7 +123,11 @@ export default function NavContent({
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
-                className="text-[11px] uppercase tracking-[0.25em] font-bold text-slate-600 hover:text-black transition-all group relative"
+                className={`text-[11px] uppercase tracking-[0.25em] font-bold ${
+                  scrolled
+                    ? "text-black hover:text-cyan-600"
+                    : "text-white hover:text-slate-400"
+                } transition-all group relative`}
               >
                 {link.name}
                 <span
@@ -143,7 +147,11 @@ export default function NavContent({
           >
             <button
               type="button"
-              className="flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 text-slate-600 hover:text-black transition-colors"
+              className={`flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 ${
+                scrolled
+                  ? "text-black hover:text-cyan-600"
+                  : "text-white hover:text-slate-200"
+              } transition-colors`}
               aria-expanded={showDropdown}
             >
               Company{" "}
@@ -194,7 +202,9 @@ export default function NavContent({
         {/* MOBILE TOGGLE BUTTON */}
         <button
           type="button"
-          className="lg:hidden text-black p-2 z-[110] relative focus:outline-none"
+          className={`lg:hidden p-2 z-[110] relative focus:outline-none transition-colors ${
+            isOpen || scrolled ? "text-black" : "text-white"
+          }`}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}

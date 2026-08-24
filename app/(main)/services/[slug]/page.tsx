@@ -48,7 +48,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       : null;
 
   return (
-    <main className="min-h-screen bg-white text-black pt-32 pb-20 overflow-hidden relative">
+    <main className="min-h-screen bg-white text-black pt-32 md:pt-45 pb-20 overflow-hidden relative">
       {/* Inject SEO Schema if FAQs exist */}
       {faqSchema && (
         <script
