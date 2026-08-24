@@ -42,7 +42,6 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Rotate based on mouse position relative to card center
   const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]), {
     stiffness: 150,
     damping: 20,
@@ -78,7 +77,6 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className="group relative p-8 rounded-[2rem] border border-slate-200 bg-white/80 backdrop-blur-sm hover:border-cyan-600/30 transition-colors duration-500"
     >
-      {/* Floating Glow Effect */}
       <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
 
       <div
@@ -114,18 +112,18 @@ const TiltCard = ({ item, index }: { item: Principle; index: number }) => {
 export default function WhyUs() {
   const principles = [
     {
-      title: "Business-Centric Architecture",
-      desc: "Open Stacked engineers systems that solve real-world bottlenecks, ensuring your business operations run without friction.",
+      title: "Built Right From Day One",
+      desc: "We design your system's core architecture properly the first time — so you're not rebuilding from scratch when your business grows.",
       icon: <BarChart />,
     },
     {
-      title: "Performance Engineering",
-      desc: "We don't just build; we optimize. Every solution is stress-tested to handle high-level enterprise demands.",
+      title: "Fast Under Real Load",
+      desc: "Every system we ship is tested under real traffic conditions, not just demos — so it performs when it actually matters.",
       icon: <Cpu />,
     },
     {
-      title: "Scalable DNA",
-      desc: "Our vision is to build projects that grow with you. From your first 100 users to your first million, we stay stable.",
+      title: "Scales Without Breaking",
+      desc: "From your first 100 users to your first million, your systems keep working — no rewrites, no downtime, no panic.",
       icon: <Rocket />,
     },
   ];
@@ -135,13 +133,11 @@ export default function WhyUs() {
       className="relative bg-white py-10 md:py-20 overflow-hidden"
       style={{ perspective: "2000px" }}
     >
-      {/* 3D Background Elements */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-375 mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Identity Side */}
           <div className="space-y-10">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -157,30 +153,26 @@ export default function WhyUs() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-black leading-[1.1] tracking-tight max-w-3xl">
-                DRIVEN BY{" "}
+                PRECISION{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192] drop-shadow-[0_0_30px_rgba(0,174,239,0.2)]">
-                  PRECISION
+                  ENGINEERING
                 </span>{" "}
                 <br className="hidden sm:inline" />
-                DEFINED BY{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#808485] to-[#424247] hover:bg-gradient-to-r hover:from-[#00aeef] hover:via-[#3b82f6] hover:to-[#2e3192] transition-all">
+                MEASURABLE{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192] drop-shadow-[0_0_30px_rgba(0,174,239,0.2)]">
                   RESULTS
                 </span>
               </h2>
 
               <p className="text-slate-700 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
-                <strong className="text-black font-medium">Open Stacked</strong>{" "}
-                is not an agency. We are the{" "}
-                <span className="text-black">technical DNA</span> of your
-                success.
+                Open Stacked builds and optimizes systems for growing businesses — from first launch to enterprise scale, engineered to handle real traffic, real users, and real growth.
               </p>
             </motion.div>
 
-            {/* Performance Stats */}
             <div className="grid grid-cols-2 gap-12 pt-12 border-t border-slate-200/50">
               {[
                 { label: "Deliveries", val: 113 },
-                { label: "Uptime", val: 99 },
+                { label: "Uptime", val: 99.9 },
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col gap-2">
                   <span className="text-5xl md:text-6xl font-black text-black italic tracking-tighter">
@@ -195,7 +187,6 @@ export default function WhyUs() {
             </div>
           </div>
 
-          {/* Cards Side */}
           <div className="flex flex-col gap-8">
             {principles.map((item, idx) => (
               <TiltCard key={idx} item={item} index={idx} />

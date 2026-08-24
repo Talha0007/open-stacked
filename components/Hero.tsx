@@ -52,7 +52,7 @@ export default function Hero() {
       </div>
 
       {/* CORE HERO INTERFACE GRID */}
-      <div className="relative z-20 w-full max-w-[1600px] mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-center">
+      <div className="relative z-20 w-full max-w-375 mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-center">
         {/* LEFT FLANK: Value Proposition */}
         <div className="col-span-1 lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start justify-center">
           <div className="space-y-1 sm:space-y-3">
@@ -111,7 +111,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT FLANK: Dashboard Panels */}
-        <div className="col-span-1 lg:col-span-5 flex flex-col justify-center gap-2.5 sm:gap-4 w-full max-w-[1600px] mx-auto lg:mx-0">
+        <div className="col-span-1 lg:col-span-5 flex flex-col justify-center gap-2.5 sm:gap-4 w-full max-w-375 mx-auto lg:mx-0">
           {/* Node Status Panel */}
           <motion.div
             custom={5}
@@ -200,7 +200,7 @@ export default function Hero() {
 
       {/* FOOTER METRICS BASELINE */}
       <div className="w-full z-20 sm:pt-6 flex justify-center pb-10">
-        <div className="w-full max-w-[1600px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 text-[8px] sm:text-[10px] font-mono tracking-[0.15em] sm:tracking-[0.25em] uppercase text-center text-slate-400 font-semibold opacity-90">
+        <div className="w-full max-w-375 mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 text-[8px] sm:text-[10px] font-mono tracking-[0.15em] sm:tracking-[0.25em] uppercase text-center text-slate-400 font-semibold opacity-90">
           <span>&#47;&#47; AUTH_NODE: OPEN_STACKED_ENG_HQ</span>
           <span>LOC_REF: [31.5204° N, 74.3587° E]</span>
           <span>PROTOCOL: TLS_1.3_AES_256_GCM</span>

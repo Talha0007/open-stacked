@@ -97,7 +97,7 @@ export default function NavContent({
   return (
     <div className={`w-full ${containerClasses}`}>
       <div
-        className={`max-w-[1600px] mx-auto px-6 md:px-8 flex justify-between items-center ${innerCardClasses}`}
+        className={`max-w-375 mx-auto px-6 md:px-8 flex justify-between items-center ${innerCardClasses}`}
       >
         {/* LOGO */}
         <Link href="/" className="z-[110]" onClick={() => setIsOpen(false)}>
@@ -106,6 +106,7 @@ export default function NavContent({
               src="/os-logo.png"
               alt="Open Stacked Logo"
               fill
+              sizes="80px"
               className="object-contain"
               priority
             />

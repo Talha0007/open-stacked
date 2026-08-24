@@ -76,33 +76,26 @@ function StackedVanishingCard({
   totalSteps,
   progress,
 }: CardProps) {
-  // Normalize scroll segment for each card index
   const stepSegment = 1 / totalSteps;
   const start = index * stepSegment;
-  const peak = start + stepSegment * 0.4; // Point when fully visible
-  const exit = (index + 1) * stepSegment; // Point when completely faded/receded
+  const peak = start + stepSegment * 0.4;
+  const exit = (index + 1) * stepSegment;
 
-  // 1. Entry: Slide up from bottom (y)
   const y = useTransform(
     progress,
     [Math.max(0, start - stepSegment * 0.5), start, peak, exit],
-    [180, 0, 0, -50],
+    [180, 0, 0, -50]
   );
 
-  // 2. Scale: Enters at size, then shrinks into background as next card comes
   const scale = useTransform(progress, [start, peak, exit], [1, 1, 0.82]);
 
-  // 3. Opacity: Fades in from bottom, then fades out as it moves into the background
   const opacity = useTransform(
     progress,
     [Math.max(0, start - stepSegment * 0.3), start, peak, exit],
-    [0, 1, 1, index === totalSteps - 1 ? 1 : 0], // Keep last card visible
+    [0, 1, 1, index === totalSteps - 1 ? 1 : 0]
   );
 
-  // 4. 3D Rotation along X-axis to simulate vanishing depth away from screen
   const rotateX = useTransform(progress, [start, peak, exit], [10, 0, -20]);
-
-  // 5. Z-axis depth displacement
   const z = useTransform(progress, [start, peak, exit], [0, 0, -250]);
 
   return (
@@ -115,20 +108,17 @@ function StackedVanishingCard({
         z,
         transformStyle: "preserve-3d",
       }}
-      className="absolute top-0 left-0 w-full flex flex-col md:flex-row gap-6 md:gap-12 items-center justify-center perspective-[1000px]"
+      className="absolute inset-0 w-full flex flex-col md:flex-row gap-6 md:gap-12 items-center justify-center pointer-events-none"
     >
-      {/* Step Indicator Badge */}
-      <div className="relative z-10 shrink-0">
+      <div className="relative z-10 shrink-0 pointer-events-auto">
         <div className="w-12 h-12 rounded-full bg-white border border-cyan-500/40 flex items-center justify-center text-cyan-600 font-mono text-base font-bold shadow-lg shadow-cyan-500/10">
           {step.stage}
         </div>
       </div>
 
-      {/* Main Glassmorphic Card (Full Width matching section container) */}
       <div
-        className={`w-full p-8 md:p-10 rounded-3xl border border-slate-200/90 bg-linear-to-br ${step.color} to-white/95 backdrop-blur-xl shadow-2xl transition-colors duration-500 relative overflow-hidden`}
+        className={`w-full p-8 md:p-10 rounded-3xl border border-slate-200/90 bg-gradient-to-br ${step.color} to-white/95 backdrop-blur-xl shadow-2xl transition-colors duration-500 relative overflow-hidden pointer-events-auto`}
       >
-        {/* Ambient Glow */}
         <div
           className="absolute -top-24 -right-24 w-60 h-60 rounded-full blur-3xl pointer-events-none"
           style={{ background: step.glowColor }}
@@ -138,7 +128,7 @@ function StackedVanishingCard({
           <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-md inline-flex shrink-0">
             {React.cloneElement(
               step.icon as React.ReactElement<{ size: number }>,
-              { size: 36 },
+              { size: 36 }
             )}
           </div>
 
@@ -159,46 +149,39 @@ function StackedVanishingCard({
 export default function Roadmap() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Track scroll progress across the taller container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Dynamic progress line transform
   const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div
-      ref={containerRef}
-      /* Height controls scroll distance per card: 5 steps * 100vh = 500vh */
-      className="relative h-[300vh] bg-slate-50/40 border-t border-slate-200/50"
-    >
-      {/* Sticky Viewport Layer */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-10 md:py-16">
-        {/* Top Gradient Accent */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent" />
+    // Height container created to give scroll room for tracking progress
+    <section ref={containerRef} className="relative h-[300vh] border-t border-slate-200/50">
+      {/* Sticky viewport frame to freeze cards on screen during scroll */}
+      <div className="sticky top-0 h-screen flex flex-col justify-between py-12 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 
         {/* Section Header */}
-        <div className="max-w-7xl mt-20 mx-auto px-6 text-center relative z-20">
-          <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase">
-            &#47;&#47; Execution Framework
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tighter">
-            FROM CONCEPT TO{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-600">
-              PRODUCTION
+        <div className="max-w-375 mx-auto px-6 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase">
+              &#47;&#47; Execution Framework
             </span>
-          </h2>
+          </motion.div>
         </div>
 
-        {/* Dynamic Card Stacking Area (Expanded to max-w-7xl) */}
-        <div className="max-w-7xl mx-auto px-6 w-full relative h-80 md:h-60 flex items-center justify-center">
-          {/* Vertical Timeline Progress Bar */}
+        {/* Dynamic Card Stacking Area (3D perspective wrapper) */}
+        <div className="max-w-375 mx-auto px-6 w-full relative h-96 md:h-80 flex items-center justify-center [perspective:1000px]">
           <div className="absolute left-6 md:left-12 top-0 bottom-0 w-0.5 bg-slate-200 hidden sm:block">
             <motion.div
               style={{ scaleY: lineScaleY }}
-              className="w-full h-full bg-linear-to-b from-cyan-500 via-blue-500 to-emerald-500 origin-top"
+              className="w-full h-full bg-gradient-to-b from-cyan-500 via-blue-500 to-emerald-500 origin-top"
             />
           </div>
 
@@ -214,7 +197,7 @@ export default function Roadmap() {
         </div>
 
         {/* Footer Status Bar */}
-        <div className="max-w-7xl mx-auto px-6 relative z-20">
+        <div className="max-w-375 mx-auto px-6 relative z-20 w-full">
           <div className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 backdrop-blur-md text-center shadow-md max-w-xl mx-auto">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="flex items-center gap-2">
@@ -231,6 +214,6 @@ export default function Roadmap() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
