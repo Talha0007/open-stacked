@@ -84,7 +84,7 @@ function StackedVanishingCard({
   const y = useTransform(
     progress,
     [Math.max(0, start - stepSegment * 0.5), start, peak, exit],
-    [180, 0, 0, -50]
+    [180, 0, 0, -50],
   );
 
   const scale = useTransform(progress, [start, peak, exit], [1, 1, 0.82]);
@@ -92,7 +92,7 @@ function StackedVanishingCard({
   const opacity = useTransform(
     progress,
     [Math.max(0, start - stepSegment * 0.3), start, peak, exit],
-    [0, 1, 1, index === totalSteps - 1 ? 1 : 0]
+    [0, 1, 1, index === totalSteps - 1 ? 1 : 0],
   );
 
   const rotateX = useTransform(progress, [start, peak, exit], [10, 0, -20]);
@@ -128,7 +128,7 @@ function StackedVanishingCard({
           <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-md inline-flex shrink-0">
             {React.cloneElement(
               step.icon as React.ReactElement<{ size: number }>,
-              { size: 36 }
+              { size: 36 },
             )}
           </div>
 
@@ -158,7 +158,10 @@ export default function Roadmap() {
 
   return (
     // Height container created to give scroll room for tracking progress
-    <section ref={containerRef} className="relative h-[300vh] border-t border-slate-200/50">
+    <section
+      ref={containerRef}
+      className="relative h-[300vh] border-t border-slate-200/50"
+    >
       {/* Sticky viewport frame to freeze cards on screen during scroll */}
       <div className="sticky top-0 h-screen flex flex-col justify-between py-12 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
@@ -171,7 +174,7 @@ export default function Roadmap() {
             viewport={{ once: true }}
           >
             <span className="text-cyan-600 font-mono text-[10px] tracking-[0.5em] uppercase">
-              &#47;&#47; Execution Framework
+              Execution Framework
             </span>
           </motion.div>
         </div>

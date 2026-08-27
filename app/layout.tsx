@@ -4,6 +4,7 @@ import Script from "next/script";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -131,6 +132,7 @@ export default function RootLayout({
       </head>
 
       <body className="bg-white text-black antialiased overflow-x-hidden">
+        <ScrollToTop />
         <Navbar />
         <main>{children}</main>
         <Footer />

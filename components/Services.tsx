@@ -7,7 +7,10 @@ import Image from "next/image";
 
 export default function Services({ id }: { id?: string }) {
   return (
-    <section id={id} className="relative py-32 overflow-hidden bg-[#031f33] text-white">
+    <section
+      id={id}
+      className="relative py-32 overflow-hidden bg-[#031f33] text-white"
+    >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-600/50 to-transparent" />
 
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
@@ -22,7 +25,7 @@ export default function Services({ id }: { id?: string }) {
               viewport={{ once: true }}
               className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4"
             >
-              &#47;&#47; What We Build
+             What We Build
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}

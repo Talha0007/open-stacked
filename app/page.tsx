@@ -1,7 +1,7 @@
 // app/page.tsx (Server Component by default)
 import Scene from "@/components/BackgroundScene";
 import Hero from "@/components/Hero";
-import Infrastructure from "@/components/Infrastructure";
+// import Infrastructure from "@/components/Infrastructure";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
 import TechStack from "@/components/TechStack";
@@ -32,13 +32,14 @@ export default function Home() {
               for better semantic structure. */}
           <section id="services" aria-label="Our Services">
             <Services />
-
-            <ServiceRoadmap />
           </section>
 
           <section id="infra" aria-label="Infrastructure Solutions">
-            <Infrastructure />
+            <ServiceRoadmap />
           </section>
+          {/* <section id="infra" aria-label="Infrastructure Solutions">
+            <Infrastructure />
+          </section> */}
 
           {/* <Trust /> */}
           <Reviews />

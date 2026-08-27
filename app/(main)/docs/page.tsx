@@ -55,7 +55,7 @@ export default function DocsPage() {
         <section className="lg:col-span-9">
           <div className="max-w-3xl">
             <span className="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase">
-              &#47;&#47; Technical Manual v1.0
+             Technical Manual v1.0
             </span>
             <h1 className="text-5xl font-black text-black mt-4 mb-8 tracking-tighter">
               SYSTEM <span className="text-cyan-500">DOCS</span>

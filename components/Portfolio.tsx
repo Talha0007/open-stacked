@@ -13,7 +13,7 @@ export default function Portfolio() {
       {/* SECTION HEADER */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <span className="text-cyan-600 font-mono text-xs tracking-[0.4em] uppercase border-l-2 border-cyan-600 pl-3 inline-block mb-3">
+          <span className="text-cyan-600 font-mono text-xs tracking-[0.4em] uppercase pl-3 inline-block mb-3">
             PROVEN SOLUTIONS
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight uppercase italic">
