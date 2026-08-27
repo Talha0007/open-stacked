@@ -28,6 +28,7 @@ export default function NavContent({
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +70,7 @@ export default function NavContent({
       }
       setIsOpen(false);
     },
-    [pathname]
+    [pathname],
   );
 
   const isCompact = scrolled && !isOpen;
@@ -116,15 +117,14 @@ export default function NavContent({
         {/* DESKTOP LINKS */}
         <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => {
-            const isActive =
-              pathname === "/" && link.href.includes(pathname);
+            const isActive = pathname === "/" && link.href.includes(pathname);
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
                 className={`text-[11px] uppercase tracking-[0.25em] font-bold ${
-                  scrolled
+                  scrolled || !isHome
                     ? "text-black hover:text-cyan-600"
                     : "text-white hover:text-slate-400"
                 } transition-all group relative`}
@@ -148,9 +148,9 @@ export default function NavContent({
             <button
               type="button"
               className={`flex items-center gap-1 text-[11px] uppercase tracking-[0.25em] font-bold py-2 ${
-                scrolled
+                scrolled || !isHome
                   ? "text-black hover:text-cyan-600"
-                  : "text-white hover:text-slate-200"
+                  : "text-white hover:text-slate-400"
               } transition-colors`}
               aria-expanded={showDropdown}
             >
@@ -203,7 +203,9 @@ export default function NavContent({
         <button
           type="button"
           className={`lg:hidden p-2 z-[110] relative focus:outline-none transition-colors ${
-            isOpen || scrolled ? "text-black" : "text-white"
+            isOpen || scrolled || !isHome
+              ? "text-black hover:text-cyan-600"
+              : "text-white hover:text-slate-400"
           }`}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
