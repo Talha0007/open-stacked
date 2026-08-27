@@ -308,9 +308,9 @@ export default function Reviews() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4 border-l-2 border-cyan-500 pl-3 sm:pl-4"
+              className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4 pl-3 sm:pl-4"
             >
-              &#47;&#47; Client Reviews
+              Client Reviews
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}

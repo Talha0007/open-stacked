@@ -29,7 +29,7 @@ export default function ProjectCard({
     >
       <div className="relative z-10 rounded-[1.85rem] bg-white/95 backdrop-blur-xl h-full flex flex-col justify-between">
         {/* Top Landscape Image Frame */}
-        <div className="relative w-full aspect-video rounded-t-2xl overflow-hidden border border-slate-200 bg-slate-100">
+        <div className="relative w-full aspect-video rounded-t-[1.85rem] overflow-hidden border border-slate-200 bg-slate-100">
           <Image
             src={project.image}
             alt={project.title}
@@ -43,7 +43,7 @@ export default function ProjectCard({
           {/* Clean Meta Row: Category & Client Tag */}
           <div className="flex items-center justify-between mb-3">
             <span className="text-cyan-600 text-[10px] font-mono uppercase tracking-[0.2em]">
-              &#47;&#47; {project.category}
+              {project.category}
             </span>
 
             {project.client && (

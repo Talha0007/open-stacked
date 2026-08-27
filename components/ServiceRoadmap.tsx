@@ -65,7 +65,7 @@ const STEPS: Step[] = [
 
 export default memo(function ServiceRoadmap() {
   return (
-    <section className="relative py-12 sm:py-20 lg:py-28 bg-white text-slate-900 overflow-hidden">
+    <section className="relative py-12 sm:py-20 lg:py-28 bg-transparent text-slate-900 overflow-hidden">
       <div className="max-w-375 mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
@@ -76,7 +76,7 @@ export default memo(function ServiceRoadmap() {
               viewport={{ once: true }}
               className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4"
             >
-              &#47;&#47; How We Work
+              How We Work
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
