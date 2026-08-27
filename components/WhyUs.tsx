@@ -145,13 +145,6 @@ export default function WhyUs() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="h-[1px] w-12 bg-gradient-to-r from-cyan-600 to-transparent" />
-                <span className="text-cyan-600 text-[11px] font-black uppercase tracking-[0.6em]">
-                  Company Vision
-                </span>
-              </div>
-
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-black leading-[1.1] tracking-tight max-w-3xl">
                 PRECISION{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeef] via-[#3b82f6] to-[#2e3192] drop-shadow-[0_0_30px_rgba(0,174,239,0.2)]">
@@ -165,7 +158,9 @@ export default function WhyUs() {
               </h2>
 
               <p className="text-slate-700 text-lg md:text-2xl font-light leading-relaxed max-w-lg">
-                Open Stacked builds and optimizes systems for growing businesses — from first launch to enterprise scale, engineered to handle real traffic, real users, and real growth.
+                Open Stacked builds and optimizes systems for growing businesses
+                — from first launch to enterprise scale, engineered to handle
+                real traffic, real users, and real growth.
               </p>
             </motion.div>
 

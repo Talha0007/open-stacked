@@ -203,15 +203,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* FOOTER METRICS BASELINE */}
-      <div className="w-full z-20 sm:pt-6 flex justify-center pb-10">
-        <div className="w-full max-w-375 mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 text-[8px] sm:text-[10px] font-mono tracking-[0.15em] sm:tracking-[0.25em] uppercase text-center text-slate-400 font-semibold opacity-90">
-          <span>AUTH_NODE: OPEN_STACKED_ENG_HQ</span>
-          <span>LOC_REF: [31.5204° N, 74.3587° E]</span>
-          <span>PROTOCOL: TLS_1.3_AES_256_GCM</span>
-        </div>
-      </div>
     </section>
   );
 }

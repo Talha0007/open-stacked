@@ -304,14 +304,6 @@ export default function Reviews() {
       <div className="max-w-375 mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4 pl-3 sm:pl-4"
-            >
-              Client Reviews
-            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
