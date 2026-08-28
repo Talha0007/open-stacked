@@ -70,14 +70,6 @@ export default memo(function ServiceRoadmap() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4"
-            >
-              How We Work
-            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +88,8 @@ export default memo(function ServiceRoadmap() {
             viewport={{ once: true }}
             className="text-slate-600 text-lg max-w-xs font-light border-l border-slate-200 pl-6"
           >
-            Six clear stages — from first conversation to post-launch support.
+            Six clear stages, each with defined deliverables — so you always
+            know what's next.{" "}
           </motion.p>
         </div>
         {/* Roadmap Grid Container */}

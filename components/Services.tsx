@@ -19,14 +19,6 @@ export default function Services({ id }: { id?: string }) {
       <div className="relative z-10 max-w-375 mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-cyan-600 font-mono text-sm tracking-[0.4em] uppercase mb-4"
-            >
-             What We Build
-            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
