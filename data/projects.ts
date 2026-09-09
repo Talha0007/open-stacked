@@ -22,13 +22,7 @@ export const projects: Project[] = [
     image: "/projects/deep-ai.png",
     fullDetails:
       "This project provides an end-to-end global tracking pipeline designed for high-scale logistics operations. Integrated directly with multi-region SMS gateways, it ensures zero latency on status delivery updates.",
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "Prisma",
-      "Tailwind CSS",
-      "Twilio API",
-    ],
+    techStack: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS", "Twilio API"],
     client: "Global Logistics Corp",
     liveUrl: "https://deepai.org/",
   },
@@ -48,6 +42,20 @@ export const projects: Project[] = [
   },
   {
     id: "3",
+    slug: "cloud-pos-payments-platform",
+    title: "Clover UK",
+    category: "FINTECH",
+    description:
+      "A cloud-based point-of-sale and payments platform for UK businesses, covering card processing, inventory, and staff management.",
+    image: "/projects/clover-uk.png",
+    fullDetails:
+      "We contributed to the UK-facing web experience for this POS and payments platform, focused on merchant onboarding flows and business-solution landing pages built for conversion and clarity.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
+    client: "Clover UK",
+    liveUrl: "https://uk.clover.com/",
+  },
+  {
+    id: "4",
     slug: "open-stacked-os-pattern",
     title: "MedEx",
     category: "SYSTEM DESIGN",
@@ -61,7 +69,7 @@ export const projects: Project[] = [
     liveUrl: "https://medex.com.bd/",
   },
   {
-    id: "4",
+    id: "5",
     slug: "private-cloud-infrastructure",
     title: "Hoilett Business Systems",
     category: "CLOUD & DEVOPS",
@@ -75,7 +83,21 @@ export const projects: Project[] = [
     liveUrl: "https://hoilett.com/",
   },
   {
-    id: "5",
+    id: "6",
+    slug: "italian-restaurant-booking-site",
+    title: "Patrizia's of Matawan",
+    category: "HOSPITALITY",
+    description:
+      "A family-owned Italian restaurant site in Matawan, NJ, covering menus, private events, and online reservations.",
+    image: "/projects/patrizias.png",
+    fullDetails:
+      "Built a warm, conversion-focused restaurant site with online reservation booking, a dynamic menu system, and a private-events inquiry flow tailored to a family-run dining brand.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    client: "Patrizia's of Matawan",
+    liveUrl: "https://www.patriziasofmatawan.com/",
+  },
+  {
+    id: "7",
     slug: "ai-automated-workflow-agent",
     title: "Jeem Jewelry",
     category: "AI & AUTOMATION",
@@ -89,7 +111,35 @@ export const projects: Project[] = [
     liveUrl: "https://jeem.com.pk/",
   },
   {
-    id: "6",
+    id: "8",
+    slug: "smb-business-management-platform",
+    title: "vcita",
+    category: "SAAS",
+    description:
+      "An all-in-one business management platform for small service businesses, covering CRM, scheduling, and invoicing.",
+    image: "/projects/vcita.png",
+    fullDetails:
+      "Contributed to marketing and product pages for this SMB business-management SaaS, focused on clear feature communication and lead-conversion optimized layouts.",
+    techStack: ["React", "TypeScript", "Node.js", "Tailwind CSS"],
+    client: "vcita",
+    liveUrl: "https://www.vcita.com/",
+  },
+  {
+    id: "9",
+    slug: "restaurant-reservation-experience",
+    title: "Vidalia Restaurant",
+    category: "HOSPITALITY",
+    description:
+      "An Italian restaurant site in Lawrence Township, NJ, featuring menu, catering, and online ordering.",
+    image: "/projects/vidalia.png",
+    fullDetails:
+      "Designed and built a chef-driven restaurant experience online, pairing an editorial menu presentation with direct online ordering and catering inquiry paths.",
+    techStack: ["Next.js", "Tailwind CSS", "Stripe"],
+    client: "Vidalia Restaurant",
+    liveUrl: "https://vidalia.restaurant/",
+  },
+  {
+    id: "10",
     slug: "cyber-security-hardening-suite",
     title: "Phone Labs",
     category: "CYBER SECURITY",
@@ -103,7 +153,7 @@ export const projects: Project[] = [
     liveUrl: "https://phonelabs.co.uk/",
   },
   {
-    id: "7",
+    id: "11",
     slug: "realtime-telemetry-dashboard",
     title: "Mahnoor Sahi",
     category: "DATA ANALYTICS",
@@ -112,18 +162,12 @@ export const projects: Project[] = [
     image: "/projects/mahnoorsahi.png",
     fullDetails:
       "Built for industrial IoT monitoring, this dashboard aggregates real-time hardware telemetry and renders live charts with zero main-thread lag.",
-    techStack: [
-      "Next.js",
-      "WebSockets",
-      "TimescaleDB",
-      "D3.js",
-      "Tailwind CSS",
-    ],
+    techStack: ["Next.js", "WebSockets", "TimescaleDB", "D3.js", "Tailwind CSS"],
     client: "IoTech Systems",
     liveUrl: "https://mahnoorsahi.com/",
   },
   {
-    id: "8",
+    id: "12",
     slug: "fintech-micro-lending-core",
     title: "Vape UK",
     category: "FINTECH",
@@ -137,7 +181,7 @@ export const projects: Project[] = [
     liveUrl: "https://vapeuk.co.uk/",
   },
   {
-    id: "9",
+    id: "13",
     slug: "healthcare-patient-portal",
     title: "APCECO",
     category: "HEALTHCARE",
