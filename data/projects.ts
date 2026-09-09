@@ -12,6 +12,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // ROW 1
   {
     id: "1",
     slug: "global-card-tracking-system",
@@ -54,8 +55,24 @@ export const projects: Project[] = [
     client: "Clover UK",
     liveUrl: "https://uk.clover.com/",
   },
+
+  // ROW 2
   {
     id: "4",
+    slug: "dental-practice-appointment-site",
+    title: "Oasis Family Dental",
+    category: "HEALTHCARE",
+    description:
+      "A general, cosmetic, and family dental practice site in Maywood, NJ, covering services, providers, and appointment requests.",
+    image: "/projects/oasis-family-dental.png",
+    fullDetails:
+      "Built a clean, trust-focused practice site with services overview, provider bio, and a direct appointment-request flow designed for local patient acquisition.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    client: "Oasis Family Dental",
+    liveUrl: "https://www.mydentaloasis.com/",
+  },
+  {
+    id: "5",
     slug: "open-stacked-os-pattern",
     title: "MedEx",
     category: "SYSTEM DESIGN",
@@ -67,20 +84,6 @@ export const projects: Project[] = [
     techStack: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
     client: "Internal / Open Stacked",
     liveUrl: "https://medex.com.bd/",
-  },
-  {
-    id: "5",
-    slug: "private-cloud-infrastructure",
-    title: "Hoilett Business Systems",
-    category: "CLOUD & DEVOPS",
-    description:
-      "An IT services platform offering enterprise network architecture, cloud infrastructure, server maintenance, and cyber security.",
-    image: "/projects/hbs.png",
-    fullDetails:
-      "Custom bare-metal virtualization setup with automatic failover, automated snapshots, and Cloudflare enterprise integration for max security.",
-    techStack: ["Proxmox", "Docker", "Linux", "Cloudflare", "Nginx"],
-    client: "Fintech Startup",
-    liveUrl: "https://hoilett.com/",
   },
   {
     id: "6",
@@ -96,19 +99,21 @@ export const projects: Project[] = [
     client: "Patrizia's of Matawan",
     liveUrl: "https://www.patriziasofmatawan.com/",
   },
+
+  // ROW 3
   {
     id: "7",
-    slug: "ai-automated-workflow-agent",
-    title: "Jeem Jewelry",
-    category: "AI & AUTOMATION",
+    slug: "private-cloud-infrastructure",
+    title: "Hoilett Business Systems",
+    category: "CLOUD & DEVOPS",
     description:
-      "An elegant e-commerce jewelry store showcasing luxury lightweight earrings, fine collections, and handcrafted accessories.",
-    image: "/projects/jeem.png",
+      "An IT services platform offering enterprise network architecture, cloud infrastructure, server maintenance, and cyber security.",
+    image: "/projects/hbs.png",
     fullDetails:
-      "Custom LLM orchestrations built using Python backend microservices and modern Next.js admin dashboards.",
-    techStack: ["Next.js", "Python", "FastAPI", "OpenAI API", "PostgreSQL"],
-    client: "Enterprise Tech",
-    liveUrl: "https://jeem.com.pk/",
+      "Custom bare-metal virtualization setup with automatic failover, automated snapshots, and Cloudflare enterprise integration for max security.",
+    techStack: ["Proxmox", "Docker", "Linux", "Cloudflare", "Nginx"],
+    client: "Fintech Startup",
+    liveUrl: "https://hoilett.com/",
   },
   {
     id: "8",
@@ -138,8 +143,24 @@ export const projects: Project[] = [
     client: "Vidalia Restaurant",
     liveUrl: "https://vidalia.restaurant/",
   },
+
+  // ROW 4
   {
     id: "10",
+    slug: "ai-automated-workflow-agent",
+    title: "Jeem Jewelry",
+    category: "AI & AUTOMATION",
+    description:
+      "An elegant e-commerce jewelry store showcasing luxury lightweight earrings, fine collections, and handcrafted accessories.",
+    image: "/projects/jeem.png",
+    fullDetails:
+      "Custom LLM orchestrations built using Python backend microservices and modern Next.js admin dashboards.",
+    techStack: ["Next.js", "Python", "FastAPI", "OpenAI API", "PostgreSQL"],
+    client: "Enterprise Tech",
+    liveUrl: "https://jeem.com.pk/",
+  },
+  {
+    id: "11",
     slug: "cyber-security-hardening-suite",
     title: "Phone Labs",
     category: "CYBER SECURITY",
@@ -153,7 +174,7 @@ export const projects: Project[] = [
     liveUrl: "https://phonelabs.co.uk/",
   },
   {
-    id: "11",
+    id: "12",
     slug: "realtime-telemetry-dashboard",
     title: "Mahnoor Sahi",
     category: "DATA ANALYTICS",
@@ -166,8 +187,10 @@ export const projects: Project[] = [
     client: "IoTech Systems",
     liveUrl: "https://mahnoorsahi.com/",
   },
+
+  // ROW 5
   {
-    id: "12",
+    id: "13",
     slug: "fintech-micro-lending-core",
     title: "Vape UK",
     category: "FINTECH",
@@ -181,7 +204,7 @@ export const projects: Project[] = [
     liveUrl: "https://vapeuk.co.uk/",
   },
   {
-    id: "13",
+    id: "14",
     slug: "healthcare-patient-portal",
     title: "APCECO",
     category: "HEALTHCARE",
