@@ -41,5 +41,25 @@ export const RECENT_CLIENTS: Client[] = [
   {
     name: "Vape Uk",
     logo: "/clients/vape_uk.svg"
+  },
+  {
+    name: "Clover Uk",
+    logo: "/clients/clover-uk.svg"
+  },
+  {
+    name: "Oasis Family Dental",
+    logo: "/clients/oasis-family-dental.png"
+  },
+  {
+    name: "Patrizia's",
+    logo: "/clients/patrizias.avif"
+  },
+  {
+    name:"Vcita",
+    logo: "/clients/vcita.svg"
+  },
+  {
+    name: "Vidalia",
+    logo: "/clients/vidalia.png"
   }
 ];
